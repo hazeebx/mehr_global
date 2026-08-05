@@ -1,0 +1,116 @@
+@import url("loading_screen.css");
+@import url("rings_style.css");
+@import url("services_section.css");
+@import url("header.css");
+@import url("hero.css");
+
+:root {
+  --primary: #050d28;
+  --surface: #292929;
+  --accent: #907c65;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(180deg, var(--primary), #111);
+  color: #fff;
+  overflow-x: hidden;
+}
+.servicesWrapper{
+    position: relative;
+
+    width: 100vw;
+    min-height: 200vh; /* or whatever height your services + process take */
+
+    margin-left: calc(50% - 50vw);
+
+    overflow: hidden;
+
+    background: linear-gradient(180deg, var(--primary), #111);
+}
+
+#network{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:0;
+    pointer-events:none;
+}
+
+
+
+.services,
+.process{
+
+    position:relative;
+
+    z-index:2;
+
+    min-height:100vh;
+
+    padding:8rem 8vw;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+section {
+  min-height: 100vh;
+  padding: 8rem 8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.timeline {
+  position: relative;
+}
+.line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin-bottom: 4rem;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 1.2s;
+}
+.timeline.active .line {
+  transform: scaleX(1);
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 22px;
+  transition: 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.22),
+    transparent 45%
+  );
+  pointer-events: none;
+}
+.glass span {
+  font-size: 3rem;
+  color: var(--accent);
+}
+

@@ -1,0 +1,207 @@
+/* ===========================
+   SERVICES SECTION
+=========================== */
+
+.services{
+
+    position:relative;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:120px 80px;
+
+}
+
+/* Huge Background Word */
+
+.services-title{
+
+    position:absolute;
+
+    font-size:180px;
+
+    font-weight:900;
+
+    color:#FFFFFF;
+
+    letter-spacing:-8px;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
+
+}
+.services-title.dim{
+
+    opacity:0.35;
+
+    transform:scale(.98);
+
+}
+
+/* Grid */
+
+.services-grid{
+
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,280px);
+    gap:45px;
+
+}
+
+/* Card */
+
+.service-card{
+
+    position:relative;
+
+    height:340px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.03);
+
+    transition:.45s cubic-bezier(.22,1,.36,1);
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+}
+
+/* Hover */
+
+.service-card:hover{
+
+    transform:translateY(-14px);
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    border-color:rgba(255,255,255,.35);
+
+}
+
+/* Title */
+
+.service-card h3{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    font-size:32px;
+
+    color:#fff;
+
+    transition:.45s cubic-bezier(.22,1,.36,1);
+
+}
+
+/* Description */
+
+.service-card p{
+
+    position:absolute;
+
+    left:50%;
+    top:62%;
+
+    width:80%;
+
+    transform:translate(-50%,25px);
+
+    opacity:0;
+
+    text-align:center;
+
+    line-height:1.8;
+
+    color:rgba(255,255,255,.75);
+
+    transition:.45s cubic-bezier(.22,1,.36,1);
+
+}
+
+/* Hover Animation */
+
+.service-card:hover h3{
+
+    top:18%;
+
+    transform:translate(-50%,0);
+
+}
+
+.service-card:hover p{
+
+    opacity:1;
+
+    transform:translate(-50%,0);
+
+}
+
+
+/* ===========================
+   Radial Convergence
+=========================== */
+
+.service-card{
+
+    opacity:0;
+
+    transform:translate(var(--tx), var(--ty)) scale(.96);
+
+    transition:
+        transform 2s cubic-bezier(.22,1,.36,1),
+        opacity .9s ease;
+
+}
+
+.service-card.show{
+
+    opacity:1;
+
+    transform:translate(0,0) scale(1);
+
+}
+
+
+.services-title{
+
+    opacity:0;
+
+    transform:translate(var(--tx), var(--ty)) scale(.96);
+
+    transition:
+        transform 1s cubic-bezier(.22,1,.36,1),
+        opacity 1s ease;
+
+}
+
+.services-title.show{
+
+    opacity:.08;   /* or 1 if you want full white */
+
+    transform:translate(0,0) scale(1);
+
+}
