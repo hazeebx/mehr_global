@@ -20,6 +20,7 @@ body {
 =========================== */
 
 .testimonials {
+
     position: relative;
 
     display: flex;
@@ -30,6 +31,7 @@ body {
     overflow: hidden;
 
     padding: 7vw;
+
 }
 
 
@@ -37,12 +39,15 @@ body {
    LEFT SIDE
 =========================== */
 
-.left {
+.testimonial-left {
+
     width: 35%;
     z-index: 20;
+
 }
 
-.eyebrow {
+.testimonial-eyebrow {
+
     margin-bottom: 18px;
 
     color: #cba85b;
@@ -51,12 +56,15 @@ body {
     font-size: .9rem;
     font-weight: 600;
     text-transform: uppercase;
+
 }
 
-.left h2 {
+.testimonial-left h2 {
+
     font-size: clamp(2.8rem, 5vw, 5rem);
     line-height: 1.05;
     font-weight: 700;
+
 }
 
 
@@ -64,7 +72,8 @@ body {
    CARD STACK
 =========================== */
 
-.stack {
+.testimonial-stack {
+
     position: relative;
 
     width: 500px;
@@ -72,6 +81,7 @@ body {
 
     perspective: 1800px;
     isolation: isolate;
+
 }
 
 
@@ -79,7 +89,7 @@ body {
    CARD
 =========================== */
 
-.card {
+.testimonial-card {
 
     position: absolute;
     inset: 0;
@@ -125,7 +135,7 @@ body {
    SHINE
 =========================== */
 
-.card::before {
+.testimonial-card::before {
 
     content: "";
 
@@ -138,17 +148,11 @@ body {
     height: 100%;
 
     background:
-
         linear-gradient(
-
             90deg,
-
             transparent,
-
             rgba(255,255,255,.06),
-
             transparent
-
         );
 
     transform: skewX(-22deg);
@@ -157,10 +161,10 @@ body {
 
 }
 
-.card:hover::before{
+.testimonial-card:hover::before {
 
-    left:170%;
-    transition:1s;
+    left: 170%;
+    transition: 1s;
 
 }
 
@@ -169,14 +173,12 @@ body {
    HOVER
 =========================== */
 
-.card:hover {
+.testimonial-card:hover {
 
     border-color: rgba(203,168,91,.55);
 
     box-shadow:
-
         0 40px 120px rgba(203,168,91,.16),
-
         inset 0 1px 0 rgba(255,255,255,.08);
 
 }
@@ -186,12 +188,14 @@ body {
    QUOTE
 =========================== */
 
-.quote {
+.testimonial-quote {
 
     position: absolute;
 
     top: 8px;
     right: 28px;
+
+    font-family: Georgia, serif;
 
     font-size: 7rem;
     font-weight: 700;
@@ -208,7 +212,7 @@ body {
    TEXT
 =========================== */
 
-.card p {
+.testimonial-card p {
 
     padding-top: 60px;
 
@@ -224,7 +228,7 @@ body {
    AUTHOR
 =========================== */
 
-.author {
+.testimonial-author {
 
     display: flex;
     flex-direction: column;
@@ -232,14 +236,14 @@ body {
 
 }
 
-.author strong {
+.testimonial-author strong {
 
     font-size: 1.08rem;
     font-weight: 600;
 
 }
 
-.author small {
+.testimonial-author small {
 
     color: rgba(255,255,255,.65);
     font-size: .92rem;
@@ -251,7 +255,7 @@ body {
    BACKGROUND GLOWS
 =========================== */
 
-.bg-glow {
+.testimonial-bg-glow {
 
     position: absolute;
 
@@ -268,7 +272,7 @@ body {
 
 }
 
-.glow1 {
+.testimonial-glow1 {
 
     top: -120px;
     left: -120px;
@@ -277,7 +281,7 @@ body {
 
 }
 
-.glow2 {
+.testimonial-glow2 {
 
     right: -120px;
     bottom: -120px;
@@ -291,46 +295,9 @@ body {
    HIDDEN CARDS
 =========================== */
 
-.card.hidden {
+.testimonial-card.hidden {
 
     pointer-events: none;
-
-}
-
-
-/* ===========================
-   RESPONSIVE
-=========================== */
-
-@media (max-width: 900px) {
-
-    .testimonials {
-
-        flex-direction: column;
-        justify-content: center;
-
-        gap: 70px;
-
-        height: auto;
-
-        padding: 90px 32px;
-
-    }
-
-    .left {
-
-        width: 100%;
-        text-align: center;
-
-    }
-
-    .stack {
-
-        width: 100%;
-        max-width: 430px;
-        height: 520px;
-
-    }
 
 }
 
@@ -360,7 +327,6 @@ body {
 
     background: #cba85b;
 
-    box-shadow:
-        0 0 10px rgba(203,168,91,.6);
+    box-shadow: 0 0 10px rgba(203,168,91,.6);
 
 }
