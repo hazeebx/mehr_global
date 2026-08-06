@@ -13,14 +13,26 @@ body {
     overflow: hidden;
     background: #000;
 }
+.hero > #c{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    z-index:0;
+
+}
 .hero-left,
 .hero-middle,
 .hero-right{
 
     position:absolute;
-
-    border:0px solid red;   /* Remove later */
-
     z-index:20;
 
 }
@@ -123,59 +135,6 @@ body {
 
 }
 
-/* ================= EXPLORE ================= */
-
-.explore-text{
-
-    display:block;
-
-    color:rgba(255,255,255,.65);
-
-    font-size:13px;
-
-    letter-spacing:.25em;
-
-    text-transform:uppercase;
-
-}
-
-.scroll-arrow{
-
-    margin-top:14px;
-
-    font-size:34px;
-
-    color:#ffffff;
-
-    animation:arrowFloat 2s ease-in-out infinite;
-
-}
-
-
-
-@keyframes arrowFloat{
-
-    0%,100%{
-
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(10px);
-
-    }
-
-}
-
-canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-}
 
 
 /* ==========================
@@ -189,7 +148,7 @@ canvas {
     color:#111;
 
     /* Section controls */
-    padding-top:120px;
+    padding-top:50px;
     padding-bottom:160px;
     padding-left:0;
     padding-right:0;

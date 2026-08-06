@@ -37,7 +37,7 @@ function resize() {
 
     CX = W / 2;
 
-    CY = H / 2 + 60;   // Move globe down
+    CY = H / 2 + 10;   // Move globe down with +ve, up with -ve
 
 }
 
@@ -323,7 +323,7 @@ let targetZoom = 1;
 
 
 
-  const FOCAL = 500;
+  const FOCAL = 400;
 
   const FOCAL_OFFSET = 620;
 

@@ -1,0 +1,98 @@
+/* ==========================
+   CLIENTS SECTION
+========================== */
+
+.clients{
+    position:relative;
+    overflow:hidden;
+    padding:130px 6vw;
+    color:#fff;
+}
+
+.clients-bg{
+    position:absolute;
+    inset:0;
+    background:url("background_testimonial.png") center/cover no-repeat;
+    filter:blur(045px) saturate(140%) brightness(0.3);
+    transform:scale(1.15);
+    z-index:0;
+}
+
+.clients-overlay{
+    position:absolute;
+    inset:0;
+    backdrop-filter:blur(1px);
+    z-index:1;
+}
+
+.clients-container{
+    position:relative;
+    z-index:2;
+    max-width:1400px;
+    margin:auto;
+}
+
+.clients-label{
+    padding: 100px;
+    display:block;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    color:#d4b270;
+    font-size:.9rem;
+    margin-bottom:18px;
+}
+
+.clients-title{
+    text-align:center;
+    font-size:clamp(2.4rem,5vw,4rem);
+    font-weight:600;
+    margin-bottom:70px;
+    line-height:1.15;
+}
+
+.clients-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:5px;
+}
+
+.client-card{
+
+    height:135px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:0;
+
+    background:rgba(255,255,255,.06);
+
+    border:none;
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    cursor:pointer;
+
+    will-change:transform, opacity, filter;
+
+}
+
+
+.client-card img{
+    width:58%;
+    max-height:48px;
+    object-fit:contain;
+    filter:brightness(0) invert(1);
+    opacity:.9;
+    transition:.35s ease;
+}
+
+.client-card:hover img{
+    transform:scale(1.05);
+    opacity:1;
+}

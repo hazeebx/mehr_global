@@ -1,0 +1,366 @@
+/* ===========================
+   RESET
+=========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #07111d;
+    color: #fff;
+    font-family: Inter, sans-serif;
+}
+
+
+/* ===========================
+   SECTION
+=========================== */
+
+.testimonials {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100vh;
+    overflow: hidden;
+
+    padding: 7vw;
+}
+
+
+/* ===========================
+   LEFT SIDE
+=========================== */
+
+.left {
+    width: 35%;
+    z-index: 20;
+}
+
+.eyebrow {
+    margin-bottom: 18px;
+
+    color: #cba85b;
+
+    letter-spacing: 4px;
+    font-size: .9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.left h2 {
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    line-height: 1.05;
+    font-weight: 700;
+}
+
+
+/* ===========================
+   CARD STACK
+=========================== */
+
+.stack {
+    position: relative;
+
+    width: 500px;
+    height: 560px;
+
+    perspective: 1800px;
+    isolation: isolate;
+}
+
+
+/* ===========================
+   CARD
+=========================== */
+
+.card {
+
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 55px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,32,48,.98),
+            rgba(9,17,30,.98)
+        );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    transform-origin: center center;
+    transform-style: preserve-3d;
+
+    transition:
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+    overflow: hidden;
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+
+/* ===========================
+   SHINE
+=========================== */
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -160%;
+
+    width: 60%;
+    height: 100%;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.06),
+
+            transparent
+
+        );
+
+    transform: skewX(-22deg);
+
+    pointer-events: none;
+
+}
+
+.card:hover::before{
+
+    left:170%;
+    transition:1s;
+
+}
+
+
+/* ===========================
+   HOVER
+=========================== */
+
+.card:hover {
+
+    border-color: rgba(203,168,91,.55);
+
+    box-shadow:
+
+        0 40px 120px rgba(203,168,91,.16),
+
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+}
+
+
+/* ===========================
+   QUOTE
+=========================== */
+
+.quote {
+
+    position: absolute;
+
+    top: 8px;
+    right: 28px;
+
+    font-size: 7rem;
+    font-weight: 700;
+
+    color: #cba85b;
+
+    pointer-events: none;
+    user-select: none;
+
+}
+
+
+/* ===========================
+   TEXT
+=========================== */
+
+.card p {
+
+    padding-top: 60px;
+
+    color: rgba(255,255,255,.92);
+
+    font-size: 1.18rem;
+    line-height: 1.9;
+
+}
+
+
+/* ===========================
+   AUTHOR
+=========================== */
+
+.author {
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+}
+
+.author strong {
+
+    font-size: 1.08rem;
+    font-weight: 600;
+
+}
+
+.author small {
+
+    color: rgba(255,255,255,.65);
+    font-size: .92rem;
+
+}
+
+
+/* ===========================
+   BACKGROUND GLOWS
+=========================== */
+
+.bg-glow {
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    border-radius: 50%;
+
+    filter: blur(140px);
+
+    opacity: .22;
+
+    pointer-events: none;
+
+}
+
+.glow1 {
+
+    top: -120px;
+    left: -120px;
+
+    background: #cba85b;
+
+}
+
+.glow2 {
+
+    right: -120px;
+    bottom: -120px;
+
+    background: #245da6;
+
+}
+
+
+/* ===========================
+   HIDDEN CARDS
+=========================== */
+
+.card.hidden {
+
+    pointer-events: none;
+
+}
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 900px) {
+
+    .testimonials {
+
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 70px;
+
+        height: auto;
+
+        padding: 90px 32px;
+
+    }
+
+    .left {
+
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .stack {
+
+        width: 100%;
+        max-width: 430px;
+        height: 520px;
+
+    }
+
+}
+
+.testimonial-loader {
+
+    display: flex;
+    gap: 10px;
+
+    margin-top: 30px;
+
+}
+
+.testimonial-loader span {
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.18);
+
+    transition: background .35s;
+
+}
+
+.testimonial-loader span.active {
+
+    background: #cba85b;
+
+    box-shadow:
+        0 0 10px rgba(203,168,91,.6);
+
+}
