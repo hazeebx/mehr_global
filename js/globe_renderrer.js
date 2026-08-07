@@ -174,7 +174,7 @@ for (const ring of RINGS) {
 
     }
 
-    console.log("Total particles:", particles.length);
+    //console.log("Total particles:", particles.length);
 
   }
 
@@ -485,7 +485,7 @@ let targetZoom = 1;
     requestAnimationFrame(frame);
 
 }
-
+    console.log("Why u looking in the console bro?")
 
 })();
 

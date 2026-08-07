@@ -1,106 +1,89 @@
 /* ===========================
-   RESET
-=========================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #07111d;
-    color: #fff;
-    font-family: Inter, sans-serif;
-}
-
-
-/* ===========================
    SECTION
 =========================== */
 
-.testimonials {
+.testimonials{
 
-    position: relative;
+    position:relative;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    height: 100vh;
-    overflow: hidden;
+    gap:3rem;
 
-    padding: 7vw;
+    overflow:hidden;
+
+    padding:4rem 5vw;
+
+    border-bottom:1px solid rgba(203,168,91,.18);
 
 }
-
 
 /* ===========================
    LEFT SIDE
 =========================== */
 
-.testimonial-left {
+.testimonial-left{
 
-    width: 35%;
-    z-index: 20;
-
-}
-
-.testimonial-eyebrow {
-
-    margin-bottom: 18px;
-
-    color: #cba85b;
-
-    letter-spacing: 4px;
-    font-size: .9rem;
-    font-weight: 600;
-    text-transform: uppercase;
+    width:28%;
+    z-index:20;
 
 }
 
-.testimonial-left h2 {
+.testimonial-eyebrow{
 
-    font-size: clamp(2.8rem, 5vw, 5rem);
-    line-height: 1.05;
-    font-weight: 700;
+    margin-bottom:.8rem;
+
+    color:#cba85b;
+
+    letter-spacing:.18rem;
+    font-size:.72rem;
+    font-weight:600;
+    text-transform:uppercase;
 
 }
 
+.testimonial-left h2{
+
+    font-size:clamp(1.8rem,3vw,3rem);
+    line-height:1.05;
+    font-weight:700;
+
+}
 
 /* ===========================
    CARD STACK
 =========================== */
 
-.testimonial-stack {
+.testimonial-stack{
 
-    position: relative;
+    position:relative;
 
-    width: 500px;
-    height: 560px;
+    width:min(18rem,90vw);
+    aspect-ratio:340 / 380;
 
-    perspective: 1800px;
-    isolation: isolate;
+    perspective:120rem;
+    isolation:isolate;
 
 }
-
 
 /* ===========================
    CARD
 =========================== */
 
-.testimonial-card {
+.testimonial-card{
 
-    position: absolute;
-    inset: 0;
+    position:absolute;
+    inset:0;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 
-    padding: 55px;
+    padding:2rem;
 
-    border-radius: 28px;
+    border-radius:1rem;
 
     background:
         linear-gradient(
@@ -109,43 +92,39 @@ body {
             rgba(9,17,30,.98)
         );
 
-    border: 1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
 
-    box-shadow:
-        0 30px 90px rgba(0,0,0,.45),
-        inset 0 1px 0 rgba(255,255,255,.05);
+   box-shadow:
+    0 .6rem 1.5rem rgba(0,0,0,.18),
+    inset 0 .0625rem 0 rgba(255,255,255,.03);
 
-    transform-origin: center center;
-    transform-style: preserve-3d;
+    transform-origin:center;
+    transform-style:preserve-3d;
 
     transition:
         border-color .35s ease,
         box-shadow .35s ease;
 
-    overflow: hidden;
+    overflow:hidden;
 
-    will-change:
-        transform,
-        opacity;
+    will-change:transform,opacity;
 
 }
-
 
 /* ===========================
    SHINE
 =========================== */
 
-.testimonial-card::before {
+.testimonial-card::before{
 
-    content: "";
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    top: 0;
-    left: -160%;
+    inset:0 auto 0 -160%;
 
-    width: 60%;
-    height: 100%;
+    width:60%;
+    height:100%;
 
     background:
         linear-gradient(
@@ -155,178 +134,176 @@ body {
             transparent
         );
 
-    transform: skewX(-22deg);
+    transform:skewX(-22deg);
 
-    pointer-events: none;
-
-}
-
-.testimonial-card:hover::before {
-
-    left: 170%;
-    transition: 1s;
+    pointer-events:none;
 
 }
 
+.testimonial-card:hover::before{
+
+    left:170%;
+    transition:1s;
+
+}
 
 /* ===========================
    HOVER
 =========================== */
 
-.testimonial-card:hover {
+.testimonial-card:hover{
 
-    border-color: rgba(203,168,91,.55);
+    border-color:rgba(203,168,91,.55);
 
     box-shadow:
-        0 40px 120px rgba(203,168,91,.16),
-        inset 0 1px 0 rgba(255,255,255,.08);
+        0 2rem 5rem rgba(203,168,91,.16),
+        inset 0 .0625rem 0 rgba(255,255,255,.08);
 
 }
-
 
 /* ===========================
    QUOTE
 =========================== */
 
-.testimonial-quote {
+.testimonial-quote{
 
-    position: absolute;
+    position:absolute;
 
-    top: 8px;
-    right: 28px;
+    top:.35rem;
+    right:1rem;
 
-    font-family: Georgia, serif;
+    font-family:Georgia,serif;
 
-    font-size: 7rem;
-    font-weight: 700;
+    font-size:4rem;
+    font-weight:700;
 
-    color: #cba85b;
+    color:#cba85b;
 
-    pointer-events: none;
-    user-select: none;
+    pointer-events:none;
+    user-select:none;
 
 }
-
 
 /* ===========================
    TEXT
 =========================== */
 
-.testimonial-card p {
+.testimonial-card p{
 
-    padding-top: 60px;
+    padding-top:2.2rem;
 
-    color: rgba(255,255,255,.92);
+    color:rgba(255,255,255,.92);
 
-    font-size: 1.18rem;
-    line-height: 1.9;
+    font-size:.82rem;
+    line-height:1.6;
 
 }
-
 
 /* ===========================
    AUTHOR
 =========================== */
 
-.testimonial-author {
+.testimonial-author{
 
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-
-}
-
-.testimonial-author strong {
-
-    font-size: 1.08rem;
-    font-weight: 600;
+    display:flex;
+    flex-direction:column;
+    gap:.25rem;
 
 }
 
-.testimonial-author small {
+.testimonial-author strong{
 
-    color: rgba(255,255,255,.65);
-    font-size: .92rem;
+    font-size:.8rem;
+    font-weight:600;
 
 }
 
+.testimonial-author small{
+
+    color:rgba(255,255,255,.65);
+    font-size:.68rem;
+
+}
 
 /* ===========================
    BACKGROUND GLOWS
 =========================== */
 
-.testimonial-bg-glow {
+.testimonial-bg-glow{
 
-    position: absolute;
+    position:absolute;
 
-    width: 520px;
-    height: 520px;
+    width:24rem;
+    aspect-ratio:1;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    filter: blur(140px);
+    filter:blur(6rem);
 
-    opacity: .22;
+    opacity:.22;
 
-    pointer-events: none;
-
-}
-
-.testimonial-glow1 {
-
-    top: -120px;
-    left: -120px;
-
-    background: #cba85b;
+    pointer-events:none;
 
 }
 
-.testimonial-glow2 {
+.testimonial-glow1{
 
-    right: -120px;
-    bottom: -120px;
+    top:-5rem;
+    left:-5rem;
 
-    background: #245da6;
+    background:#cba85b;
 
 }
 
+.testimonial-glow2{
+
+    right:-5rem;
+    bottom:-5rem;
+
+    background:#245da6;
+
+}
 
 /* ===========================
    HIDDEN CARDS
 =========================== */
 
-.testimonial-card.hidden {
+.testimonial-card.hidden{
 
-    pointer-events: none;
-
-}
-
-.testimonial-loader {
-
-    display: flex;
-    gap: 10px;
-
-    margin-top: 30px;
+    pointer-events:none;
 
 }
 
-.testimonial-loader span {
+/* ===========================
+   LOADER
+=========================== */
 
-    width: 9px;
-    height: 9px;
+.testimonial-loader{
 
-    border-radius: 50%;
+    display:flex;
+    gap:.45rem;
 
-    background: rgba(255,255,255,.18);
-
-    transition: background .35s;
+    margin-top:1.25rem;
 
 }
 
-.testimonial-loader span.active {
+.testimonial-loader span{
 
-    background: #cba85b;
+    width:.4rem;
+    aspect-ratio:1;
 
-    box-shadow: 0 0 10px rgba(203,168,91,.6);
+    border-radius:50%;
+
+    background:rgba(255,255,255,.18);
+
+    transition:background .35s;
+
+}
+
+.testimonial-loader span.active{
+
+    background:#cba85b;
+
+    box-shadow:0 0 .5rem rgba(203,168,91,.6);
 
 }

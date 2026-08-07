@@ -46,8 +46,8 @@ const section = document.querySelector(".stats");
 const canvas = section.querySelector("#stats-grid");
 const ctx = canvas.getContext("2d");
 
-const spacing = 40;
-const radius = 130;
+const spacing = 70;
+const radius = 150;
 
 let mouse = {
     x: -9999,
@@ -93,6 +93,10 @@ window.addEventListener("resize", resizeCanvas);
 new ResizeObserver(resizeCanvas).observe(section);
 
 
+/* ==============================
+   MOUSE
+============================== */
+
 section.addEventListener("mousemove", e => {
 
     const rect = section.getBoundingClientRect();
@@ -110,13 +114,17 @@ section.addEventListener("mouseleave", () => {
 });
 
 
+/* ==============================
+   DRAW
+============================== */
+
 function draw() {
 
     ctx.clearRect(0, 0, section.clientWidth, section.clientHeight);
 
-    /* Grid */
+    /* ---------- GOLD GRID ---------- */
 
-    ctx.strokeStyle = "rgba(255,255,255,.04)";
+    ctx.strokeStyle = "rgba(203,168,91,.08)";
     ctx.lineWidth = 1;
 
     for (let x = 0; x <= section.clientWidth; x += spacing) {
@@ -137,7 +145,7 @@ function draw() {
 
     }
 
-    /* Nodes */
+    /* ---------- NODES ---------- */
 
     points.forEach(point => {
 
@@ -154,6 +162,8 @@ function draw() {
 
         point.glow += (target - point.glow) * 0.12;
 
+        /* ---------- GOLD GLOW ---------- */
+
         if (point.glow > 0.01) {
 
             const grad = ctx.createRadialGradient(
@@ -165,21 +175,40 @@ function draw() {
                 16 * point.glow
             );
 
-            grad.addColorStop(0, `rgba(180,140,255,${0.9 * point.glow})`);
-            grad.addColorStop(.35, `rgba(130,90,255,${0.35 * point.glow})`);
-            grad.addColorStop(1, "rgba(130,90,255,0)");
+            grad.addColorStop(
+                0,
+                `rgba(255,225,160,${0.9 * point.glow})`
+            );
+
+            grad.addColorStop(
+                .35,
+                `rgba(203,168,91,${0.45 * point.glow})`
+            );
+
+            grad.addColorStop(
+                1,
+                "rgba(203,168,91,0)"
+            );
 
             ctx.beginPath();
             ctx.fillStyle = grad;
-            ctx.arc(point.x, point.y, 16 * point.glow, 0, Math.PI * 2);
+            ctx.arc(
+                point.x,
+                point.y,
+                16 * point.glow,
+                0,
+                Math.PI * 2
+            );
             ctx.fill();
 
         }
 
+        /* ---------- DOT ---------- */
+
         ctx.beginPath();
 
         ctx.fillStyle =
-            `rgba(255,255,255,${0.12 + point.glow * 0.9})`;
+            `rgba(240,216,141,${0.15 + point.glow * 0.85})`;
 
         ctx.arc(
             point.x,

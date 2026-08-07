@@ -1,14 +1,14 @@
 .servicesWrapper {
+
     position: relative;
 
-    width: 100vw;
-    min-height: 200vh; /* or whatever height your services + process take */
-
-    margin-left: calc(50% - 50vw);
+    width: 100%;
+    min-height: 200vh;
 
     overflow: hidden;
 
     background: linear-gradient(180deg, var(--primary), #111);
+
 }
 
 .servicesWrapper > #network{

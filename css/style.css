@@ -1,11 +1,14 @@
 @import url("loading_screen.css");
-@import url("rings_style.css");
+@import url("hero.css");
 @import url("services_section.css");
 @import url("header.css");
-@import url("hero.css");
 @import url("clients.css");
 @import url("metrics.css");
 @import url("testimonials.css");
+@import url("evolution.css");
+@import url("archive.css");
+@import url("index_footer.css");
+@import url("temporary.css");
 
 :root {
   --primary: #050d28;

@@ -1,0 +1,188 @@
+/* ===========================
+   ARCHIVE
+=========================== */
+
+.archive_section{
+    padding:8rem 0;
+    background:#ffffff;
+}
+
+.archive_container{
+    width:min(1400px,92%);
+    margin:auto;
+}
+
+.archive_eyebrow{
+    text-align:center;
+    letter-spacing:.4rem;
+    color:#9b7b3e;
+    margin-bottom:.75rem;
+    font-size:.85rem;
+}
+
+.archive_title{
+    text-align:center;
+    font-size:clamp(3rem,8vw,6rem);
+    margin-bottom:4rem;
+    color:#1b1b1b;
+}
+
+.archive_grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.5rem;
+}
+
+.archive_banner{
+
+    grid-column:1/-1;
+    height:320px;
+
+    position:relative;
+    overflow:hidden;
+
+}
+
+.archive_banner img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+
+}
+
+.archive_title{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    font-size:clamp(3rem,8vw,6rem);
+    color:#fff;
+
+    font-weight:900;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+
+    z-index:2;
+
+    text-shadow:
+        0 8px 24px rgba(0,0,0,.45);
+
+    pointer-events:none;
+
+}
+
+.archive_large{
+    height:420px;
+}
+
+.archive_item{
+    overflow:hidden;
+    background:#ddd;
+}
+
+.archive_item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.6s;
+}
+
+.archive_item:hover img{
+    transform:scale(1.06);
+}
+
+.archive_quote{
+
+    background:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    padding:3rem;
+    position:relative;
+    text-align:center;
+
+}
+
+.archive_quote p{
+
+    font-family:Georgia,serif;
+    font-size:1.8rem;
+    font-style:italic;
+    line-height:1.5;
+
+}
+
+.archive_quote-top{
+
+    position:absolute;
+    top:1rem;
+    left:2rem;
+    font-size:3rem;
+
+}
+
+.archive_quote-bottom{
+
+    position:absolute;
+    right:2rem;
+    bottom:1rem;
+    font-size:3rem;
+
+}
+
+.archive_item:not(.archive_banner):not(.archive_large){
+    aspect-ratio:1;
+}
+
+/* ===========================
+   SCROLL REVEAL
+=========================== */
+
+.archive_reveal{
+
+    opacity:0;
+    transform:translateY(70px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+
+}
+
+.archive_reveal.archive_show{
+
+    opacity:1;
+    transform:none;
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:900px){
+
+    .archive_grid{
+        grid-template-columns:1fr;
+    }
+
+    .archive_banner,
+    .archive_large{
+        height:auto;
+    }
+
+    .archive_quote p{
+        font-size:1.3rem;
+    }
+
+}

@@ -5,3 +5,5 @@ import "./metrics.js";
 import "./clients.js";
 import "./globe_renderrer.js";
 import "./testimonials.js";
+import "./evolution.js";
+import "./archive.js";

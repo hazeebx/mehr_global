@@ -51,38 +51,99 @@ body {
 
 }
 
-/* ================= MIDDLE ================= */
-
-.hero-middle{
-
-    left:50%;
-
-    bottom:1vh;
-
-    transform:translateX(-50%);
-
-    width:360px;
-
-    text-align:center;
-
-}
-
 /* ================= RIGHT ================= */
 
-.hero-right{
+.hero_contact{
 
-    right:1vw;
+    position:absolute;
 
-    bottom:2.5vh;
+    top:50%;
+    right:2%;
 
-    width:28vw;
+    transform:translateY(-50%);
 
-    min-width:320px;
+    z-index:20;
 
-    text-align:right;
+    display:flex;
+    justify-content:flex-end;
+
+    pointer-events:none;
 
 }
 
+.hero_contact_card{
+
+    position:relative;
+
+    width:28rem;
+    padding:2rem;
+
+    background:#fff;
+    color:#111;
+
+    border-radius:1rem;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.18);
+
+    pointer-events:auto;
+
+}
+
+.hero_contact_eyebrow{
+
+    font-size:.85rem;
+    letter-spacing:.25rem;
+    text-transform:uppercase;
+    margin-bottom:1rem;
+    color:#777;
+
+}
+
+.hero_contact_card h2{
+
+    font-size:2rem;
+    line-height:1.15;
+    margin-bottom:1.2rem;
+
+}
+
+.hero_contact_card p{
+
+    line-height:1.7;
+    margin-bottom:2rem;
+    color:#555;
+
+}
+
+.hero_contact_btn{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:1rem 2rem;
+
+    background:#111;
+    color:#fff;
+
+    text-decoration:none;
+    border-radius:999px;
+
+    transition:.35s;
+
+}
+
+.hero_contact_btn:hover{
+
+    background:#444;
+
+}
+
+.hero_contact{
+    transform:translateY(-18%) scale(.55);
+    transform-origin:center right;
+}
 /* ================= TYPOGRAPHY ================= */
 
 .hero-label{
