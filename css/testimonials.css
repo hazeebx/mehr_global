@@ -225,44 +225,6 @@
 
 }
 
-/* ===========================
-   BACKGROUND GLOWS
-=========================== */
-
-.testimonial-bg-glow{
-
-    position:absolute;
-
-    width:24rem;
-    aspect-ratio:1;
-
-    border-radius:50%;
-
-    filter:blur(6rem);
-
-    opacity:.22;
-
-    pointer-events:none;
-
-}
-
-.testimonial-glow1{
-
-    top:-5rem;
-    left:-5rem;
-
-    background:#cba85b;
-
-}
-
-.testimonial-glow2{
-
-    right:-5rem;
-    bottom:-5rem;
-
-    background:#245da6;
-
-}
 
 /* ===========================
    HIDDEN CARDS
