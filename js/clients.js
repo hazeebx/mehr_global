@@ -18,10 +18,6 @@ window.addEventListener("load", () => {
 
         let maxDistance = 0;
 
-        // ----------------------------
-        // Find furthest card
-        // ----------------------------
-
         cards.forEach(card => {
 
             const rect = card.getBoundingClientRect();
@@ -40,10 +36,6 @@ window.addEventListener("load", () => {
             paused: true
         });
 
-        // ----------------------------
-        // Build animation
-        // ----------------------------
-
         cards.forEach(card => {
 
             const rect = card.getBoundingClientRect();
@@ -52,7 +44,6 @@ window.addEventListener("load", () => {
             const dy = rect.top + rect.height / 2 - gridCenterY;
 
             const distance = Math.hypot(dx, dy);
-
             const ratio = distance / maxDistance;
 
             const travel = gsap.utils.interpolate(
@@ -61,7 +52,6 @@ window.addEventListener("load", () => {
                 ratio
             );
 
-            // Random every replay
             const angle = Math.random() * Math.PI * 2;
 
             const startX = Math.cos(angle) * travel;
@@ -70,44 +60,29 @@ window.addEventListener("load", () => {
             const delay = ratio * 0.45;
 
             tl.fromTo(
-
                 card,
-
                 {
                     x: startX,
                     y: startY,
-
                     scale: gsap.utils.random(0.15, 0.45),
-
                     rotation: gsap.utils.random(-180, 180),
-
                     opacity: 0
                 },
-
                 {
                     x: 0,
                     y: 0,
-
                     scale: 1,
-
                     rotation: 0,
-
                     opacity: 1,
-
                     duration: 1.35,
-
                     ease: "expo.out"
-
                 },
-
                 delay
-
             );
 
         });
 
         return tl;
-
     }
 
     // ----------------------------
@@ -120,49 +95,11 @@ window.addEventListener("load", () => {
 
         start: "top 75%",
 
-        end: "bottom 25%",
+        once: true,
 
         onEnter() {
 
             buildTimeline().play(0);
-
-        },
-
-        onEnterBack() {
-
-            buildTimeline().play(0);
-
-        },
-
-        onLeave() {
-
-            gsap.to(cards, {
-
-                opacity: 0,
-
-                duration: 0.35,
-
-                stagger: 0.015,
-
-                ease: "power1.out"
-
-            });
-
-        },
-
-        onLeaveBack() {
-
-            gsap.to(cards, {
-
-                opacity: 0,
-
-                duration: 0.35,
-
-                stagger: 0.015,
-
-                ease: "power1.out"
-
-            });
 
         }
 
