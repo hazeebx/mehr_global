@@ -28,8 +28,9 @@
 
 .archive_grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:1.5rem;
+    grid-template-columns:repeat(4,1fr);
+    gap:0.75rem;
+    padding : 10px;
 }
 
 .archive_banner{
@@ -76,9 +77,6 @@
 
 }
 
-.archive_large{
-    height:420px;
-}
 
 .archive_item{
     overflow:hidden;
@@ -95,7 +93,7 @@
 
 .archive_quote{
 
-    background:white;
+    background:black;
 
     display:flex;
     justify-content:center;
