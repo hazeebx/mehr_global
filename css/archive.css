@@ -3,12 +3,11 @@
 =========================== */
 
 .archive_section{
-    padding:8rem 0;
     background:#ffffff;
 }
 
 .archive_container{
-    width:min(1400px,92%);
+    width:100%;
     margin:auto;
 }
 
@@ -36,7 +35,7 @@
 .archive_banner{
 
     grid-column:1/-1;
-    height:320px;
+    height:100%;
 
     position:relative;
     overflow:hidden;
@@ -144,45 +143,4 @@
     aspect-ratio:1;
 }
 
-/* ===========================
-   SCROLL REVEAL
-=========================== */
 
-.archive_reveal{
-
-    opacity:0;
-    transform:translateY(70px);
-
-    transition:
-        opacity .9s ease,
-        transform .9s ease;
-
-}
-
-.archive_reveal.archive_show{
-
-    opacity:1;
-    transform:none;
-
-}
-
-/* ===========================
-   MOBILE
-=========================== */
-
-@media (max-width:900px){
-
-    .archive_grid{
-        grid-template-columns:1fr;
-    }
-
-    .archive_banner,
-    .archive_large{
-        height:auto;
-    }
-
-    .archive_quote p{
-        font-size:1.3rem;
-    }
-
-}
