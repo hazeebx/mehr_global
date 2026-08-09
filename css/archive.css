@@ -93,10 +93,6 @@
     transition:.6s;
 }
 
-.archive_item:hover img{
-    transform:scale(1.06);
-}
-
 .archive_quote{
 
     background:white;
