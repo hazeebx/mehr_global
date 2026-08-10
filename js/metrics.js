@@ -1,5 +1,5 @@
 /* ==============================
-   TICKER
+TICKER
 ============================== */
 
 document.querySelectorAll(".ticker-track").forEach(track => {
@@ -13,7 +13,7 @@ document.querySelectorAll(".ticker-track").forEach(track => {
 
 
 /* ==============================
-   PAUSE TICKERS OFFSCREEN
+PAUSE TICKERS OFFSCREEN
 ============================== */
 
 const observer = new IntersectionObserver(entries => {
@@ -33,197 +33,612 @@ const observer = new IntersectionObserver(entries => {
     threshold: 0.1
 });
 
+
 document.querySelectorAll(".ticker").forEach(ticker => {
     observer.observe(ticker);
 });
 
 
 /* ==============================
-   GRID BACKGROUND
+TOPOGRAPHIC BACKGROUND
 ============================== */
 
 const section = document.querySelector(".stats");
 const canvas = section.querySelector("#stats-grid");
 const ctx = canvas.getContext("2d");
 
-const spacing = 70;
-const radius = 150;
+const contourCount = 18;
+const contourSpacing = 34;
+const contourSamples = 120;
+
+const glowRadius = 350;
 
 let mouse = {
     x: -9999,
     y: -9999
 };
 
-let points = [];
+let contours = [];
 
-function resizeCanvas() {
 
-    const dpr = window.devicePixelRatio || 1;
+/* ==============================
+SMOOTH TOPOGRAPHIC SHAPE
+============================== */
 
-    canvas.width = section.clientWidth * dpr;
-    canvas.height = section.clientHeight * dpr;
+function contourRadius(angle, level) {
 
-    canvas.style.width = section.clientWidth + "px";
-    canvas.style.height = section.clientHeight + "px";
+    /*
+        Base radius.
 
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        Each contour expands outward,
+        creating the layered elevation effect.
+    */
 
-    points = [];
+    const base =
+        35 + level * contourSpacing;
 
-    for (let y = 0; y <= section.clientHeight; y += spacing) {
 
-        for (let x = 0; x <= section.clientWidth; x += spacing) {
+    /*
+        Multiple low-frequency waves create
+        irregular terrain instead of perfect circles.
+    */
+
+    const wave1 =
+        Math.sin(angle * 2.1 + level * 0.45) * 38;
+
+    const wave2 =
+        Math.sin(angle * 3.7 - level * 0.28) * 20;
+
+    const wave3 =
+        Math.cos(angle * 5.2 + level * 0.7) * 12;
+
+
+    /*
+        Slowly shift the center of the contours
+        at different levels.
+    */
+
+    const offsetX =
+        Math.sin(level * 0.55) * 35;
+
+    const offsetY =
+        Math.cos(level * 0.43) * 25;
+
+
+    return {
+        radius:
+            base +
+            wave1 +
+            wave2 +
+            wave3,
+
+        offsetX,
+        offsetY
+    };
+
+}
+
+
+/* ==============================
+GENERATE CONTOURS
+============================== */
+
+function generateContours() {
+
+    contours = [];
+
+    const width = section.clientWidth;
+    const height = section.clientHeight;
+
+    const centerX = width / 2;
+    const centerY = height / 2;
+
+
+    /*
+        Generate more contour area than the
+        visible canvas so the edges are covered.
+    */
+
+    for (
+        let level = 0;
+        level < contourCount;
+        level++
+    ) {
+
+        const points = [];
+
+        for (
+            let i = 0;
+            i < contourSamples;
+            i++
+        ) {
+
+            const angle =
+                (i / contourSamples) *
+                Math.PI * 2;
+
+
+            const shape =
+                contourRadius(angle, level);
+
+
+            const x =
+                centerX +
+                shape.offsetX +
+                Math.cos(angle) * shape.radius;
+
+
+            const y =
+                centerY +
+                shape.offsetY +
+                Math.sin(angle) * shape.radius;
+
 
             points.push({
                 x,
-                y,
-                glow: 0
+                y
             });
 
         }
+
+
+        contours.push(points);
 
     }
 
 }
 
-resizeCanvas();
-
-window.addEventListener("resize", resizeCanvas);
-
-new ResizeObserver(resizeCanvas).observe(section);
-
 
 /* ==============================
-   MOUSE
+RESIZE CANVAS
 ============================== */
 
-section.addEventListener("mousemove", e => {
+function resizeCanvas() {
 
-    const rect = section.getBoundingClientRect();
+    const dpr =
+        window.devicePixelRatio || 1;
 
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
+    const width =
+        section.clientWidth;
 
-});
+    const height =
+        section.clientHeight;
 
-section.addEventListener("mouseleave", () => {
 
-    mouse.x = -9999;
-    mouse.y = -9999;
+    canvas.width =
+        width * dpr;
 
-});
+    canvas.height =
+        height * dpr;
+
+
+    canvas.style.width =
+        width + "px";
+
+    canvas.style.height =
+        height + "px";
+
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+
+    generateContours();
+
+}
+
+
+resizeCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+new ResizeObserver(
+    resizeCanvas
+).observe(section);
 
 
 /* ==============================
-   DRAW
+MOUSE
+============================== */
+
+section.addEventListener(
+    "mousemove",
+    e => {
+
+        const rect =
+            section.getBoundingClientRect();
+
+
+        mouse.x =
+            e.clientX - rect.left;
+
+        mouse.y =
+            e.clientY - rect.top;
+
+    }
+);
+
+
+section.addEventListener(
+    "mouseleave",
+    () => {
+
+        mouse.x = -9999;
+        mouse.y = -9999;
+
+    }
+);
+
+
+/* ==============================
+DISTANCE TO SEGMENT
+============================== */
+
+function distanceToSegment(
+    px,
+    py,
+    x1,
+    y1,
+    x2,
+    y2
+) {
+
+    const dx =
+        x2 - x1;
+
+    const dy =
+        y2 - y1;
+
+
+    if (dx === 0 && dy === 0) {
+
+        return Math.hypot(
+            px - x1,
+            py - y1
+        );
+
+    }
+
+
+    const t =
+        Math.max(
+            0,
+            Math.min(
+                1,
+                (
+                    (px - x1) * dx +
+                    (py - y1) * dy
+                ) /
+                (dx * dx + dy * dy)
+            )
+        );
+
+
+    const closestX =
+        x1 + t * dx;
+
+    const closestY =
+        y1 + t * dy;
+
+
+    return Math.hypot(
+        px - closestX,
+        py - closestY
+    );
+
+}
+
+
+/* ==============================
+DRAW
 ============================== */
 
 function draw() {
 
-    ctx.clearRect(0, 0, section.clientWidth, section.clientHeight);
+    const width =
+        section.clientWidth;
 
-    /* ---------- GOLD GRID ---------- */
+    const height =
+        section.clientHeight;
 
-    ctx.strokeStyle = "rgba(203,168,91,.08)";
-    ctx.lineWidth = 1;
 
-    for (let x = 0; x <= section.clientWidth; x += spacing) {
+    /* ---------- CLEAR ---------- */
 
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, section.clientHeight);
-        ctx.stroke();
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
 
-    }
 
-    for (let y = 0; y <= section.clientHeight; y += spacing) {
+    /* ==============================
+    TOPOGRAPHIC CONTOURS
+    ============================== */
 
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(section.clientWidth, y);
-        ctx.stroke();
+    contours.forEach(
+        (contour, level) => {
 
-    }
+            /*
+                Outer contours are slightly
+                less visible than inner ones.
+            */
 
-    /* ---------- NODES ---------- */
+            const baseOpacity =
+                0.08 +
+                (1 - level / contourCount) * 0.025;
 
-    points.forEach(point => {
 
-        const dx = mouse.x - point.x;
-        const dy = mouse.y - point.y;
+            /*
+                Draw the contour in segments.
 
-        const dist = Math.hypot(dx, dy);
+                This lets individual parts of the
+                contour react independently to the mouse.
+            */
 
-        let target = 0;
+            for (
+                let i = 0;
+                i < contour.length;
+                i++
+            ) {
 
-        if (dist < radius) {
-            target = 1 - dist / radius;
+                const current =
+                    contour[i];
+
+                const next =
+                    contour[
+                        (i + 1) %
+                        contour.length
+                    ];
+
+
+                const distance =
+                    distanceToSegment(
+                        mouse.x,
+                        mouse.y,
+                        current.x,
+                        current.y,
+                        next.x,
+                        next.y
+                    );
+
+
+                let glow = 0;
+
+
+                if (
+                    distance <
+                    glowRadius
+                ) {
+
+                    glow =
+                        1 -
+                        distance /
+                        glowRadius;
+
+                }
+
+
+                /*
+                    Smooth the glow response
+                    using a power curve.
+
+                    This keeps the effect soft
+                    instead of making a hard circle.
+                */
+
+                glow =
+                    Math.pow(
+                        glow,
+                        2.2
+                    );
+
+
+                /* ==============================
+                CONTOUR COLOR
+                ============================== */
+
+                if (glow > 0.01) {
+
+                    ctx.strokeStyle =
+                        `rgba(
+                            254,
+                            209,
+                            96,
+                            ${baseOpacity +
+                            glow * 0.55}
+                        )`;
+
+
+                    ctx.lineWidth =
+                        1 +
+                        glow * 1.5;
+
+                } else {
+
+                    ctx.strokeStyle =
+                        `rgba(
+                            58,
+                            66,
+                            74,
+                            ${baseOpacity}
+                        )`;
+
+
+                    ctx.lineWidth = 1;
+
+                }
+
+
+                /* ==============================
+                DRAW SEGMENT
+                ============================== */
+
+                ctx.beginPath();
+
+                ctx.moveTo(
+                    current.x,
+                    current.y
+                );
+
+                ctx.lineTo(
+                    next.x,
+                    next.y
+                );
+
+                ctx.stroke();
+
+
+                /* ==============================
+                GOLD GLOW
+                ============================== */
+
+                if (glow > 0.02) {
+
+                    const midX =
+                        (current.x +
+                        next.x) / 2;
+
+                    const midY =
+                        (current.y +
+                        next.y) / 2;
+
+
+                    const grad =
+                        ctx.createRadialGradient(
+                            midX,
+                            midY,
+                            0,
+                            midX,
+                            midY,
+                            45 * glow
+                        );
+
+
+                    grad.addColorStop(
+                        0,
+                        `rgba(
+                            255,
+                            230,
+                            150,
+                            ${0.28 * glow}
+                        )`
+                    );
+
+
+                    grad.addColorStop(
+                        .35,
+                        `rgba(
+                            254,
+                            209,
+                            96,
+                            ${0.12 * glow}
+                        )`
+                    );
+
+
+                    grad.addColorStop(
+                        1,
+                        "rgba(254, 209, 96, 0)"
+                    );
+
+
+                    ctx.beginPath();
+
+                    ctx.strokeStyle =
+                        grad;
+
+                    ctx.lineWidth =
+                        2.5 * glow;
+
+                    ctx.moveTo(
+                        current.x,
+                        current.y
+                    );
+
+                    ctx.lineTo(
+                        next.x,
+                        next.y
+                    );
+
+                    ctx.stroke();
+
+                }
+
+            }
+
         }
+    );
 
-        point.glow += (target - point.glow) * 0.12;
 
-        /* ---------- GOLD GLOW ---------- */
+    /* ==============================
+    MOUSE CENTER GLOW
+    ============================== */
 
-        if (point.glow > 0.01) {
+    if (
+        mouse.x > -100 &&
+        mouse.y > -100
+    ) {
 
-            const grad = ctx.createRadialGradient(
-                point.x,
-                point.y,
+        const mouseGlow =
+            ctx.createRadialGradient(
+                mouse.x,
+                mouse.y,
                 0,
-                point.x,
-                point.y,
-                16 * point.glow
+                mouse.x,
+                mouse.y,
+                glowRadius
             );
 
-            grad.addColorStop(
-                0,
-                `rgba(255,225,160,${0.9 * point.glow})`
-            );
 
-            grad.addColorStop(
-                .35,
-                `rgba(203,168,91,${0.45 * point.glow})`
-            );
+        mouseGlow.addColorStop(
+            0,
+            "rgba(254, 209, 96, .055)"
+        );
 
-            grad.addColorStop(
-                1,
-                "rgba(203,168,91,0)"
-            );
 
-            ctx.beginPath();
-            ctx.fillStyle = grad;
-            ctx.arc(
-                point.x,
-                point.y,
-                16 * point.glow,
-                0,
-                Math.PI * 2
-            );
-            ctx.fill();
+        mouseGlow.addColorStop(
+            .35,
+            "rgba(254, 209, 96, .025)"
+        );
 
-        }
 
-        /* ---------- DOT ---------- */
+        mouseGlow.addColorStop(
+            1,
+            "rgba(254, 209, 96, 0)"
+        );
+
 
         ctx.beginPath();
 
         ctx.fillStyle =
-            `rgba(240,216,141,${0.15 + point.glow * 0.85})`;
+            mouseGlow;
 
         ctx.arc(
-            point.x,
-            point.y,
-            1.4 + point.glow * 1.8,
+            mouse.x,
+            mouse.y,
+            glowRadius,
             0,
             Math.PI * 2
         );
 
         ctx.fill();
 
-    });
+    }
+
 
     requestAnimationFrame(draw);
 
 }
+
 
 draw();

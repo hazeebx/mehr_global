@@ -198,8 +198,19 @@ CARD
 
 }
 
-.services-grid {grid-template-columns:
-        repeat(3, 16rem);}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 16rem);
+    gap: 2.1rem;
+    justify-content: center;
+}
+.service-card:nth-child(5) {
+    grid-column: 2;
+}
+
+.service-card:nth-child(6) {
+    grid-column: 3;
+}
 
 .service-card {height: 24rem;}
 

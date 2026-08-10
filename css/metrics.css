@@ -1,233 +1,252 @@
 /* ===========================
-   STATS
+STATS
 =========================== */
 
-.stats{
+.stats {
 
-    padding:120px 0;
+    padding: 120px 0;
 
-    background:#070707;
+    background: #20232F;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    position:relative;
+    position: relative;
 
-        border-top:1px solid rgba(203,168,91,.18);
-    border-bottom:1px solid rgba(203,168,91,.18);
+    border-top: 1px solid #3A424A;
+    border-bottom: 1px solid #3A424A;
 
 }
-
 
 
 /* --------------------------
-   BACKGROUND CANVAS
+BACKGROUND CANVAS
 -------------------------- */
 
-#stats-grid{
+#stats-grid {
 
-    position:absolute;
+    position: absolute;
 
-    inset:0;
+    inset: 0;
 
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 
-    z-index:0;
+    z-index: 0;
 
-    pointer-events:none;
+    pointer-events: none;
 
 }
+
 
 .stats-header,
-.ticker{
+.ticker {
 
-    position:relative;
+    position: relative;
 
-    z-index:2;
-
-}
-
-/* ---------------------- */
-
-.stats-header{
-
-    text-align:center;
-
-    margin-bottom:70px;
+    z-index: 2;
 
 }
 
-.stats_eyebrow{
 
-    color:#cba85b;
+/* --------------------------
+HEADER
+-------------------------- */
 
-    letter-spacing:.25em;
+.stats-header {
 
-    text-transform:uppercase;
+    text-align: center;
 
-    font-size:.85rem;
-
-}
-
-.stats-header h2{
-
-    margin-top:18px;
-
-    color:#ffffff;
-
-    font-size:clamp(2.5rem,5vw,4.7rem);
-
-    font-weight:300;
-
-    line-height:1.05;
+    margin-bottom: 70px;
 
 }
 
-.stats-header h2 span{
 
-    color:#f0d88d;
+.stats_eyebrow {
 
-}
+    color: #FED160;
 
-/* ---------------------- */
+    letter-spacing: .25em;
 
-.ticker{
+    text-transform: uppercase;
 
-    overflow:hidden;
-
-    margin:22px 0;
+    font-size: .85rem;
 
 }
 
-.ticker-track{
 
-    display:flex;
+.stats-header h2 {
 
-    gap:22px;
+    margin-top: 18px;
 
-    width:max-content;
+    color: #FFFFFF;
 
-}
+    font-size: clamp(3rem, 7vw, 6rem);
 
-/* ---------------------- */
+    font-weight: 300;
 
-.stat-card{
+    font-weight: 600;
 
-    width:340px;
+    letter-spacing: 0rem;
 
-    height:145px;
-
-    flex:none;
-
-    border-radius:26px;
-
-    padding:28px;
-
-    display:flex;
-
-    align-items:flex-end;
-
-    justify-content:space-between;
-
-    color:#ffffff;
-
-    background:
-
-    radial-gradient(
-        circle at 50% 25%,
-        rgba(255,220,150,.18),
-        rgba(255,255,255,.02) 70%
-    ),
-
-    linear-gradient(
-        135deg,
-        #1d1d1d,
-        #121212,
-        #070707
-    );
-
-    border:1px solid rgba(203,168,91,.22);
-
-    box-shadow:
-
-    inset 0 1px 0 rgba(255,235,180,.08),
-
-    0 18px 40px rgba(0,0,0,.55);
+    line-height: 1.05;
 
 }
 
-.stat-card h3{
 
-    margin:0;
+.stats-header h2 span {
 
-    font-size:3.2rem;
-
-    font-weight:600;
-
-    line-height:1;
-
-    color:#f6e2a6;
+    color: #FED160;
 
 }
 
-.stat-card p{
 
-    width:120px;
+/* --------------------------
+TICKER
+-------------------------- */
 
-    margin:0;
+.ticker {
 
-    color:rgba(255,255,255,.78);
+    overflow: hidden;
 
-    font-size:.95rem;
-
-    line-height:1.25;
+    margin: 22px 0;
 
 }
 
-/* ---------------------- */
 
-@keyframes tickerLeft{
+.ticker-track {
 
-    from{
+    display: flex;
 
-        transform:translateX(0);
+    gap: 22px;
+
+    width: max-content;
+
+}
+
+
+/* --------------------------
+STAT CARD
+-------------------------- */
+
+.stat-card {
+
+    width: 340px;
+
+    height: 145px;
+
+    flex: none;
+
+    border-radius: 26px;
+
+    padding: 28px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    color: #FFFFFF;
+
+    background: #242A2F;
+
+    border: 1px solid #3A424A;
+
+
+}
+
+
+/* --------------------------
+STAT NUMBER
+-------------------------- */
+
+.stat-card h3 {
+
+    margin: 0;
+
+    font-size: 3.2rem;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    color: #FED160;
+
+}
+
+
+/* --------------------------
+DESCRIPTION
+-------------------------- */
+
+.stat-card p {
+
+    width: 120px;
+
+    margin: 0;
+
+    color: #FFFFFF;
+
+    font-size: .95rem;
+
+    line-height: 1.25;
+
+    opacity: .78;
+
+}
+
+
+/* --------------------------
+TICKER ANIMATION
+-------------------------- */
+
+@keyframes tickerLeft {
+
+    from {
+
+        transform: translateX(0);
 
     }
 
-    to{
+    to {
 
-        transform:translateX(-50%);
-
-    }
-
-}
-
-@keyframes tickerRight{
-
-    from{
-
-        transform:translateX(-50%);
-
-    }
-
-    to{
-
-        transform:translateX(0);
+        transform: translateX(-50%);
 
     }
 
 }
 
-/* --------- SPEED CONTROL --------- */
 
-.ticker-left .ticker-track{
+@keyframes tickerRight {
 
-    animation:tickerLeft 10s linear infinite;
+    from {
+
+        transform: translateX(-50%);
+
+    }
+
+    to {
+
+        transform: translateX(0);
+
+    }
 
 }
 
-.ticker-right .ticker-track{
 
-    animation:tickerRight 10s linear infinite;
+/* --------------------------
+SPEED CONTROL
+-------------------------- */
+
+.ticker-left .ticker-track {
+
+    animation: tickerLeft 10s linear infinite;
+
+}
+
+
+.ticker-right .ticker-track {
+
+    animation: tickerRight 10s linear infinite;
 
 }
