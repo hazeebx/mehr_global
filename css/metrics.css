@@ -240,13 +240,13 @@ SPEED CONTROL
 
 .ticker-left .ticker-track {
 
-    animation: tickerLeft 10s linear infinite;
+    animation: tickerLeft 15s linear infinite;
 
 }
 
 
 .ticker-right .ticker-track {
 
-    animation: tickerRight 10s linear infinite;
+    animation: tickerRight 15s linear infinite;
 
 }

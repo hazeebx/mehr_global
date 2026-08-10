@@ -49,7 +49,7 @@ const ctx = canvas.getContext("2d");
 
 const contourCount = 18;
 const contourSpacing = 34;
-const contourSamples = 120;
+const contourSamples = 80;
 
 const glowRadius = 350;
 
