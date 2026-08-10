@@ -1,5 +1,5 @@
 /* ==========================
-   CLIENTS SECTION
+CLIENTS SECTION
 ========================== */
 
 .clients {
@@ -10,13 +10,13 @@
 
     padding: 6.1rem 6vw;
 
-    color: #fff;
+    color: #111;
 
 }
 
 
 /* ==========================
-   BACKGROUND
+BACKGROUND
 ========================== */
 
 .clients-bg {
@@ -25,14 +25,10 @@
 
     inset: 0;
 
-    background:
-        url("background_testimonial.png")
-        center / cover no-repeat;
-
     filter:
         blur(2.1rem)
         saturate(140%)
-        brightness(0.3);
+        brightness(1);
 
     transform: scale(1.15);
 
@@ -42,7 +38,7 @@
 
 
 /* ==========================
-   OVERLAY
+OVERLAY
 ========================== */
 
 .clients-overlay {
@@ -59,7 +55,7 @@
 
 
 /* ==========================
-   CONTAINER
+CONTAINER
 ========================== */
 
 .clients-container {
@@ -76,7 +72,7 @@
 
 
 /* ==========================
-   LABEL
+LABEL
 ========================== */
 
 .clients-label {
@@ -91,7 +87,7 @@
 
     letter-spacing: .18em;
 
-    color: #d4b270;
+    color: #9c8b73;
 
     font-size: .9rem;
 
@@ -101,12 +97,14 @@
 
 
 /* ==========================
-   TITLE
+TITLE
 ========================== */
 
 .clients-title {
 
     text-align: center;
+
+    color: #111;
 
     font-size:
         clamp(1.8rem, 3.75vw, 3rem);
@@ -121,7 +119,7 @@
 
 
 /* ==========================
-   GRID
+GRID
 ========================== */
 
 .clients-grid {
@@ -137,7 +135,7 @@
 
 
 /* ==========================
-   CLIENT CARD
+CLIENT CARD
 ========================== */
 
 .client-card {
@@ -153,7 +151,7 @@
     border-radius: 0;
 
     background:
-        rgba(255,255,255,.06);
+        rgba(0, 0, 0, .04);
 
     border: none;
 
@@ -174,7 +172,7 @@
 
 
 /* ==========================
-   LOGO
+LOGO
 ========================== */
 
 .client-card img {
@@ -186,10 +184,9 @@
     object-fit: contain;
 
     filter:
-        brightness(0)
-        invert(1);
+        brightness(0);
 
-    opacity: .9;
+    opacity: .75;
 
     transition: .35s ease;
 
@@ -197,7 +194,7 @@
 
 
 /* ==========================
-   HOVER
+HOVER
 ========================== */
 
 .client-card:hover img {

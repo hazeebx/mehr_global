@@ -6,7 +6,8 @@
 
     overflow: hidden;
 
-    background: linear-gradient(180deg, var(--primary), #111);
+    background: white;
+
 }
 
 
@@ -25,11 +26,12 @@
     z-index: 0;
 
     pointer-events: none;
+
 }
 
 
 /* ===========================
-   SERVICES / PROCESS
+SERVICES / PROCESS
 =========================== */
 
 .services,
@@ -39,8 +41,7 @@
 
     z-index: 2;
 
-
-    padding: 6rem 6vw;
+    padding: 3rem 3vw;
 
     display: flex;
     flex-direction: column;
@@ -73,7 +74,7 @@
 
 
 /* ===========================
-   GLASS
+GLASS
 =========================== */
 
 .services-glass::before {
@@ -105,80 +106,56 @@
 
 
 /* ===========================
-   SERVICES SECTION
+SERVICES SECTION
 =========================== */
 
 .services {
 
     position: relative;
 
-
     display: flex;
+
+    flex-direction: column;
 
     justify-content: center;
 
     align-items: center;
 
-    padding: 5.625rem 6vw;
+    padding-top: 2.625rem;
+    padding-bottom: 5.625rem;
+    padding-left: 6vw;
+    padding-right: 6vw;
 
 }
 
 
 /* ===========================
-   HUGE BACKGROUND WORD
+SERVICES TITLE
 =========================== */
 
 .services-title {
 
-    position: absolute;
+    position: relative;
 
-    font-size: clamp(5rem, 9vw, 8.45rem);
+    z-index: 2;
 
-    font-weight: 900;
+    margin-bottom: 3.5rem;
 
-    color: #FFFFFF;
+    font-size: clamp(3rem, 7vw, 6rem);
+
+    font-weight: 600;
+
+    color: #000000;
 
     letter-spacing: -0.3rem;
 
-    pointer-events: none;
-
-    z-index: 1;
-
-    opacity: 0;
-
-    transform:
-        translate(var(--tx), var(--ty))
-        scale(.96);
-
-    transition:
-        transform 1s cubic-bezier(.22,1,.36,1),
-        opacity 1s ease;
-
-}
-
-
-.services-title.show {
-
-    opacity: .08;
-
-    transform:
-        translate(0,0)
-        scale(1);
-
-}
-
-
-.services-title.dim {
-
-    opacity: .35;
-
-    transform: scale(.98);
+    text-align: center;
 
 }
 
 
 /* ===========================
-   GRID
+GRID
 =========================== */
 
 .services-grid {
@@ -189,8 +166,6 @@
 
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 13.125rem);
 
     gap: 2.1rem;
 
@@ -198,28 +173,20 @@
 
 
 /* ===========================
-   CARD
+CARD
 =========================== */
 
 .service-card {
 
     position: relative;
 
-    height: 15.9375rem;
 
-    border:
-        0.0625rem solid
-        rgba(255,255,255,.15);
 
-    border-radius: 1.125rem;
-
-    background: rgba(255,255,255,.03);
+    background: #111;
 
     overflow: hidden;
 
     cursor: pointer;
-
-    opacity: 0;
 
     transform:
         translate(var(--tx), var(--ty))
@@ -231,6 +198,191 @@
 
 }
 
+.services-grid {grid-template-columns:
+        repeat(3, 16rem);}
+
+.service-card {height: 24rem;}
+
+/* ===========================
+CARD IMAGE
+=========================== */
+
+.service-card img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+
+    transition:
+        transform .6s cubic-bezier(.22,1,.36,1),
+        filter .45s ease;
+
+}
+
+
+/* ===========================
+IMAGE OVERLAY
+=========================== */
+
+.service-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(0);
+
+    -webkit-backdrop-filter:
+        blur(0);
+
+    opacity: 0;
+
+    z-index: 1;
+
+    transition:
+        opacity .45s ease,
+        backdrop-filter .45s ease;
+
+}
+
+
+/* ===========================
+BLUR ON HOVER
+=========================== */
+
+.service-card:hover::after {
+
+    opacity: 1;
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(1rem);
+
+    -webkit-backdrop-filter:
+        blur(.5rem);
+
+}
+
+/* ===========================
+CARD CONTENT
+=========================== */
+
+.service-card-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+}
+
+
+/* ===========================
+CARD TITLE
+=========================== */
+
+.service-card h3 {
+
+    position: absolute;
+
+    left: 1rem;
+    top: 1rem;
+
+    margin: 0;
+
+    padding:
+        .35rem
+        .75rem;
+
+    border: 1px solid rgba(255,255,255,.8);
+
+    border-radius: .45rem;
+
+    background:
+        rgba(20,20,20,.45);
+
+    backdrop-filter:
+        blur(.35rem);
+
+    -webkit-backdrop-filter:
+        blur(.35rem);
+
+    font-size: .75rem;
+
+    font-weight: 500;
+
+    letter-spacing: .04em;
+
+    color: #fff;
+
+    opacity: 1;
+
+    white-space: nowrap;
+
+    z-index: 3;
+
+    transform: none;
+
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        transform .35s ease;
+
+}
+
+
+/* ===========================
+DESCRIPTION
+=========================== */
+
+.service-card p {
+
+    position: absolute;
+
+    left: 50%;
+    top: 62%;
+
+    width: 80%;
+
+    margin: 0;
+
+    transform:
+        translate(-50%, 1.125rem);
+
+    opacity: 0;
+
+    text-align: center;
+
+    line-height: 1.6;
+
+    color: rgba(255,255,255,.82);
+
+    transition:
+        .45s cubic-bezier(.22,1,.36,1);
+
+}
+
+
+/* ===========================
+SHOW ANIMATION
+=========================== */
 
 .service-card.show {
 
@@ -244,16 +396,10 @@
 
 
 /* ===========================
-   HOVER
+HOVER
 =========================== */
 
 .service-card:hover {
-
-    transform:
-        translateY(-0.675rem);
-
-    background:
-        rgba(255,255,255,.08);
 
     backdrop-filter:
         blur(0.75rem);
@@ -261,77 +407,45 @@
     -webkit-backdrop-filter:
         blur(0.75rem);
 
-    border-color:
-        rgba(255,255,255,.35);
-
 }
 
 
 /* ===========================
-   CARD TITLE
+IMAGE HOVER
 =========================== */
 
-.service-card h3 {
+.service-card:hover img {
 
-    position: absolute;
+    transform: scale(1.08);
 
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    font-size: 1.5rem;
-
-    color: #fff;
-
-    transition:
-        .45s cubic-bezier(.22,1,.36,1);
 
 }
 
 
 /* ===========================
-   DESCRIPTION
+HOVER ANIMATION
 =========================== */
 
-.service-card p {
-
-    position: absolute;
-
-    left: 50%;
-    top: 62%;
-
-    width: 80%;
-
-    transform:
-        translate(-50%, 1.125rem);
-
-    opacity: 0;
-
-    text-align: center;
-
-    line-height: 1.8;
-
-    color:
-        rgba(255,255,255,.75);
-
-    transition:
-        .45s cubic-bezier(.22,1,.36,1);
-
-}
-
-
 /* ===========================
-   HOVER ANIMATION
+HOVER TITLE
 =========================== */
 
 .service-card:hover h3 {
 
-    top: 18%;
+    top: 1rem;
 
     transform:
-        translate(-50%,0);
+        translateY(-.1rem);
+
+    color: #fff;
+
+    opacity: 1;
+
+    background:
+        rgba(20,20,20,.65);
+
+    border-color:
+        rgba(255,255,255,.95);
 
 }
 
