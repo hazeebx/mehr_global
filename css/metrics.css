@@ -4,7 +4,7 @@ STATS
 
 .stats {
 
-    padding: 120px 0;
+    padding: 80px 0;
 
     background: #20232F;
 
@@ -56,46 +56,24 @@ HEADER
 
     text-align: center;
 
-    margin-bottom: 70px;
-
-}
-
-
-.stats_eyebrow {
-
-    color: #FED160;
-
-    letter-spacing: .25em;
-
-    text-transform: uppercase;
-
-    font-size: .85rem;
+    margin-bottom: 45px;
 
 }
 
 
 .stats-header h2 {
 
-    margin-top: 18px;
+    margin-top: 0;
 
     color: #FFFFFF;
 
-    font-size: clamp(3rem, 7vw, 6rem);
-
-    font-weight: 300;
+    font-size: clamp(2.5rem, 6vw, 5rem);
 
     font-weight: 600;
 
     letter-spacing: 0rem;
 
     line-height: 1.05;
-
-}
-
-
-.stats-header h2 span {
-
-    color: #FED160;
 
 }
 
@@ -108,7 +86,7 @@ TICKER
 
     overflow: hidden;
 
-    margin: 22px 0;
+    margin: 15px 0;
 
 }
 
@@ -117,7 +95,7 @@ TICKER
 
     display: flex;
 
-    gap: 22px;
+    gap: 18px;
 
     width: max-content;
 
@@ -130,15 +108,15 @@ STAT CARD
 
 .stat-card {
 
-    width: 340px;
+    width: 320px;
 
-    height: 145px;
+    height: 120px;
 
     flex: none;
 
-    border-radius: 26px;
+    border-radius: 22px;
 
-    padding: 28px;
+    padding: 22px;
 
     display: flex;
 
@@ -152,7 +130,6 @@ STAT CARD
 
     border: 1px solid #3A424A;
 
-
 }
 
 
@@ -164,7 +141,7 @@ STAT NUMBER
 
     margin: 0;
 
-    font-size: 3.2rem;
+    font-size: 2.7rem;
 
     font-weight: 600;
 
@@ -181,13 +158,13 @@ DESCRIPTION
 
 .stat-card p {
 
-    width: 120px;
+    width: 110px;
 
     margin: 0;
 
     color: #FFFFFF;
 
-    font-size: .95rem;
+    font-size: .9rem;
 
     line-height: 1.25;
 
@@ -199,23 +176,6 @@ DESCRIPTION
 /* --------------------------
 TICKER ANIMATION
 -------------------------- */
-
-@keyframes tickerLeft {
-
-    from {
-
-        transform: translateX(0);
-
-    }
-
-    to {
-
-        transform: translateX(-50%);
-
-    }
-
-}
-
 
 @keyframes tickerRight {
 
@@ -237,13 +197,6 @@ TICKER ANIMATION
 /* --------------------------
 SPEED CONTROL
 -------------------------- */
-
-.ticker-left .ticker-track {
-
-    animation: tickerLeft 15s linear infinite;
-
-}
-
 
 .ticker-right .ticker-track {
 
