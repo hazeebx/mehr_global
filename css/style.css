@@ -6,9 +6,10 @@
 @import url("metrics.css");
 @import url("testimonials.css");
 @import url("evolution.css");
-@import url("archive.css");
-@import url("index_footer.css");
+@import url("projects.css");
 @import url("temporary.css");
+@import url("faq.css");
+
 
 :root {
   --primary: #050d28;

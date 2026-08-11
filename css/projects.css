@@ -1,0 +1,540 @@
+/* ==============================
+PROJECTS SECTION
+============================== */
+
+.projects-section {
+
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        5rem
+        7.5vw
+        6rem;
+
+    background: #F8F2E4;
+
+    overflow: hidden;
+
+    color: #202329;
+
+}
+
+
+/* ==============================
+HEADER
+============================== */
+
+.projects-header {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 3rem;
+
+    margin-bottom: 3rem;
+
+}
+
+
+.projects-eyebrow {
+
+    display: block;
+
+    margin-bottom: 1rem;
+
+    font-size: .85rem;
+
+    font-weight: 500;
+
+    color: #202329;
+
+}
+
+
+.projects-heading h2 {
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            2.5rem,
+            4.5vw,
+            4.5rem
+        );
+
+    line-height: 1.05;
+
+    font-weight: 500;
+
+    letter-spacing: -.045em;
+
+}
+
+
+/* ==============================
+ALL PROJECTS BUTTON
+============================== */
+
+.projects-all {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    flex-shrink: 0;
+
+    padding:
+        .8rem
+        1rem
+        .8rem
+        1.4rem;
+
+    border-radius: 999px;
+
+    background: #202329;
+
+    color: #FFFFFF;
+
+    text-decoration: none;
+
+    font-size: .8rem;
+
+    font-weight: 600;
+
+    transition:
+        transform .3s ease,
+        background .3s ease;
+
+}
+
+
+.projects-all:hover {
+
+    transform: translateY(-2px);
+
+    background: #3A424A;
+
+}
+
+
+.projects-arrow {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 1.7rem;
+
+    height: 1.7rem;
+
+    border-radius: 50%;
+
+    background: rgba(32,35,41,.12);
+
+    font-size: 1rem;
+
+}
+
+
+/* ==============================
+SHOWCASE
+============================== */
+
+.projects-showcase {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 4rem;
+
+}
+
+
+/* ==============================
+COUNTER
+============================== */
+
+.projects-counter {
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: .2rem;
+
+    width: 8rem;
+
+    flex-shrink: 0;
+
+    padding-top: .25rem;
+
+}
+
+
+.projects-current {
+
+    font-size: 1.7rem;
+
+    font-weight: 500;
+
+    letter-spacing: -.03em;
+
+}
+
+
+.projects-slash {
+
+    font-size: 1rem;
+
+    opacity: .35;
+
+}
+
+
+.projects-total {
+
+    font-size: .85rem;
+
+    opacity: .45;
+
+}
+
+
+/* ==============================
+VIEWPORT
+============================== */
+
+.projects-viewport {
+
+    position: relative;
+
+    width: calc(
+        100vw - 15vw - 12rem
+    );
+
+    overflow: hidden;
+
+}
+
+
+/* ==============================
+TRACK
+============================== */
+
+.projects-track {
+
+    display: flex;
+
+    gap: .75rem;
+
+    width: max-content;
+
+    transform: translateX(0);
+
+    transition:
+        transform .8s
+        cubic-bezier(.22, 1, .36, 1);
+
+    will-change: transform;
+
+}
+
+
+/* ==============================
+PROJECT SLIDE
+============================== */
+
+.project-slide {
+
+    position: relative;
+
+    width: min(
+        43vw,
+        46rem
+    );
+
+    aspect-ratio: 1.35 / 1;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    background: #ddd;
+
+}
+
+
+.project-slide img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform .8s
+        cubic-bezier(.22, 1, .36, 1);
+
+}
+
+
+.project-slide:hover img {
+
+    transform: scale(1.035);
+
+}
+
+
+/* ==============================
+IMAGE OVERLAY
+============================== */
+
+.project-slide::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.55),
+            transparent 45%
+        );
+
+    opacity: 0;
+
+    transition:
+        opacity .4s ease;
+
+}
+
+
+.project-slide:hover::after {
+
+    opacity: 1;
+
+}
+
+
+/* ==============================
+PROJECT INFORMATION
+============================== */
+
+.project-info {
+
+    position: absolute;
+
+    left: 1.5rem;
+
+    bottom: 1.5rem;
+
+    z-index: 2;
+
+    color: #fff;
+
+    opacity: 0;
+
+    transform:
+        translateY(.75rem);
+
+    transition:
+        opacity .4s ease,
+        transform .4s ease;
+
+}
+
+
+.project-slide:hover .project-info {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.project-number {
+
+    display: block;
+
+    margin-bottom: .35rem;
+
+    font-size: .7rem;
+
+    letter-spacing: .12em;
+
+    opacity: .7;
+
+}
+
+
+.project-info h3 {
+
+    margin: 0 0 .3rem;
+
+    font-size: 1.15rem;
+
+    font-weight: 500;
+
+}
+
+
+.project-info p {
+
+    margin: 0;
+
+    font-size: .75rem;
+
+    opacity: .75;
+
+}
+
+
+/* ==============================
+NAVIGATION
+============================== */
+
+.projects-navigation {
+
+    display: flex;
+
+    gap: .6rem;
+
+    margin-top: 2rem;
+
+}
+
+
+.project-nav {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 2.6rem;
+
+    height: 2.6rem;
+
+    padding: 0;
+
+    border: 1px solid #3A424A;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #202329;
+
+    font-size: 1.05rem;
+
+    cursor: pointer;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        transform .3s ease;
+
+}
+
+
+.project-nav:hover {
+
+    background: #202329;
+
+    border-color: #202329;
+
+    color: #fff;
+
+    transform: translateY(-2px);
+
+}
+
+
+.project-nav:disabled {
+
+    opacity: .3;
+
+    cursor: default;
+
+    transform: none;
+
+}
+
+
+/* ==============================
+TABLET
+============================== */
+
+@media (max-width: 900px) {
+
+    .projects-section {
+
+        padding:
+            4rem
+            5vw
+            5rem;
+
+    }
+
+
+    .projects-header {
+
+        align-items: flex-start;
+
+    }
+
+
+    .projects-showcase {
+
+        gap: 2rem;
+
+    }
+
+
+    .projects-counter {
+
+        width: 5rem;
+
+    }
+
+
+    .projects-viewport {
+
+        width:
+            calc(
+                100vw - 10vw - 7rem
+            );
+
+    }
+
+
+    .project-slide {
+
+        width: 65vw;
+
+    }
+
+}
+
