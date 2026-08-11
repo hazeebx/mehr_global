@@ -1,0 +1,379 @@
+/* ==========================
+CONTACT SECTION
+========================== */
+
+.contact-section {
+    position: relative;
+
+    width: 100%;
+    height: 70vh;
+
+    overflow: hidden;
+
+    background: #111;
+}
+.contact-form-title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #111111;
+
+    margin-bottom: 1.8rem;
+
+    letter-spacing: -0.02em;
+}
+
+/* ==========================
+BACKGROUND / IMAGE PANEL
+========================== */
+
+.contact-info {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    color: #ffffff;
+}
+
+
+/* ==========================
+CONTACT BACKGROUND IMAGE
+========================== */
+
+.contact-bg {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+}
+
+
+/* ==========================
+IMAGE OVERLAY
+========================== */
+
+.contact-info::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.42) 0%,
+            rgba(0, 0, 0, 0.22) 45%,
+            rgba(0, 0, 0, 0.38) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* ==========================
+LEFT CONTENT
+========================== */
+
+.info-content {
+    position: relative;
+
+    z-index: 2;
+
+
+
+    padding: 4.5rem 0 4.5rem 5vw;
+}
+
+
+/* ==========================
+HEADING
+========================== */
+
+.info-content h1 {
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+
+    line-height: 1.08;
+
+    font-weight: 300;
+
+    letter-spacing: -0.035em;
+
+    margin-bottom: 3.2rem;
+
+    color: #ffffff;
+}
+
+
+/* ==========================
+CONTACT DETAILS
+========================== */
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+}
+
+
+.detail-block {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.3rem;
+}
+
+
+.detail-block h2 {
+    font-size: 1.15rem;
+
+    font-weight: 400;
+
+    color: #e9c58c;
+
+    margin-bottom: 0.15rem;
+}
+
+
+.detail-block p,
+.detail-block a {
+    color: #ffffff;
+
+    font-size: 1rem;
+
+    line-height: 1.5;
+
+    text-decoration: none;
+}
+
+
+.detail-block a {
+    width: fit-content;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.detail-block a:hover {
+    opacity: 0.75;
+
+    transform: translateX(3px);
+}
+
+
+/* ==========================
+FORM WRAPPER
+========================== */
+
+.contact-form-wrapper {
+    position: absolute;
+
+    z-index: 5;
+
+    width: 30vw;
+    height: 65vh;
+
+    right: 2vw;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    padding: 3rem;
+
+    background: #ffffff;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.28);
+}
+
+
+/* ==========================
+FORM
+========================== */
+
+.contact-form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.25rem;
+}
+
+
+/* ==========================
+FORM GROUP
+========================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.45rem;
+}
+
+
+.form-group label {
+    font-size: 0.82rem;
+
+    color: #202020;
+
+    font-weight: 400;
+}
+
+
+/* ==========================
+INPUTS
+========================== */
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    border: 1px solid #c8cdd2;
+
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    font: inherit;
+
+    font-size: 0.9rem;
+
+    color: #111111;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-group input {
+    height: 40px;
+
+    padding: 0 0.7rem;
+}
+
+
+.form-group textarea {
+    height: 135px;
+
+    padding: 0.7rem;
+
+    resize: vertical;
+
+
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #111111;
+
+    box-shadow:
+        0 0 0 1px #111111;
+}
+
+
+/* ==========================
+EMAIL + PHONE
+========================== */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1.2rem;
+}
+
+
+/* ==========================
+MESSAGE
+========================== */
+
+.message-group {
+    margin-top: 0;
+}
+
+
+/* ==========================
+SUBMIT
+========================== */
+
+.submit-wrapper {
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 0.5rem;
+}
+
+
+.submit-wrapper button {
+    width: 138px;
+
+    height: 42px;
+
+    border: 1px solid #111111;
+
+    border-radius: 5px;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    font-size: 0.78rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.12em;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.submit-wrapper button:hover {
+    background: #2a2a2a;
+
+    transform: translateY(-1px);
+}
+
+
+.submit-wrapper button:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================
+INVALID INPUT
+========================== */
+
+.form-group input.invalid,
+.form-group textarea.invalid {
+    border-color: #c62828;
+}
+

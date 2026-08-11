@@ -8,7 +8,11 @@
 @import url("evolution.css");
 @import url("projects.css");
 @import url("temporary.css");
+@import url("contact.css");
 @import url("faq.css");
+@import url("footer.css");
+@import url("faq.css");
+
 
 
 :root {
@@ -23,7 +27,6 @@
 }
 body {
   font-family: "Inter", sans-serif;
-  background: linear-gradient(180deg, var(--primary), #111);
   color: #fff;
   overflow-x: hidden;
 }

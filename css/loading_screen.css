@@ -1,140 +1,156 @@
-#loader{
+/* ==========================
+LOADER
+========================== */
 
-    position:fixed;
-    inset:0;
+#loader {
+    position: fixed;
 
-    background:rgba(5,5,5,.82);
+    inset: 0;
 
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+    width: 100%;
+    height: 100%;
 
-    z-index:99999;
+    background: #050505;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    z-index: 99999;
 
-    transition:transform 1.2s cubic-bezier(.76,0,.24,1);
-    overflow:hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    opacity: 1;
 }
 
-#loader{
 
-    background:
-        #050505;
+/* ==========================
+LOADER WORDS
+========================== */
 
+.loader-words {
+    position: relative;
+
+    width: min(90vw, 560px);
+    height: 360px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.25rem;
 }
 
-#loader.hide{
-    transform:translateY(-100%);
+
+/* ==========================
+INDIVIDUAL WORDS
+========================== */
+
+.loader-word {
+    position: relative;
+
+    color: #fff;
+
+    font-size: clamp(2rem, 5vw, 3.6rem);
+
+    font-weight: 600;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.04em;
+
+    white-space: nowrap;
+
+    opacity: 0;
 }
 
-/* =========================
-   Loader Layout
-========================= */
 
-.loader-content{
+/* ==========================
+STAIR-STEP POSITIONING
+========================== */
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    gap:1rem;
-
+.loader-word:nth-child(1) {
+    left: -45px;
 }
 
-/* =========================
-   Logo
-========================= */
-
-.loader-logo{
-
-    width:180px;
-
-    opacity:0;
-    transform:scale(.8);
-
-    animation:logoReveal .9s ease forwards;
-
+.loader-word:nth-child(2) {
+    left: -15px;
 }
 
-@keyframes logoReveal{
-
-    to{
-
-        opacity:1;
-        transform:scale(1);
-
-    }
-
+.loader-word:nth-child(3) {
+    left: 15px;
 }
 
-/* =========================
-   Tagline
-========================= */
-
-.tagline-mask{
-
-    overflow:hidden;
-
-    height:24px;
-
+.loader-word:nth-child(4) {
+    left: 60px;
 }
 
-.loader-tagline{
 
-    margin:0;
-    margin-left:2rem;
+/* ==========================
+INITIAL LETTERS
+========================== */
 
-    color:#FFFFFF;
+.loader-word .initial {
+    display: inline-block;
 
-    font-size:.95rem;
-
-    letter-spacing:.35rem;
-
-    text-transform:uppercase;
-
-    font-weight:500;
-
-    white-space:nowrap;
-
-    opacity:0;
-
-    transform:translateX(-100%);
-
-    animation:slideTagline 1s cubic-bezier(.22,1,.36,1) forwards;
-
-    animation-delay:.9s;
-
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
 }
 
-@keyframes slideTagline{
 
-    from{
+/* ==========================
+HIGHLIGHT
+========================== */
 
-        opacity:0;
-        transform:translateX(-100%);
+.loader-word.highlight .initial {
+    color: #fff;
 
-    }
-
-    to{
-
-        opacity:1;
-        transform:translateX(0);
-
-    }
-
+    text-shadow:
+        0 0 18px rgba(255, 255, 255, 0.75);
 }
 
-@keyframes glassSweep{
 
-    from{
-        background-position:-100% 0;
-    }
+/* ==========================
+FINAL MEHR
+========================== */
 
-    to{
-        background-position:100% 0;
-    }
+/*
+   This is only used as an invisible
+   positioning reference for the
+   original M / E / H / R letters.
+*/
 
+.mehr-final {
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.08em;
+
+    color: #fff;
+
+    font-size: clamp(4rem, 12vw, 8rem);
+
+    font-weight: 600;
+
+    letter-spacing: -0.05em;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* ==========================
+FINAL LETTERS
+========================== */
+
+.mehr-final span {
+    display: inline-block;
 }

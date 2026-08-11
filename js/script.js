@@ -8,3 +8,4 @@ import "./testimonials.js";
 import "./evolution.js";
 import "./projects.js";
 import "./faq.js";
+import "./contact.js";

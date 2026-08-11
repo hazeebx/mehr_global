@@ -1,0 +1,133 @@
+/* ==========================
+FOOTER
+========================== */
+
+.site-footer {
+    width: 100%;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    padding: 3.5rem 5vw 1.5rem;
+}
+
+
+/* ==========================
+FOOTER CONTENT
+========================== */
+
+.footer-content {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 3rem;
+
+    padding-bottom: 3rem;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+/* ==========================
+BRAND
+========================== */
+
+.footer-brand h2 {
+    font-size: 1.5rem;
+
+    font-weight: 400;
+
+    letter-spacing: 0.02em;
+
+    margin-bottom: 0.5rem;
+}
+
+
+.footer-brand p {
+    font-size: 0.85rem;
+
+    color: #b8b8b8;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* ==========================
+LINKS
+========================== */
+
+.footer-links {
+    display: flex;
+
+    gap: 2rem;
+
+    align-items: center;
+}
+
+
+.footer-links a {
+    color: #ffffff;
+
+    font-size: 0.85rem;
+
+    text-decoration: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.footer-links a:hover {
+    opacity: 0.65;
+
+    transform: translateY(-1px);
+}
+
+
+/* ==========================
+BOTTOM
+========================== */
+
+.footer-bottom {
+    padding-top: 1.5rem;
+}
+
+
+.footer-bottom p {
+    font-size: 0.75rem;
+
+    color: #777777;
+}
+
+
+/* ==========================
+MOBILE
+========================== */
+
+@media (max-width: 600px) {
+
+    .site-footer {
+        padding: 3rem 1.5rem 1.5rem;
+    }
+
+
+    .footer-content {
+        flex-direction: column;
+
+        gap: 2rem;
+
+        padding-bottom: 2rem;
+    }
+
+
+    .footer-links {
+        flex-wrap: wrap;
+
+        gap: 1rem 1.5rem;
+    }
+
+}

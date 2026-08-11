@@ -25,10 +25,38 @@
 <body>
 
 <div id="loader">
-    <img src="batch_white.png" class="loader-logo">
-    <p class="loader-tagline">
-            Mehr Global Company
-        </p>
+
+    <div class="loader-words">
+
+        <div class="loader-word word-1">
+            <span class="initial">M</span><span>ajestic.</span>
+        </div>
+
+        <div class="loader-word word-2">
+            <span class="initial">E</span><span>thical.</span>
+        </div>
+
+        <div class="loader-word word-3">
+            <span class="initial">H</span><span>onest.</span>
+        </div>
+
+        <div class="loader-word word-4">
+            <span class="initial">R</span><span>eliable.</span>
+        </div>
+
+    </div>
+
+
+    <!-- Invisible destination used to calculate
+         where the original letters should travel -->
+
+    <div class="mehr-final" aria-label="MEHR">
+        <span>M</span>
+        <span>E</span>
+        <span>H</span>
+        <span>R</span>
+    </div>
+
 </div>
 
 <div class="wip-banner">
@@ -876,6 +904,202 @@ PROJECTS
 
 </div>
 
+    <!-- =========================
+     CONTACT SECTION
+========================== -->
+
+<section class="contact-section">
+
+<!-- =========================
+     LEFT CONTACT INFORMATION
+========================== -->
+<div class="contact-info">
+
+    <!-- Background Image -->
+    <img
+        class="contact-bg"
+        src="./assets/contacts_temp.png"
+        alt=""
+    >
+
+    <div class="info-content">
+
+        <h1>
+            Lorem Ipsum<br>
+            lorem ipsum<br>
+            lorem.
+        </h1>
+
+        <div class="contact-details">
+
+            <div class="detail-block">
+                <h2>Address</h2>
+
+                <p>
+                    Al Dabab Street, P.O.Box:<br>
+                    038503, Riyadh: 11355
+                </p>
+            </div>
+
+            <div class="detail-block">
+                <h2>Email</h2>
+
+                <a href="mailto:info@mehrconsultants.com">
+                    info@mehrconsultants.com
+                </a>
+            </div>
+
+            <div class="detail-block">
+                <h2>Phone Numbers</h2>
+
+                <a href="tel:+966507985330">
+                    +966 50 798 5330
+                </a>
+
+                <a href="tel:+966550873619">
+                    +966 55 087 3619
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     CONTACT FORM
+========================== -->
+<div class="contact-form-wrapper">
+
+        <h2 class="contact-form-title">
+        Get in Touch
+    </h2>
+
+    <form id="contactForm" class="contact-form">
+
+        <!-- Name -->
+        <div class="form-group full-width">
+
+            <label for="name">Name</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                required
+            >
+
+        </div>
+
+
+        <!-- Email + Phone -->
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="phone">Phone</label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    autocomplete="tel"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- Subject -->
+        <div class="form-group full-width">
+
+            <label for="subject">Subject</label>
+
+            <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+            >
+
+        </div>
+
+
+        <!-- Message -->
+        <div class="form-group message-group">
+
+            <label for="message">Message</label>
+
+            <textarea
+                id="message"
+                name="message"
+                required
+                placeholder="Hi, I'd like to discuss a project with your team..."
+            ></textarea>
+
+        </div>
+
+
+        <!-- Submit -->
+        <div class="submit-wrapper">
+
+            <button type="submit">
+                SUBMIT
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+</section>
+
+    <footer class="site-footer">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <h2>MEHR Global</h2>
+            <p>Lorem Ipsum.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 MEHR Global. All rights reserved.</p>
+    </div>
+
+</footer>
+
+
 </main>
 
 
@@ -884,4 +1108,6 @@ PROJECTS
 
 <script type="module" src="./js/script.js"></script>
 
-</body></html>
+</body>
+
+</html>
