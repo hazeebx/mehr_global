@@ -21,39 +21,50 @@ const faqInput = document.getElementById("faqInput");
 const faqAnswers = {
 
     company: `
-        <strong>Mehr Global</strong> is a consulting and professional
-        services company helping organizations improve their systems,
-        processes, compliance, and overall business performance.
+        Ehehe~! ♡ Mehr Global is a consulting and professional
+        services company that helps organizations improve their
+        systems, processes, compliance, and overall business
+        performance~! ✨
+        <br><br>
+        Miku-chan hopes that helps~ (≧▽≦)
     `,
 
     type: `
-        Mehr Global is a <strong>consulting and professional services
-        company</strong>. We work with organizations across different
-        areas to help them strengthen their operations, compliance,
-        management systems, and business processes.
+        Mehr Global is a <strong>consulting and professional
+        services company</strong>~! ♡
+        <br><br>
+        We work with organizations across different areas to
+        strengthen their operations, compliance, management
+        systems, and business processes~ ✨
     `,
 
     domains: `
-        Not necessarily. The domains shown on our website represent
-        our key areas of expertise, but our services are not strictly
-        limited to those areas. If you have a specific requirement,
-        feel free to contact our team and we'll be happy to discuss it.
+        Nope~! Not necessarily, nya~ ♡
+        <br><br>
+        The domains shown on our website represent our key
+        areas of expertise, but our services aren't strictly
+        limited to those areas~!
+        <br><br>
+        If you have a specific requirement, just contact
+        our team and we'll be happy to discuss it with you~ ✨
     `,
 
     iso: `
-        We work with organizations on <strong>multiple ISO standards</strong>,
-        depending on their requirements and industry. Our team can help
-        with the relevant ISO implementation, documentation, and
-        certification process.
+        We work with <strong>multiple ISO standards</strong>~
+        (｀・ω・´)ゞ
+        <br><br>
+        The specific standards depend on your organization's
+        requirements and industry. Our team can assist with
+        the relevant ISO implementation, documentation, and
+        certification process~! ♡
     `,
 
     fallback: `
-        I'm not completely sure about that one 😅
-
-        I can help with questions about our services, company,
-        consulting domains, and ISO-related work.
-
-        You can also contact our team directly for a specific enquiry.
+        Eeeeh~? Miku-chan doesn't know that one yet... (╥﹏╥)
+        <br><br>
+        Try asking me about our <strong>services</strong>,
+        <strong>company</strong>, <strong>domains</strong>,
+        or <strong>ISO work</strong>~! ♡
     `
 };
 
