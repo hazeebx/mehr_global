@@ -1,5 +1,6 @@
 /* ==========================
-   FAQ BOT
+FAQ BOT — MIIKU α
+MEHR Intelligent Interactive Knowledge Unit
 ========================== */
 
 const faqBot = document.querySelector(".faq-bot");
@@ -15,7 +16,7 @@ const faqInput = document.getElementById("faqInput");
 
 
 /* ==========================
-   ANSWERS
+ANSWERS
 ========================== */
 
 const faqAnswers = {
@@ -26,7 +27,7 @@ const faqAnswers = {
         systems, processes, compliance, and overall business
         performance~! ✨
         <br><br>
-        Miku-chan hopes that helps~ (≧▽≦)
+        MIIKU hopes that helps~ (≧▽≦)
     `,
 
     type: `
@@ -60,17 +61,18 @@ const faqAnswers = {
     `,
 
     fallback: `
-        Eeeeh~? Miku-chan doesn't know that one yet... (╥﹏╥)
+        Eeeeh~? MIIKU doesn't know that one yet... (╥﹏╥)
         <br><br>
         Try asking me about our <strong>services</strong>,
         <strong>company</strong>, <strong>domains</strong>,
         or <strong>ISO work</strong>~! ♡
     `
+
 };
 
 
 /* ==========================
-   QUESTION MATCHING
+QUESTION MATCHING
 ========================== */
 
 function getAnswer(question) {
@@ -136,7 +138,7 @@ function getAnswer(question) {
 
 
 /* ==========================
-   ADD MESSAGE
+ADD MESSAGE
 ========================== */
 
 function addMessage(content, type) {
@@ -161,7 +163,7 @@ function addMessage(content, type) {
 
 
 /* ==========================
-   TYPING ANIMATION
+TYPING ANIMATION
 ========================== */
 
 function showTyping() {
@@ -189,7 +191,7 @@ function showTyping() {
 
 
 /* ==========================
-   ASK QUESTION
+ASK QUESTION
 ========================== */
 
 function askQuestion(question) {
@@ -241,7 +243,7 @@ function askQuestion(question) {
 
 
 /* ==========================
-   OPEN
+OPEN
 ========================== */
 
 faqToggle.addEventListener("click", () => {
@@ -256,7 +258,7 @@ faqToggle.addEventListener("click", () => {
 
 
 /* ==========================
-   CLOSE
+CLOSE
 ========================== */
 
 faqClose.addEventListener("click", () => {
@@ -267,7 +269,7 @@ faqClose.addEventListener("click", () => {
 
 
 /* ==========================
-   FAQ BUTTONS
+FAQ BUTTONS
 ========================== */
 
 faqQuestions.addEventListener("click", (event) => {
@@ -284,7 +286,7 @@ faqQuestions.addEventListener("click", (event) => {
 
 
 /* ==========================
-   INPUT
+INPUT
 ========================== */
 
 faqForm.addEventListener("submit", (event) => {
@@ -303,7 +305,7 @@ faqForm.addEventListener("submit", (event) => {
 
 
 /* ==========================
-   ESC TO CLOSE
+ESC TO CLOSE
 ========================== */
 
 document.addEventListener("keydown", (event) => {
