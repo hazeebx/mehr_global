@@ -7,5 +7,5 @@ import "./globe_renderrer.js";
 import "./testimonials.js";
 import "./evolution.js";
 import "./projects.js";
-import "./faq.js";
+import "./miiku_chan.js";
 import "./contact.js";

@@ -1,5 +1,6 @@
+
 /* ==========================
-FAQ BOT — MIIKU α
+FAQ BOT — MIIKU
 MEHR Intelligent Interactive Knowledge Unit
 ========================== */
 
@@ -22,50 +23,50 @@ ANSWERS
 const faqAnswers = {
 
     company: `
-        Ehehe~! ♡ Mehr Global is a consulting and professional
-        services company that helps organizations improve their
-        systems, processes, compliance, and overall business
-        performance~! ✨
+        Mehr Global is a consulting and professional
+        services company that helps organizations improve
+        their systems, processes, compliance, and overall
+        business performance.
         <br><br>
-        MIIKU hopes that helps~ (≧▽≦)
+        I hope that helps.
     `,
 
     type: `
         Mehr Global is a <strong>consulting and professional
-        services company</strong>~! ♡
+        services company</strong>.
         <br><br>
-        We work with organizations across different areas to
-        strengthen their operations, compliance, management
-        systems, and business processes~ ✨
+        We work with organizations across different areas
+        to strengthen their operations, compliance,
+        management systems, and business processes.
     `,
 
     domains: `
-        Nope~! Not necessarily, nya~ ♡
+        Not necessarily.
         <br><br>
         The domains shown on our website represent our key
         areas of expertise, but our services aren't strictly
-        limited to those areas~!
+        limited to those areas.
         <br><br>
-        If you have a specific requirement, just contact
-        our team and we'll be happy to discuss it with you~ ✨
+        If you have a specific requirement, feel free to
+        contact our team and we'll be happy to discuss it
+        with you.
     `,
 
     iso: `
-        We work with <strong>multiple ISO standards</strong>~
-        (｀・ω・´)ゞ
+        We work with <strong>multiple ISO standards</strong>.
         <br><br>
         The specific standards depend on your organization's
         requirements and industry. Our team can assist with
         the relevant ISO implementation, documentation, and
-        certification process~! ♡
+        certification process.
     `,
 
     fallback: `
-        Eeeeh~? MIIKU doesn't know that one yet... (╥﹏╥)
+        I don't have an answer for that yet.
         <br><br>
         Try asking me about our <strong>services</strong>,
         <strong>company</strong>, <strong>domains</strong>,
-        or <strong>ISO work</strong>~! ♡
+        or <strong>ISO work</strong>.
     `
 
 };
@@ -214,7 +215,7 @@ function askQuestion(question) {
     const typing = showTyping();
 
 
-    /* Fake response delay */
+    /* Response delay */
 
     setTimeout(() => {
 

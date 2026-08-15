@@ -20,9 +20,9 @@
 
         <!-- LOGO -->
 
-        <a href="#" class="company-logo">
+        <div href="#" class="company-logo">
             MEHR Global : Services
-        </a>
+        </div>
 
 
         <!-- NAVIGATION -->
@@ -112,86 +112,231 @@
 <main class="services-shell">
 
     <!-- =====================================================
-         IT
-    ====================================================== -->
-    <section class="service-page service-it" id="service-it">
+     IT SERVICES
+====================================================== -->
 
-        <div class="service-intro">
-            <div>
-                <p class="eyebrow">IT SERVICES</p>
-                <h1>Technology that<br><span>works for you.</span></h1>
-                <p class="intro-copy">
-                    Practical technology solutions designed to improve
-                    operations, connect teams and keep your organization moving.
+<section class="service-page service-it" id="service-it">
+
+    <div class="it-explorer">
+
+        <!-- ==========================================
+             SIDEBAR
+        =========================================== -->
+
+        <aside class="it-sidebar">
+
+            <div class="it-sidebar-header">
+                <h2>IT SERVICES</h2>
+
+                <p>
+                    Explore our technology solutions and
+                    digital capabilities.
                 </p>
-                <button class="primary-btn" type="button">
-                    Explore IT Services <span>→</span>
+            </div>
+
+
+            <!-- Search -->
+
+            <div class="it-search-wrapper">
+
+                <span class="it-search-icon">⌕</span>
+
+                <input
+                    type="text"
+                    id="itSearch"
+                    class="it-search-input"
+                    placeholder="Search IT services..."
+                    aria-label="Search IT services"
+                >
+
+            </div>
+
+
+            <!-- Service List -->
+
+            <div class="it-list">
+
+                <button
+                    class="it-item active"
+                    data-it="infrastructure"
+                    type="button"
+                >
+                    <span class="it-icon">⌘</span>
+
+                    <span class="it-info">
+                        <span class="it-code">
+                            IT Infrastructure
+                        </span>
+
+                        <span class="it-name">
+                            Networks & Systems
+                        </span>
+                    </span>
+
+                    <span class="it-arrow">›</span>
                 </button>
+
+
+                <button
+                    class="it-item"
+                    data-it="cloud"
+                    type="button"
+                >
+                    <span class="it-icon">◈</span>
+
+                    <span class="it-info">
+                        <span class="it-code">
+                            Cloud Solutions
+                        </span>
+
+                        <span class="it-name">
+                            Cloud & Platforms
+                        </span>
+                    </span>
+
+                    <span class="it-arrow">›</span>
+                </button>
+
+
+                <button
+                    class="it-item"
+                    data-it="cybersecurity"
+                    type="button"
+                >
+                    <span class="it-icon">◇</span>
+
+                    <span class="it-info">
+                        <span class="it-code">
+                            Cybersecurity
+                        </span>
+
+                        <span class="it-name">
+                            Security & Risk
+                        </span>
+                    </span>
+
+                    <span class="it-arrow">›</span>
+                </button>
+
+
+                <button
+                    class="it-item"
+                    data-it="transformation"
+                    type="button"
+                >
+                    <span class="it-icon">↗</span>
+
+                    <span class="it-info">
+                        <span class="it-code">
+                            Digital Transformation
+                        </span>
+
+                        <span class="it-name">
+                            Digital Workflows
+                        </span>
+                    </span>
+
+                    <span class="it-arrow">›</span>
+                </button>
+
             </div>
 
-            <div class="it-visual">
-                <div class="terminal-bar">
-                    <span></span><span></span><span></span>
+        </aside>
+
+
+        <!-- ==========================================
+             CONTENT
+        =========================================== -->
+
+        <article class="it-content" id="itContent">
+
+            <div class="it-hero">
+
+                <div class="it-heading">
+
+
+                    <h1 id="itTitle">
+                        IT Infrastructure
+                    </h1>
+
+                    <h3 id="itSubtitle">
+                        Networks & Systems
+                    </h3>
+
+                    <div class="it-accent-line"></div>
+
+                    <p
+                        class="it-description"
+                        id="itDescription"
+                    >
+                        Reliable technology infrastructure designed
+                        around the way your organization operates.
+                        From networks and systems to monitoring and
+                        infrastructure management, we help create a
+                        stable foundation for your business.
+                    </p>
+
                 </div>
-                <div class="terminal-body">
-                    <p><span class="code-muted">$</span> system.status()</p>
-                    <p class="code-success">✓ all systems operational</p>
-                    <p><span class="code-muted">$</span> services.active</p>
-                    <p class="code-value">24 platforms / 99.9% uptime</p>
-                    <div class="terminal-lines">
-                        <span></span><span></span><span></span><span></span>
+
+
+                <img
+                    id="itImage"
+                    class="it-hero-image"
+                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85"
+                    alt="IT Infrastructure"
+                >
+
+            </div>
+
+
+            <!-- Lower Section -->
+
+            <div class="it-lower-section">
+
+                <div>
+
+                    <h3 class="it-section-title">
+                        KEY CAPABILITIES
+                    </h3>
+
+                    <div
+                        class="it-capabilities-grid"
+                        id="itCapabilitiesGrid"
+                    ></div>
+
+                </div>
+
+
+                <!-- Consultation -->
+
+                <div class="it-consultation">
+
+                    <div class="it-consultation-icon">
+                        →
                     </div>
+
+                    <h4>
+                        Need an IT solution?
+                    </h4>
+
+                    <p>
+                        Let's discuss your organization's
+                        technology requirements.
+                    </p>
+
+                    <button type="button">
+                        Request Consultation →
+                    </button>
+
                 </div>
+
             </div>
-        </div>
 
-        <div class="service-grid it-grid">
-            <article class="feature-card large">
-                <div class="card-number">01</div>
-                <div class="feature-icon">⌘</div>
-                <h2>IT Infrastructure</h2>
-                <p>
-                    Reliable networks, systems and infrastructure built around
-                    the way your organization actually operates.
-                </p>
-                <a href="#" class="text-link">Learn more →</a>
-            </article>
+        </article>
 
-            <article class="feature-card">
-                <div class="card-number">02</div>
-                <div class="feature-icon">◈</div>
-                <h2>Cloud Solutions</h2>
-                <p>
-                    Secure cloud environments that make collaboration and
-                    scaling simpler.
-                </p>
-                <a href="#" class="text-link">Learn more →</a>
-            </article>
+    </div>
 
-            <article class="feature-card">
-                <div class="card-number">03</div>
-                <div class="feature-icon">◇</div>
-                <h2>Cybersecurity</h2>
-                <p>
-                    Protection, monitoring and practical security controls
-                    for modern organizations.
-                </p>
-                <a href="#" class="text-link">Learn more →</a>
-            </article>
-
-            <article class="feature-card">
-                <div class="card-number">04</div>
-                <div class="feature-icon">↗</div>
-                <h2>Digital Transformation</h2>
-                <p>
-                    Turn repetitive processes into streamlined digital
-                    workflows.
-                </p>
-                <a href="#" class="text-link">Learn more →</a>
-            </article>
-        </div>
-
-    </section>
+</section>
 
 
     <!-- =====================================================
@@ -342,30 +487,6 @@
 
                 </div>
 
-                <div class="benefit-strip">
-
-                    <div class="benefit">
-                        <div class="benefit-icon">◎</div>
-                        <strong>Global<br>Recognition</strong>
-                    </div>
-
-                    <div class="benefit">
-                        <div class="benefit-icon">♙</div>
-                        <strong>Improved<br>Customer Satisfaction</strong>
-                    </div>
-
-                    <div class="benefit">
-                        <div class="benefit-icon">◈</div>
-                        <strong>Operational<br>Excellence</strong>
-                    </div>
-
-                    <div class="benefit">
-                        <div class="benefit-icon">◉</div>
-                        <strong>Risk<br>Management</strong>
-                    </div>
-
-                </div>
-
                 <div class="lower-section">
 
                     <div>
@@ -401,13 +522,12 @@
         <div class="contracting-hero">
             <div>
                 <p class="eyebrow">CONTRACTING SERVICES</p>
-                <h1>From scope<br>to <span>execution.</span></h1>
+                <h1>Lorem<br>ip <span>ipsum.</span></h1>
                 <p class="intro-copy">
-                    Structured contracting support that keeps projects
-                    coordinated, accountable and moving forward.
+                    bhai pls content give
                 </p>
                 <button class="primary-btn" type="button">
-                    Start a Project <span>→</span>
+                    lorem ipsum <span>→</span>
                 </button>
             </div>
 
@@ -419,9 +539,9 @@
                     <span></span>
                 </div>
                 <div class="stat-footer">
-                    <span>Planning</span>
-                    <span>Execution</span>
-                    <span>Closeout</span>
+                    <span>step 1</span>
+                    <span>step 2</span>
+                    <span>step 3</span>
                 </div>
             </div>
         </div>
@@ -431,40 +551,36 @@
             <article class="process-card active-process">
                 <span class="process-number">01</span>
                 <div class="process-icon">⌁</div>
-                <h2>Planning</h2>
+                <h2>step 1</h2>
                 <p>
-                    Define requirements, scope, timelines and resources
-                    before work begins.
+                    content give
                 </p>
             </article>
 
             <article class="process-card">
                 <span class="process-number">02</span>
                 <div class="process-icon">◇</div>
-                <h2>Procurement</h2>
+                <h2>step 2</h2>
                 <p>
-                    Coordinate suppliers, quotations and commercial
-                    requirements with clarity.
+                    content give
                 </p>
             </article>
 
             <article class="process-card">
                 <span class="process-number">03</span>
                 <div class="process-icon">↗</div>
-                <h2>Execution</h2>
+                <h2>step 3</h2>
                 <p>
-                    Keep contractors, deliverables and milestones aligned
-                    throughout the project.
+                    content give
                 </p>
             </article>
 
             <article class="process-card">
                 <span class="process-number">04</span>
                 <div class="process-icon">✓</div>
-                <h2>Closeout</h2>
+                <h2>step 4</h2>
                 <p>
-                    Verify completion, documentation and handover with
-                    a clean project finish.
+                    content give
                 </p>
             </article>
 
@@ -576,88 +692,6 @@
 
         <div class="api-hero">
 
-            <div>
-                <p class="eyebrow">DEVELOPER API</p>
-                <h1>Connect your<br><span>systems to ours.</span></h1>
-                <p class="intro-copy">
-                    A clean developer interface for integrating certification,
-                    training, contracting and organization data into your own
-                    applications.
-                </p>
-
-                <div class="api-actions">
-                    <button class="primary-btn" type="button">
-                        Read Documentation <span>→</span>
-                    </button>
-                    <button class="secondary-btn" type="button">
-                        Get API Key
-                    </button>
-                </div>
-            </div>
-
-            <div class="api-code-window">
-
-                <div class="code-header">
-                    <span>GET</span>
-                    <code>/v1/certifications</code>
-                </div>
-
-                <pre><code>{
-  <span>"status"</span>: <span>"success"</span>,
-  <span>"count"</span>: <span>24</span>,
-  <span>"data"</span>: [
-    {
-      <span>"standard"</span>: <span>"ISO 9001:2015"</span>,
-      <span>"status"</span>: <span>"active"</span>
-    }
-  ]
-}</code></pre>
-
-            </div>
-
-        </div>
-
-        <div class="api-feature-grid">
-
-            <article class="api-card">
-                <div class="api-card-icon">{ }</div>
-                <h2>Simple REST API</h2>
-                <p>
-                    Predictable endpoints and JSON responses that are easy
-                    to integrate into existing systems.
-                </p>
-                <a href="#" class="text-link">View endpoints →</a>
-            </article>
-
-            <article class="api-card">
-                <div class="api-card-icon">↯</div>
-                <h2>Secure by Design</h2>
-                <p>
-                    Authentication and access controls built into every
-                    request.
-                </p>
-                <a href="#" class="text-link">Security guide →</a>
-            </article>
-
-            <article class="api-card">
-                <div class="api-card-icon">◌</div>
-                <h2>Webhooks</h2>
-                <p>
-                    Receive real-time events when certification or project
-                    data changes.
-                </p>
-                <a href="#" class="text-link">Explore events →</a>
-            </article>
-
-            <article class="api-card">
-                <div class="api-card-icon">⌁</div>
-                <h2>Developer Support</h2>
-                <p>
-                    Clear documentation and technical support when you need
-                    help getting integrated.
-                </p>
-                <a href="#" class="text-link">Contact developers →</a>
-            </article>
 
         </div>
 
@@ -666,6 +700,7 @@
 </main>
 
 <script src="js/services.js"></script>
+<script src="js/it_explorer.js"></script>
 
 </body>
 </html>

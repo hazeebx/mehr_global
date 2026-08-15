@@ -3,6 +3,11 @@ window.addEventListener("load", () => {
     const loader =
         document.getElementById("loader");
 
+    const skipLoader =
+    document.querySelector(".skip-loader");
+
+    let loaderSkipped = false;
+
     const words =
         gsap.utils.toArray(".loader-word");
 
@@ -62,6 +67,69 @@ window.addEventListener("load", () => {
 
     const tl =
         gsap.timeline();
+
+
+// SKIP LOADER
+// ==========================
+
+if (skipLoader) {
+    gsap.to(skipLoader, {
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.1,
+        ease: "power2.out"
+    });
+}
+
+function skipLoaderAnimation() {
+
+    if (loaderSkipped || !loader) return;
+
+    loaderSkipped = true;
+
+    tl.kill();
+
+    if (skipLoader) {
+        gsap.to(skipLoader, {
+            opacity: 0,
+            duration: 0.2,
+            ease: "power2.out"
+        });
+    }
+
+    gsap.to(loader, {
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.inOut",
+
+        onComplete: () => {
+
+            loader.remove();
+
+            document.body.style.overflow = "";
+
+            document.removeEventListener(
+                "click",
+                skipLoaderAnimation
+            );
+
+            document.removeEventListener(
+                "touchstart",
+                skipLoaderAnimation
+            );
+        }
+    });
+}
+
+document.addEventListener(
+    "click",
+    skipLoaderAnimation
+);
+
+document.addEventListener(
+    "touchstart",
+    skipLoaderAnimation
+);
 
 
     // ==========================
