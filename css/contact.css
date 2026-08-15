@@ -351,8 +351,41 @@ TEXTAREA
 
     border-radius: 0.7rem;
 }
+/* ==========================
+CUSTOM MESSAGE SCROLLBAR
+========================== */
+
+.form-group textarea {
+    overflow-y: scroll;
+
+    scrollbar-width: thin;
+    scrollbar-color:
+        rgba(255, 255, 255, 0.55)
+        transparent;
+}
 
 
+/* ==========================
+CHROME / EDGE / SAFARI
+========================== */
+
+.form-group textarea::-webkit-scrollbar {
+    width: 2px;
+}
+
+.form-group textarea::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.form-group textarea::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.6);
+
+    border-radius: 999px;
+}
+
+.form-group textarea::-webkit-scrollbar-thumb:hover {
+    background: rgba(254, 209, 96, 0.9);
+}
 /* ==========================
 PLACEHOLDER
 ========================== */
