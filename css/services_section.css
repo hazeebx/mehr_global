@@ -204,13 +204,14 @@ CARD
     gap: 2.1rem;
     justify-content: center;
 }
+/* these are special rules for 6 card formation
 .service-card:nth-child(5) {
     grid-column: 2;
 }
 
 .service-card:nth-child(6) {
     grid-column: 3;
-}
+}*/
 
 .service-card {height: 24rem;}
 
@@ -368,14 +369,14 @@ DESCRIPTION
     position: absolute;
 
     left: 50%;
-    top: 62%;
+    top: 30%;
 
     width: 80%;
 
     margin: 0;
 
     transform:
-        translate(-50%, 1.125rem);
+        translate(-50%, 5rem);
 
     opacity: 0;
 

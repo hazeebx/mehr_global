@@ -6,42 +6,47 @@ CONTACT SECTION
     position: relative;
 
     width: 100%;
-    height: 70vh;
 
     overflow: hidden;
 
     background: #111;
+
+    display: grid;
+
+    grid-template-columns: 60fr 40fr;
+
+    align-items: center;
+
+    gap: 2.4rem;
+
+    padding: 2.4rem 4vw;
+
+    box-sizing: border-box;
 }
-.contact-form-title {
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: #111111;
 
-    margin-bottom: 1.8rem;
+/*remove this once ur done*/
+.contact-section::after {
+    content: "";
 
-    letter-spacing: -0.02em;
-}
-
-/* ==========================
-BACKGROUND / IMAGE PANEL
-========================== */
-
-.contact-info {
     position: absolute;
 
-    inset: 0;
+    top: 0;
+    bottom: 0;
 
-    width: 100%;
-    height: 100%;
+    left: 60%;
 
-    overflow: hidden;
+    width: 2px;
 
-    color: #ffffff;
+    background: red;
+
+    z-index: 10;
+
+    transform: translateX(-50%);
 }
 
 
 /* ==========================
-CONTACT BACKGROUND IMAGE
+FULL SECTION BACKGROUND
 ========================== */
 
 .contact-bg {
@@ -59,13 +64,12 @@ CONTACT BACKGROUND IMAGE
 
 
 /* ==========================
-IMAGE OVERLAY
+FULL SECTION OVERLAY
 ========================== */
 
-.contact-info::after {
-    content: "";
-
+.contact-overlay {
     position: absolute;
+
     inset: 0;
 
     background:
@@ -83,17 +87,26 @@ IMAGE OVERLAY
 
 
 /* ==========================
-LEFT CONTENT
+LEFT CONTACT INFORMATION
 ========================== */
+
+.contact-info {
+    position: relative;
+
+    width: 100%;
+
+    color: #ffffff;
+
+    z-index: 2;
+}
+
 
 .info-content {
     position: relative;
 
     z-index: 2;
 
-
-
-    padding: 4.5rem 0 4.5rem 5vw;
+    padding-left: 0.6vw;
 }
 
 
@@ -102,7 +115,8 @@ HEADING
 ========================== */
 
 .info-content h1 {
-    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    font-size:
+        clamp(1.5rem, 2.4vw, 2.3rem);
 
     line-height: 1.08;
 
@@ -110,7 +124,7 @@ HEADING
 
     letter-spacing: -0.035em;
 
-    margin-bottom: 3.2rem;
+    margin-bottom: 1.9rem;
 
     color: #ffffff;
 }
@@ -122,28 +136,30 @@ CONTACT DETAILS
 
 .contact-details {
     display: flex;
+
     flex-direction: column;
 
-    gap: 2rem;
+    gap: 1.2rem;
 }
 
 
 .detail-block {
     display: flex;
+
     flex-direction: column;
 
-    gap: 0.3rem;
+    gap: 0.2rem;
 }
 
 
 .detail-block h2 {
-    font-size: 1.15rem;
+    font-size: 0.8rem;
 
     font-weight: 400;
 
     color: #e9c58c;
 
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.1rem;
 }
 
 
@@ -151,7 +167,7 @@ CONTACT DETAILS
 .detail-block a {
     color: #ffffff;
 
-    font-size: 1rem;
+    font-size: 0.7rem;
 
     line-height: 1.5;
 
@@ -180,26 +196,50 @@ FORM WRAPPER
 ========================== */
 
 .contact-form-wrapper {
-    position: absolute;
+    position: relative;
 
     z-index: 5;
 
-    width: 30vw;
-    height: 65vh;
+    width: 100%;
 
-    right: 2vw;
-    top: 50%;
+    padding: 1.8rem;
 
-    transform: translateY(-50%);
+    box-sizing: border-box;
 
-    padding: 3rem;
+    background:
+        rgba(255, 255, 255, 0.08);
 
-    background: #ffffff;
+    border:
+        1px solid rgba(255, 255, 255, 0.35);
 
-    border-radius: 5px;
+    border-radius: 0.9rem;
+
+    backdrop-filter:
+        blur(0.8rem);
+
+    -webkit-backdrop-filter:
+        blur(0.8rem);
 
     box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.28);
+        0 15px 42px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+/* ==========================
+FORM TITLE
+========================== */
+
+.contact-form-title {
+    font-size: 1.1rem;
+
+    font-weight: 500;
+
+    color: #ffffff;
+
+    margin-bottom: 1.1rem;
+
+    letter-spacing: -0.02em;
 }
 
 
@@ -211,9 +251,10 @@ FORM
     width: 100%;
 
     display: flex;
+
     flex-direction: column;
 
-    gap: 1.25rem;
+    gap: 0.75rem;
 }
 
 
@@ -223,16 +264,23 @@ FORM GROUP
 
 .form-group {
     display: flex;
+
     flex-direction: column;
 
-    gap: 0.45rem;
+    gap: 0.3rem;
 }
 
 
-.form-group label {
-    font-size: 0.82rem;
+/* ==========================
+FORM LABEL
+========================== */
 
-    color: #202020;
+.form-group label {
+    font-size:
+        calc(0.62rem + 2px);
+
+    color:
+        rgba(255, 255, 255, 0.85);
 
     font-weight: 400;
 }
@@ -246,50 +294,105 @@ INPUTS
 .form-group textarea {
     width: 100%;
 
-    border: 1px solid #c8cdd2;
+    background:
+        rgba(255, 255, 255, 0.03);
 
-    border-radius: 5px;
+    border:
+        1px solid rgba(255, 255, 255, 0.45);
 
-    background: #ffffff;
+    border-radius: 2rem;
+
+    backdrop-filter:
+        blur(0.5rem);
+
+    -webkit-backdrop-filter:
+        blur(0.5rem);
 
     font: inherit;
 
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 
-    color: #111111;
+    color: #ffffff;
 
     outline: none;
 
+    box-sizing: border-box;
+
     transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
+
+/* ==========================
+INPUT
+========================== */
 
 .form-group input {
-    height: 40px;
+    height: 2rem;
 
-    padding: 0 0.7rem;
+    padding:
+        0 0.7rem;
 }
 
+
+/* ==========================
+TEXTAREA
+========================== */
 
 .form-group textarea {
-    height: 135px;
+    height: 4.8rem;
 
-    padding: 0.7rem;
+    padding:
+        0.55rem 0.7rem;
 
-    resize: vertical;
+    resize: none;
 
-
+    border-radius: 0.7rem;
 }
 
+
+/* ==========================
+PLACEHOLDER
+========================== */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color:
+        rgba(255, 255, 255, 0.45);
+}
+
+
+/* ==========================
+INPUT HOVER
+========================== */
+
+.form-group input:hover,
+.form-group textarea:hover {
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    border-color:
+        rgba(255, 255, 255, 0.6);
+}
+
+
+/* ==========================
+INPUT FOCUS
+========================== */
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #111111;
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border-color:
+        rgba(255, 255, 255, 0.85);
 
     box-shadow:
-        0 0 0 1px #111111;
+        0 0 0 1px
+        rgba(255, 255, 255, 0.2);
 }
 
 
@@ -300,9 +403,10 @@ EMAIL + PHONE
 .form-row {
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
-    gap: 1.2rem;
+    gap: 0.75rem;
 }
 
 
@@ -324,24 +428,26 @@ SUBMIT
 
     justify-content: center;
 
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
 }
 
 
 .submit-wrapper button {
-    width: 138px;
+    width: 90px;
 
-    height: 42px;
+    height: 28px;
 
-    border: 1px solid #111111;
+    border:
+        1px solid rgba(255, 255, 255, 0.75);
 
-    border-radius: 5px;
+    border-radius: 2rem;
 
-    background: #111111;
+    background:
+        rgba(255, 255, 255, 0.9);
 
-    color: #ffffff;
+    color: #111111;
 
-    font-size: 0.78rem;
+    font-size: 0.62rem;
 
     font-weight: 500;
 
@@ -352,19 +458,27 @@ SUBMIT
     transition:
         background 0.2s ease,
         color 0.2s ease,
-        transform 0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
 .submit-wrapper button:hover {
-    background: #2a2a2a;
+    background:
+        #ffffff;
 
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.2);
 }
 
 
 .submit-wrapper button:active {
-    transform: translateY(0);
+    transform:
+        translateY(0);
 }
 
 
@@ -374,6 +488,50 @@ INVALID INPUT
 
 .form-group input.invalid,
 .form-group textarea.invalid {
-    border-color: #c62828;
+    border-color:
+        #ff6b6b;
+
+    box-shadow:
+        0 0 0 1px
+        rgba(255, 107, 107, 0.2);
 }
 
+
+/* ==========================
+MOBILE
+========================== */
+
+@media (max-width: 900px) {
+
+    .contact-section {
+        grid-template-columns: 1fr;
+
+        gap: 1.8rem;
+
+        padding:
+            2rem 1.5rem;
+    }
+
+
+    .contact-info {
+        width: 100%;
+    }
+
+
+    .info-content {
+        padding-left: 0;
+    }
+
+
+    .contact-form-wrapper {
+        width: 100%;
+
+        padding: 1.5rem;
+    }
+
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+}
