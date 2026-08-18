@@ -1,9 +1,9 @@
 import "./header.js";
 import "./loading_screen.js";
+import "./globe_renderrer.js";
 import "./services_section.js";
 import "./metrics.js";
 import "./clients.js";
-import "./globe_renderrer.js";
 import "./testimonials.js";
 import "./evolution.js";
 import "./projects.js";

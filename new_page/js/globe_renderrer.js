@@ -4,19 +4,63 @@ import { RINGS } from "./rings.js";
 
     let globeRunning = false;
 
+
+    // ============================================================
+    // CANVAS
+    // ============================================================
+
     const canvas = document.getElementById("c");
+    const hero = document.querySelector(".hero");
+
+    if (!canvas || !hero) {
+        console.warn("Globe renderer: canvas or hero not found.");
+        return;
+    }
 
     const ctx = canvas.getContext("2d");
 
-    let W, H, CX, CY;
+    let W = 0;
+    let H = 0;
+
+    let DPR = 1;
 
 
     // ============================================================
-    // HERO / VISIBILITY
+    // GLOBE POSITION
     // ============================================================
 
-    const hero = document.querySelector(".hero");
+    let CX = 90;
+    let CY = 70;
 
+
+    // ============================================================
+    // FULL CANVAS CENTER
+    // Used only for stars/background.
+    // ============================================================
+
+    let STAR_CX = 0;
+    let STAR_CY = 0;
+
+
+    // ============================================================
+    // BACKGROUND CACHE
+    // ============================================================
+
+    let bgGradientCache = null;
+    let bgW = 0;
+    let bgH = 0;
+
+
+    // ============================================================
+    // ANIMATION TIME
+    // ============================================================
+
+    let t0 = performance.now();
+
+
+    // ============================================================
+    // VISIBILITY
+    // ============================================================
 
     const globeObserver =
         new IntersectionObserver((entries) => {
@@ -54,21 +98,84 @@ import { RINGS } from "./rings.js";
 
     function resize() {
 
-        W =
-            canvas.width =
-            hero.clientWidth;
+        // --------------------------------------------------------
+        // Logical canvas size
+        // --------------------------------------------------------
+
+        W = hero.clientWidth;
+        H = hero.clientHeight;
 
 
-        H =
-            canvas.height =
-            hero.clientHeight;
+        // --------------------------------------------------------
+        // Device pixel ratio
+        // --------------------------------------------------------
+
+        DPR =
+            Math.min(
+                window.devicePixelRatio || 1,
+                2
+            );
 
 
-        CX = W / 2;
+        // --------------------------------------------------------
+        // Physical canvas resolution
+        // --------------------------------------------------------
 
-        CY =
-            H / 2 + 10;
-        // Move globe down with +ve, up with -ve
+        canvas.width =
+            Math.round(W * DPR);
+
+        canvas.height =
+            Math.round(H * DPR);
+
+
+        // --------------------------------------------------------
+        // CSS size stays unchanged
+        // --------------------------------------------------------
+
+        canvas.style.width =
+            W + "px";
+
+        canvas.style.height =
+            H + "px";
+
+
+        // --------------------------------------------------------
+        // Globe position
+        // --------------------------------------------------------
+
+        CX = 50;
+        CY = 50;
+
+
+        // --------------------------------------------------------
+        // Full canvas center
+        // --------------------------------------------------------
+
+        STAR_CX = W / 2;
+        STAR_CY = H / 2;
+
+
+        // --------------------------------------------------------
+        // Reset cached background
+        // --------------------------------------------------------
+
+        bgGradientCache = null;
+        bgW = 0;
+        bgH = 0;
+
+
+        // --------------------------------------------------------
+        // Set logical coordinate system
+        // --------------------------------------------------------
+
+        ctx.setTransform(
+            DPR,
+            0,
+            0,
+            DPR,
+            0,
+            0
+        );
 
     }
 
@@ -83,15 +190,8 @@ import { RINGS } from "./rings.js";
 
 
     // ============================================================
-    // BACKGROUND
+    // BACKGROUND GRADIENT
     // ============================================================
-
-    let bgGradientCache = null;
-
-    let bgW = 0;
-
-    let bgH = 0;
-
 
     function backgroundGradient() {
 
@@ -108,11 +208,11 @@ import { RINGS } from "./rings.js";
 
         const g =
             ctx.createRadialGradient(
-                CX,
-                CY,
+                STAR_CX,
+                STAR_CY,
                 0,
-                CX,
-                CY,
+                STAR_CX,
+                STAR_CY,
                 Math.max(W, H) * 0.75
             );
 
@@ -144,7 +244,6 @@ import { RINGS } from "./rings.js";
         bgGradientCache = g;
 
         bgW = W;
-
         bgH = H;
 
 
@@ -219,20 +318,23 @@ import { RINGS } from "./rings.js";
     // GLOBE
     // ============================================================
 
-    const R = 230;
+    const R = 50;
 
     const DEG2RAD =
         Math.PI / 180;
 
 
     // ============================================================
-    // GLOBE PARTICLES
+    // PARTICLES
     // ============================================================
 
     const particles = [];
 
 
-    const PARTICLE_STEP = 8;
+    // Higher number = fewer particles.
+    // 10 is a good balance for this small globe.
+
+    const PARTICLE_STEP = 20;
 
 
     for (
@@ -252,13 +354,11 @@ import { RINGS } from "./rings.js";
 
 
             const lonR =
-                lon *
-                DEG2RAD;
+                lon * DEG2RAD;
 
 
             const latR =
-                lat *
-                DEG2RAD;
+                lat * DEG2RAD;
 
 
             const ux =
@@ -330,13 +430,11 @@ import { RINGS } from "./rings.js";
     ) {
 
         const lonR =
-            lonDeg *
-            DEG2RAD;
+            lonDeg * DEG2RAD;
 
 
         const latR =
-            latDeg *
-            DEG2RAD;
+            latDeg * DEG2RAD;
 
 
         const ux =
@@ -380,7 +478,7 @@ import { RINGS } from "./rings.js";
 
             bobAmp:
                 0.6 +
-                Math.random() * 1,
+                Math.random(),
 
             twinklePhase:
                 Math.random() *
@@ -401,7 +499,9 @@ import { RINGS } from "./rings.js";
     const GRID_SAMPLE_DEG = 100;
 
 
+    // ------------------------------------------------------------
     // Parallels
+    // ------------------------------------------------------------
 
     for (
         let lat = -60;
@@ -425,7 +525,9 @@ import { RINGS } from "./rings.js";
     }
 
 
+    // ------------------------------------------------------------
     // Meridians
+    // ------------------------------------------------------------
 
     for (
         let lon = -180;
@@ -450,94 +552,10 @@ import { RINGS } from "./rings.js";
 
 
     // ============================================================
-    // LOCATION ORBS
-    // ============================================================
-    //
-    // Add locations as:
-    //
-    // [longitude, latitude]
-    //
-    // Example:
-    // [46.6753, 24.7136]
-    //
-    // Longitude first.
-    // Latitude second.
-    //
-    // ============================================================
-
-    const LOCATION_COORDS = [
-
-        // Riyadh
-        [46.6753, 24.7136],
-
-        // New York
-        [-74.0060, 40.7128],
-
-        // Bengaluru
-        [77.5946, 12.9716]
-
-    ];
-
-
-    const locationPoints = [];
-
-
-    for (
-        const [lon, lat]
-        of LOCATION_COORDS
-    ) {
-
-        const lonR =
-            lon *
-            DEG2RAD;
-
-
-        const latR =
-            lat *
-            DEG2RAD;
-
-
-        const ux =
-            Math.cos(latR) *
-            Math.cos(lonR);
-
-
-        const uy =
-            Math.sin(latR);
-
-
-        const uz =
-            Math.cos(latR) *
-            Math.sin(lonR);
-
-
-        locationPoints.push({
-
-            ux,
-            uy,
-            uz,
-
-            pulsePhase:
-                Math.random() *
-                Math.PI *
-                2,
-
-            pulseSpeed:
-                2 +
-                Math.random() *
-                0.8
-
-        });
-
-    }
-
-
-    // ============================================================
     // CAMERA / INTERACTION
     // ============================================================
 
     let rotY = 0;
-
 
     const START_ROTATION =
         -Math.PI;
@@ -545,14 +563,12 @@ import { RINGS } from "./rings.js";
 
     let tiltX = 0.5;
 
-
     let dragRotY = 0;
 
     let dragTilt = -0.3;
 
 
     let dragging = false;
-
 
     let lastPX = 0;
 
@@ -567,7 +583,6 @@ import { RINGS } from "./rings.js";
         dragging = true;
 
         lastPX = x;
-
         lastPY = y;
 
     }
@@ -592,24 +607,19 @@ import { RINGS } from "./rings.js";
 
 
         lastPX = x;
-
         lastPY = y;
 
-
-        // Horizontal rotation
 
         dragRotY +=
             dx * 0.005;
 
-
-        // Flipped vertical rotation
 
         dragTilt =
             Math.max(
                 -1.3,
                 Math.min(
                     1.3,
-                    dragTilt -
+                    dragTilt +
                     dy * 0.004
                 )
             );
@@ -623,8 +633,6 @@ import { RINGS } from "./rings.js";
 
     }
 
-
-    // Mouse
 
     canvas.addEventListener(
         "mousedown",
@@ -658,15 +666,11 @@ import { RINGS } from "./rings.js";
     );
 
 
-    // Touch
-
     canvas.addEventListener(
         "touchstart",
         (e) => {
 
-            if (
-                e.touches.length
-            ) {
+            if (e.touches.length) {
 
                 onDown(
                     e.touches[0].clientX,
@@ -686,9 +690,7 @@ import { RINGS } from "./rings.js";
         "touchmove",
         (e) => {
 
-            if (
-                e.touches.length
-            ) {
+            if (e.touches.length) {
 
                 onMove(
                     e.touches[0].clientX,
@@ -708,15 +710,6 @@ import { RINGS } from "./rings.js";
         "touchend",
         onUp
     );
-
-
-    // ============================================================
-    // ZOOM
-    // ============================================================
-
-    let zoom = 1;
-
-    let targetZoom = 1;
 
 
     // ============================================================
@@ -748,14 +741,6 @@ import { RINGS } from "./rings.js";
     const FOCAL = 400;
 
     const FOCAL_OFFSET = 620;
-
-
-    // ============================================================
-    // TIME
-    // ============================================================
-
-    let t0 =
-        performance.now();
 
 
     // ============================================================
@@ -791,14 +776,15 @@ import { RINGS } from "./rings.js";
 
 
         // --------------------------------------------------------
-        // Reset canvas
+        // IMPORTANT:
+        // Restore DPR transform every frame.
         // --------------------------------------------------------
 
         ctx.setTransform(
-            1,
+            DPR,
             0,
             0,
-            1,
+            DPR,
             0,
             0
         );
@@ -809,7 +795,7 @@ import { RINGS } from "./rings.js";
 
 
         // --------------------------------------------------------
-        // Background
+        // Full canvas background
         // --------------------------------------------------------
 
         ctx.fillStyle =
@@ -831,69 +817,9 @@ import { RINGS } from "./rings.js";
         ctx.save();
 
 
-        for (
-            const s of farStars
-        ) {
-
-            const tw =
-                0.5 +
-                0.5 *
-                Math.sin(
-                    time * 1.2 +
-                    s.tw
-                );
-
-
-            ctx.globalAlpha =
-                0.15 +
-                0.5 *
-                tw *
-                (
-                    1 -
-                    s.z * 0.5
-                );
-
-
-            ctx.fillStyle =
-                "#dfe6ff";
-
-
-            const sx =
-                CX +
-                s.x *
-                CX *
-                1.4;
-
-
-            const sy =
-                CY +
-                s.y *
-                CY *
-                1.4;
-
-
-            ctx.beginPath();
-
-
-            ctx.arc(
-                sx,
-                sy,
-                s.r,
-                0,
-                Math.PI * 2
-            );
-
-
-            ctx.fill();
-
-        }
-
-
-        ctx.restore();
-
 
         // ========================================================
-        // GLOW
+        // GLOBE GLOW
         // ========================================================
 
         ctx.globalCompositeOperation =
@@ -907,7 +833,7 @@ import { RINGS } from "./rings.js";
                 0,
                 CX,
                 CY,
-                300
+                120
             );
 
 
@@ -942,31 +868,28 @@ import { RINGS } from "./rings.js";
 
 
         // ========================================================
-        // ROTATION
+        // CAMERA ROTATION
         // ========================================================
 
         const cosY =
             Math.cos(rotY);
 
-
         const sinY =
             Math.sin(rotY);
 
-
         const cosX =
             Math.cos(tiltX);
-
 
         const sinX =
             Math.sin(tiltX);
 
 
-        // ========================================================
-        // GLOBE PARTICLES
-        // ========================================================
-
         const projected = [];
 
+
+        // ========================================================
+        // PROJECT PARTICLES
+        // ========================================================
 
         for (
             let i = 0;
@@ -993,46 +916,33 @@ import { RINGS } from "./rings.js";
 
 
             const x =
-                p.ux *
-                rCur;
-
+                p.ux * rCur;
 
             const y =
-                p.uy *
-                rCur;
-
+                p.uy * rCur;
 
             const z =
-                p.uz *
-                rCur;
+                p.uz * rCur;
 
 
             let rx =
-                x *
-                cosY -
-                z *
-                sinY;
+                x * cosY -
+                z * sinY;
 
 
             let rz =
-                x *
-                sinY +
-                z *
-                cosY;
+                x * sinY +
+                z * cosY;
 
 
             let ry =
-                y *
-                cosX -
-                rz *
-                sinX;
+                y * cosX -
+                rz * sinX;
 
 
             rz =
-                y *
-                sinX +
-                rz *
-                cosX;
+                y * sinX +
+                rz * cosX;
 
 
             const depth =
@@ -1043,7 +953,9 @@ import { RINGS } from "./rings.js";
             if (
                 depth <= 40
             ) {
+
                 continue;
+
             }
 
 
@@ -1135,7 +1047,7 @@ import { RINGS } from "./rings.js";
 
 
         // ========================================================
-        // DRAW GLOBE PARTICLES
+        // DRAW PARTICLES
         // ========================================================
 
         ctx.globalCompositeOperation =
@@ -1150,21 +1062,10 @@ import { RINGS } from "./rings.js";
                 o.p;
 
 
-            const size =
-                Math.max(
-                    0.45,
-                    p.size *
-                    o.scale *
-                    1.15
-                ) *
-                o.twinkle;
-
-
             const alpha =
                 Math.min(
                     1,
-                    o.scale *
-                    0.95
+                    o.scale * 0.95
                 ) *
                 o.twinkle *
                 o.visibility *
@@ -1179,296 +1080,13 @@ import { RINGS } from "./rings.js";
                 "#FFDC5C";
 
 
+            // Smaller, cleaner particle.
             ctx.fillRect(
                 o.sx,
                 o.sy,
-                1.5,
-                1.5
-            );
-
-
-            // VERY HIGH LOAD — don't use this
-            //
-            // ctx.drawImage(
-            //     sprites[p.spriteIdx],
-            //     o.sx - size,
-            //     o.sy - size,
-            //     size * 2,
-            //     size * 2
-            // );
-
-        }
-
-
-        // ========================================================
-        // LOCATION ORBS
-        // ========================================================
-
-        for (
-            const point of locationPoints
-        ) {
-
-            // --------------------------------------------
-            // Position on sphere
-            // --------------------------------------------
-
-            // Tiny offset outside the surface so the
-            // orb sits slightly above the globe.
-
-            const orbR =
-                R + 2;
-
-
-            const x =
-                point.ux *
-                orbR;
-
-
-            const y =
-                point.uy *
-                orbR;
-
-
-            const z =
-                point.uz *
-                orbR;
-
-
-            // --------------------------------------------
-            // Y rotation
-            // --------------------------------------------
-
-            let rx =
-                x *
-                cosY -
-                z *
-                sinY;
-
-
-            let rz =
-                x *
-                sinY +
-                z *
-                cosY;
-
-
-            // --------------------------------------------
-            // X rotation
-            // --------------------------------------------
-
-            let ry =
-                y *
-                cosX -
-                rz *
-                sinX;
-
-
-            rz =
-                y *
-                sinX +
-                rz *
-                cosX;
-
-
-            // --------------------------------------------
-            // Perspective
-            // --------------------------------------------
-
-            const depth =
-                rz +
-                FOCAL_OFFSET;
-
-
-            if (
-                depth <= 40
-            ) {
-
-                continue;
-
-            }
-
-
-            const scale =
-                FOCAL /
-                depth;
-
-
-            const sx =
-                CX +
-                rx *
-                scale;
-
-
-            const sy =
-                CY -
-                ry *
-                scale;
-
-
-            // --------------------------------------------
-            // Screen bounds
-            // --------------------------------------------
-
-            if (
-                sx < -50 ||
-                sx > W + 50 ||
-                sy < -50 ||
-                sy > H + 50
-            ) {
-
-                continue;
-
-            }
-
-
-            // --------------------------------------------
-            // Front/back visibility
-            // --------------------------------------------
-
-            const facing =
-                -rz /
-                orbR;
-
-
-            const visibility =
-                Math.max(
-                    0,
-                    Math.min(
-                        1,
-                        (
-                            facing +
-                            0.08
-                        ) /
-                        0.18
-                    )
-                );
-
-
-            if (
-                visibility <= 0.01
-            ) {
-
-                continue;
-
-            }
-
-
-            // --------------------------------------------
-            // Blink / pulse
-            // --------------------------------------------
-
-            const pulse =
-                0.5 +
-                0.5 *
-                Math.sin(
-                    time *
-                    point.pulseSpeed +
-                    point.pulsePhase
-                );
-
-
-            const radius =
-                (
-                    2.5 +
-                    pulse *
-                    2.0
-                ) *
-                scale;
-
-
-            const alpha =
-                (
-                    0.65 +
-                    pulse *
-                    0.35
-                ) *
-                visibility;
-
-
-            // --------------------------------------------
-            // Outer glow
-            // --------------------------------------------
-
-            ctx.globalCompositeOperation =
-                "lighter";
-
-
-            const glow =
-                ctx.createRadialGradient(
-                    sx,
-                    sy,
-                    0,
-                    sx,
-                    sy,
-                    radius * 4
-                );
-
-
-            glow.addColorStop(
-                0,
-                "rgba(255,40,40,0.9)"
-            );
-
-
-            glow.addColorStop(
-                0.35,
-                "rgba(255,0,0,0.35)"
-            );
-
-
-            glow.addColorStop(
                 1,
-                "rgba(255,0,0,0)"
+                1
             );
-
-
-            ctx.globalAlpha =
-                alpha;
-
-
-            ctx.fillStyle =
-                glow;
-
-
-            ctx.beginPath();
-
-
-            ctx.arc(
-                sx,
-                sy,
-                radius * 4,
-                0,
-                Math.PI * 2
-            );
-
-
-            ctx.fill();
-
-
-            // --------------------------------------------
-            // Red core
-            // --------------------------------------------
-
-            ctx.fillStyle =
-                "#ff3030";
-
-
-            ctx.beginPath();
-
-
-            ctx.arc(
-                sx,
-                sy,
-                Math.max(
-                    1.5,
-                    radius
-                ),
-                0,
-                Math.PI * 2
-            );
-
-
-            ctx.fill();
 
         }
 
@@ -1480,14 +1098,10 @@ import { RINGS } from "./rings.js";
         ctx.globalCompositeOperation =
             "source-over";
 
-
-        ctx.globalAlpha =
-            1;
+        ctx.globalAlpha = 1;
 
 
-        requestAnimationFrame(
-            frame
-        );
+        requestAnimationFrame(frame);
 
     }
 
@@ -1506,16 +1120,13 @@ import { RINGS } from "./rings.js";
 
         globeRunning = true;
 
-        requestAnimationFrame(
-            frame
-        );
+        requestAnimationFrame(frame);
 
     }
 
 
     console.log(
-        "Why u looking in the console bro?"
+        "Globe renderer initialized."
     );
-
 
 })();
