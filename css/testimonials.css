@@ -16,9 +16,7 @@ SECTION
 
     padding: 6rem 5vw;
 
-    background: #202329;
-
-    border-bottom: 1px solid #3A424A;
+    background: #F8F8F6;
 
 }
 
@@ -40,7 +38,7 @@ LEFT SIDE
 
     margin-bottom: .8rem;
 
-    color: #FED160;
+    color: #B08A32;
 
     letter-spacing: .18rem;
 
@@ -61,7 +59,7 @@ LEFT SIDE
 
     font-weight: 700;
 
-    color: #FFFFFF;
+    color: #171717;
 
 }
 
@@ -105,13 +103,13 @@ CARD
 
     border-radius: 1rem;
 
-    background: #242A2F;
+    background: #FFFFFF;
 
-    border: 1px solid #3A424A;
+    border: 1px solid #E5E5E1;
 
     box-shadow:
-        0 .6rem 1.5rem rgba(0, 0, 0, .18),
-        inset 0 .0625rem 0 rgba(255, 255, 255, .03);
+        0 .6rem 1.5rem rgba(0, 0, 0, .08),
+        inset 0 .0625rem 0 rgba(255, 255, 255, .8);
 
     transform-origin: center;
 
@@ -148,7 +146,7 @@ SHINE
         linear-gradient(
             90deg,
             transparent,
-            rgba(255, 255, 255, .06),
+            rgba(0, 0, 0, .035),
             transparent
         );
 
@@ -174,11 +172,11 @@ HOVER
 
 .testimonial-card:hover {
 
-    border-color: #FED160;
+    border-color: #D4AF57;
 
     box-shadow:
-        0 2rem 5rem rgba(254, 209, 96, .16),
-        inset 0 .0625rem 0 rgba(255, 255, 255, .08);
+        0 2rem 5rem rgba(176, 138, 50, .14),
+        inset 0 .0625rem 0 rgba(255, 255, 255, .9);
 
 }
 
@@ -201,7 +199,7 @@ QUOTE
 
     font-weight: 700;
 
-    color: #FED160;
+    color: #B08A32;
 
     pointer-events: none;
 
@@ -218,7 +216,7 @@ TEXT
 
     padding-top: 2.2rem;
 
-    color: #FFFFFF;
+    color: #252525;
 
     font-size: .82rem;
 
@@ -248,14 +246,14 @@ AUTHOR
 
     font-weight: 600;
 
-    color: #FFFFFF;
+    color: #171717;
 
 }
 
 
 .testimonial-author small {
 
-    color: rgba(255, 255, 255, .65);
+    color: #777;
 
     font-size: .68rem;
 
@@ -296,7 +294,7 @@ LOADER
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, .18);
+    background: #D8D8D4;
 
     transition: background .35s;
 
@@ -305,9 +303,10 @@ LOADER
 
 .testimonial-loader span.active {
 
-    background: #FED160;
+    background: #B08A32;
 
     box-shadow:
-        0 0 .5rem rgba(254, 209, 96, .6);
+        0 0 .5rem rgba(176, 138, 50, .4);
 
 }
+

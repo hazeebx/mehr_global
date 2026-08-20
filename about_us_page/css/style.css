@@ -1,0 +1,22 @@
+
+@import url("hero.css");
+@import url("header.css");
+@import url("temporary.css");
+
+:root {
+  --primary: #050d28;
+  --surface: #292929;
+  --accent: #907c65;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+

@@ -31,33 +31,3 @@
 
 }
 
-.temporary-ribbon {
-
-    position: absolute;
-
-    top: 2rem;
-    left: -4rem;
-
-    z-index: 100;
-
-    padding: .65rem 5rem;
-
-    background: #FED160;
-
-    color: #171717;
-
-    font-size: .72rem;
-    font-weight: 700;
-
-    letter-spacing: .04em;
-
-    text-transform: uppercase;
-
-    transform: rotate(-6deg);
-
-    box-shadow:
-        0 .4rem 1rem rgba(0, 0, 0, .12);
-
-    pointer-events: none;
-
-}

@@ -908,62 +908,6 @@ function draw() {
     }
 
 
-    /* ==============================
-       MOUSE LIGHT
-    ============================== */
-
-    if (
-        mouse.x > -100 &&
-        mouse.y > -100
-    ) {
-
-        const mouseGlow =
-            ctx.createRadialGradient(
-
-                mouse.x,
-                mouse.y,
-                0,
-
-                mouse.x,
-                mouse.y,
-                300
-
-            );
-
-
-        mouseGlow.addColorStop(
-            0,
-            "rgba(254,209,96,0.025)"
-        );
-
-
-        mouseGlow.addColorStop(
-            1,
-            "rgba(254,209,96,0)"
-        );
-
-
-        ctx.beginPath();
-
-        ctx.fillStyle =
-            mouseGlow;
-
-        ctx.arc(
-
-            mouse.x,
-            mouse.y,
-
-            300,
-
-            0,
-            Math.PI * 2
-
-        );
-
-        ctx.fill();
-
-    }
-
 
     requestAnimationFrame(draw);
 

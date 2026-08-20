@@ -267,7 +267,21 @@ faqClose.addEventListener("click", () => {
     faqBot.classList.remove("active");
 
 });
+/* ==========================
+AUTO CLOSE — CLICK OUTSIDE
+========================== */
 
+document.addEventListener("click", (event) => {
+
+    if (!faqBot.classList.contains("active")) return;
+
+    const clickedInside = faqBot.contains(event.target);
+
+    if (!clickedInside) {
+        faqBot.classList.remove("active");
+    }
+
+});
 
 /* ==========================
 FAQ BUTTONS
