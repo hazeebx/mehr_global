@@ -144,6 +144,75 @@ body {
     transform:translateY(-18%) scale(.55);
     transform-origin:center right;
 }
+
+/* ==========================
+CONTACT ACTIONS
+========================== */
+
+.hero_contact_actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+
+/* ==========================
+WHATSAPP BUTTON
+========================== */
+
+.hero_whatsapp_btn {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.45rem;
+
+    padding: 1rem 1.5rem;
+
+    border: 2px solid #25d366;
+
+    background: transparent;
+
+    color: #111;
+
+    text-decoration: none;
+
+    border-radius: 999px;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    transition:
+        background .35s ease,
+        color .35s ease,
+        transform .35s ease;
+}
+
+
+.hero_whatsapp_btn i {
+    color: #25d366;
+
+    font-size: 1.1rem;
+
+    transition:
+        color .35s ease;
+}
+
+
+.hero_whatsapp_btn:hover {
+
+    background: #25d366;
+
+    color: #fff;
+
+    transform: translateY(-2px);
+}
+
+
+.hero_whatsapp_btn:hover i {
+    color: #fff;
+}
 /* ================= TYPOGRAPHY ================= */
 
 .hero-label{
