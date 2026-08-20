@@ -1,8 +1,7 @@
 
 @import url("hero.css");
 @import url("header.css");
-@import url("temporary.css");
-@import url("about_sections.css");
+@import url("gallery.css");
 
 :root {
   --primary: #050d28;
@@ -19,7 +18,5 @@ body {
   color: #fff;
   overflow-x: hidden;
 }
-
-
 
 
