@@ -1,6 +1,9 @@
 /* =========================================
    HEADER
 ========================================= */
+.mobile-menu-btn {
+    display: none;
+}
 
 .header{
 
@@ -168,5 +171,279 @@
 .language span{
 
     font-size:18px;
+
+}
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+.mobile-menu {
+    position: fixed;
+
+    inset: 0;
+
+    background: #111;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-20px);
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        visibility .35s ease;
+}
+
+
+/* OPEN */
+
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.mobile-menu-close {
+
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #fff;
+
+    font-size: 2rem;
+    font-weight: 300;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.mobile-nav {
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 2rem;
+
+}
+
+
+.mobile-nav a {
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-family: Inter, sans-serif;
+
+    font-size: 2rem;
+    font-weight: 450;
+
+    transition:
+        color .25s ease,
+        transform .25s ease;
+
+}
+
+
+.mobile-nav a:hover {
+
+    color: #f0e3b8;
+
+    transform: translateX(4px);
+
+}
+
+
+/* LANGUAGE */
+
+.mobile-nav .mobile-language {
+
+    margin-top: 1rem;
+
+    font-size: 1rem;
+
+    color: #f0e3b8;
+
+}
+
+
+/* =========================================
+   HAMBURGER
+========================================= */
+
+.mobile-menu-btn {
+
+    display: none;
+
+    position: absolute;
+
+    right: 20px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 5px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    z-index: 10001;
+
+}
+
+
+.mobile-menu-btn span {
+
+    display: block;
+
+    width: 22px;
+    height: 2px;
+
+    background: #fff;
+
+    border-radius: 2px;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .nav-left,
+    .nav-right {
+        display: none;
+    }
+
+}
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media (min-width: 769px) {
+
+    .mobile-menu {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .header {
+        height: 70px;
+        padding: 0 24px;
+    }
+
+    .logo img {
+        height: 34px;
+    }
+
+    .nav-left {
+        display: none;
+    }
+
+    .nav-right {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .header {
+        height: 60px;
+        padding: 0 20px;
+        left: 0;
+        transform: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+
+        width: 36px;
+        height: 36px;
+
+        padding: 0;
+        margin: 0;
+
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+
+        background: transparent;
+        border: none;
+
+        cursor: pointer;
+        z-index: 10000;
+    }
+
+    .mobile-menu-btn span {
+        display: block;
+
+        width: 22px;
+        height: 2px;
+
+        background: #fff;
+        border-radius: 2px;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .mobile-menu-btn {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 
 }

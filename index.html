@@ -67,10 +67,18 @@
 
 <header class="header">
 
+        <!-- hamburger menu for mobile-->
+    <button class="mobile-menu-btn" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
     <!-- Logo -->
     <a href="#" class="logo">
         <img src="batch_white.png" alt="Mehr">
     </a>
+
 
     <!-- Main Navigation -->
     <nav class="nav-left">
@@ -105,6 +113,38 @@
     </div>
 
 </header>
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+
+    <button class="mobile-menu-close" aria-label="Close menu">
+        ×
+    </button>
+
+    <nav class="mobile-nav">
+
+        <a href="./about_us_page/about_page.html">
+            About
+        </a>
+
+        <a href="./services_page/services.html">
+            Services
+        </a>
+
+        <a href="#">
+            Contact
+        </a>
+
+        <a href="./gallery_page/gallery.html">
+            Gallery
+        </a>
+
+        <a href="#" class="mobile-language">
+            ENGLISH >
+        </a>
+
+    </nav>
+
+</div>
 
 <main>
 
@@ -187,7 +227,7 @@
 
             <p class="about-text">
 
-                Mehr Global connects organizations through an interconnected network of talent,
+                Mehr Global connects organizations through an interconnected network of talent, <br>
                 expertise, and market partners, enabling solutions across
                 industries, disciplines, and complex needs.
 
@@ -219,7 +259,7 @@
 <div class="services-grid">
 
     <div class="service-card">
-        <img src="./assets/iso_temp.jpg" alt="ISO certification and quality inspection">
+        <img src="./assets/iso_temp.png" alt="ISO certification and quality inspection">
         <div class="service-card-content">
             <h3>ISO</h3>
             <p>Internationally recognized standards and certification solutions.</p>
@@ -227,7 +267,7 @@
     </div>
 
     <div class="service-card">
-        <img src="./assets/api_temp.avif" alt="API and business development">
+        <img src="./assets/api_temp.png" alt="API and business development">
         <div class="service-card-content">
             <h3>API</h3>
             <p>Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
@@ -235,7 +275,7 @@
     </div>
 
     <div class="service-card">
-        <img src="./assets/IT_temp.avif" alt="Information technology services">
+        <img src="./assets/it_temp.png" alt="Information technology services">
         <div class="service-card-content">
             <h3>IT</h3>
             <p>Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
@@ -243,7 +283,7 @@
     </div>
 
     <div class="service-card">
-        <img src="./assets/contracting_temp.jpg" alt="Contracting and project services">
+        <img src="./assets/contracting_temp.png" alt="Contracting and project services">
         <div class="service-card-content">
             <h3>Contracting</h3>
             <p>Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
@@ -251,7 +291,7 @@
     </div>
 
     <div class="service-card">
-        <img src="./assets/training_temp.jpg" alt="Professional training">
+        <img src="./assets/training_temp.png" alt="Professional training">
         <div class="service-card-content">
             <h3>Training</h3>
             <p>Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
@@ -259,7 +299,7 @@
     </div>
 
     <div class="service-card">
-        <img src="./assets/consulting_temp.jpg" alt="Strategic business consulting">
+        <img src="./assets/consulting_temp.png" alt="Strategic business consulting">
         <div class="service-card-content">
             <h3>Consulting</h3>
             <p>Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
@@ -267,7 +307,7 @@
     </div>
 
     <div class="service-card">
-        <img src="./assets/design_temp.jpg" alt="Strategic business consulting">
+        <img src="./assets/design_temp.png" alt="Strategic business consulting">
         <div class="service-card-content">
             <h3>Design</h3>
             <p>Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
@@ -275,7 +315,7 @@
     </div>
 
     <div class="service-card">
-        <img src="./assets/saas_temp.jpg" alt="Strategic business consulting">
+        <img src="./assets/saas_temp.png" alt="Strategic business consulting">
         <div class="service-card-content">
             <h3>SaaS</h3>
             <p>Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
@@ -284,7 +324,10 @@
 
 </div>
 
-    </div>
+            <a href="./services_page/services.html" class="explore-button">
+    Explore <span>→</span>
+</a>
+
 
 </section>
 
@@ -343,8 +386,13 @@
 <div class="temporary-ribbon">
     Real statistics needed
 </div>
-    <!-- Background Canvas -->
-    <canvas id="stats-grid"></canvas>
+    <!-- Background Image -->
+
+<img
+        class="stats-map"
+        src="./assets/metrics_bg.png"
+        alt=""
+    >
 
     <div class="stats-header">
 
@@ -396,9 +444,7 @@
 
 <section class="testimonials">
 
-    <div class="temporary-ribbon">
-        Need to adjust spacing
-    </div>
+
 
     <!-- Left Side -->
 
@@ -1125,7 +1171,7 @@ MIIKU CHAN
     <!-- FULL SECTION BACKGROUND -->
     <img
         class="contact-bg"
-        src="./assets/footer_splash.png"
+        src="./assets/pexels-roberto-nickson-2478248.jpg"
         alt=""
     >
 
@@ -1139,19 +1185,24 @@ MIIKU CHAN
         <div class="info-content">
 
             <h1>
-                Lorem Ipsumlorem ipsumlorem ipsum<br>
-                lorem ipsumlorem ipsumlorem ipsum<br>
-                loremlorem ipsum.
+                Have a project in mind?<br>
+                Let’s make it happen.
             </h1>
 
             <div class="contact-details">
 
-                <div class="detail-block">
-                    <h2>Address</h2>
-                    <p>
-                        Al Dabab Street, P.O.Box: 038503, Riyadh: 11355
-                    </p>
-                </div>
+               <div class="detail-block">
+    <h2>Address</h2>
+    <p>
+        <a
+            href="https://www.google.com/maps/search/?api=1&query=Al+Dabab+Street%2C+Riyadh%2C+Saudi+Arabia"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Al Dabab Street, P.O.Box: 038503, Riyadh: 11355
+        </a>
+    </p>
+</div>
 
                 <div class="detail-block">
                     <h2>Email</h2>
@@ -1290,14 +1341,13 @@ MIIKU CHAN
         <!-- TOP LEFT -->
         <div class="footer-brand">
             <h2>MEHR Global</h2>
-            <p>Lorem Ipsum.</p>
+            <p>Beyond possibility.</p>
         </div>
 
 
         <!-- TOP RIGHT -->
         <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
+            <a href="./services_page/services.html">Services</a>
         </div>
 
 

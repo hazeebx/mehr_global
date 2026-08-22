@@ -338,3 +338,115 @@ WHATSAPP BUTTON
     color: #555;
 }
 
+
+@media (max-width: 768px) {
+
+    .hero {
+        height: auto;
+        min-height: 100svh;
+    }
+
+    .hero-left {
+        left: 1.5rem;
+        right: 1.5rem;
+        bottom: 2rem;
+        width: auto;
+        min-width: 0;
+    }
+
+    .hero-left h1 {
+        font-size: clamp(2.8rem, 12vw, 4.5rem);
+    }
+
+    .hero-label {
+        font-size: .65rem;
+        letter-spacing: .2em;
+        margin-bottom: 12px;
+    }
+
+    .hero-left p {
+        font-size: .85rem;
+        line-height: 1.6;
+        margin-top: 16px;
+    }
+
+    .hero_contact {
+        position: absolute;
+        top: auto;
+        right: 1.5rem;
+        bottom: 2rem;
+        transform: none;
+    }
+
+    .hero_contact_card {
+        width: min(20rem, calc(100vw - 3rem));
+        padding: 1.5rem;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .hero_contact {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .hero {
+        height: 50svh;
+        min-height: 0;
+    }
+
+    .hero-left {
+        left: 1.5rem;
+        right: 1.5rem;
+        bottom: 1rem;
+        width: auto;
+        min-width: 0;
+    }
+
+    .hero-left h1 {
+        font-size: clamp(2.8rem, 11vw, 4.5rem);
+        line-height: .98;
+    }
+
+    .hero_contact {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .about {
+        padding-top: 35px;
+        padding-bottom: 30px;
+    }
+
+    .about-container {
+        padding: 0 1.5rem;
+    }
+
+    .about-label {
+        font-size: 0.85rem;
+        letter-spacing: .08em;
+    }
+
+    .about-title {
+        margin-top: 8px;
+        max-width: 100%;
+
+        font-size: clamp(2.2rem, 9vw, 3.5rem);
+        line-height: 1.05;
+        letter-spacing: -.04em;
+    }
+
+    .about-grid {
+        margin-top: 22px;
+        max-width: 100%;
+    }
+
+}

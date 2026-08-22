@@ -13,3 +13,15 @@ window.addEventListener("scroll", () => {
     }
 
 });
+
+const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+const mobileMenu = document.querySelector(".mobile-menu");
+const mobileMenuClose = document.querySelector(".mobile-menu-close");
+
+mobileMenuBtn.addEventListener("click", () => {
+    mobileMenu.classList.add("active");
+});
+
+mobileMenuClose.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+});

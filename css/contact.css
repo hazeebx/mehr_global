@@ -24,27 +24,6 @@ CONTACT SECTION
     box-sizing: border-box;
 }
 
-/*remove this once ur done*/
-.contact-section::after {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    bottom: 0;
-
-    left: 60%;
-
-    width: 2px;
-
-    background: red;
-
-    z-index: 10;
-
-    transform: translateX(-50%);
-}
-
-
 /* ==========================
 FULL SECTION BACKGROUND
 ========================== */
@@ -115,12 +94,12 @@ HEADING
 ========================== */
 
 .info-content h1 {
-    font-size:
-        clamp(1.5rem, 2.4vw, 2.3rem);
+font-size:
+    clamp(1.8rem, 2.88vw, 2.76rem);
 
     line-height: 1.08;
 
-    font-weight: 300;
+    font-weight: 500;
 
     letter-spacing: -0.035em;
 
@@ -153,7 +132,7 @@ CONTACT DETAILS
 
 
 .detail-block h2 {
-    font-size: 0.8rem;
+    font-size: 1.5rem;
 
     font-weight: 400;
 
@@ -167,7 +146,7 @@ CONTACT DETAILS
 .detail-block a {
     color: #ffffff;
 
-    font-size: 0.7rem;
+    font-size: 1rem;
 
     line-height: 1.5;
 
@@ -396,23 +375,6 @@ FORM WRAPPER
         0 15px 42px
         rgba(0, 0, 0, 0.25);
 }
-.contact-form-wrapper::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    bottom: 0;
-
-    height: 2px;
-
-    background: red;
-
-    z-index: 10;
-}
-
 /* ==========================
 FORM TITLE
 ========================== */
@@ -754,4 +716,11 @@ MOBILE
         grid-template-columns: 1fr;
     }
 
+}
+
+
+@media (max-width: 768px) {
+    .contact-form-wrapper {
+        display: none;
+    }
 }
