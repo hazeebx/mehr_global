@@ -4,75 +4,57 @@
 // ============================================================
 
 const itData = {
-    infrastructure: {
-        title: "IT Infrastructure",
-        subtitle: "Networks & Systems",
+    "27001": {
+        title: "ISO 27001",
+        subtitle: "Information Security Management System",
         description:
-            "Reliable technology infrastructure designed around the way your organization operates. From networks and systems to monitoring and infrastructure management, we help create a stable foundation for your business.",
-        image:
-            "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85",
-        icon: "⌘",
-        capabilities: [
-            "Network architecture and infrastructure",
-            "Server and systems management",
-            "Infrastructure monitoring",
-            "Hardware and technology deployment",
-            "System reliability and performance",
-            "IT infrastructure optimization"
-        ]
-    },
-
-    cloud: {
-        title: "Cloud Solutions",
-        subtitle: "Cloud & Platforms",
-        description:
-            "Cloud environments structured around scalable workloads, reliable operations and practical platform management.",
-        image:
-            "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=85",
-        icon: "◈",
-        capabilities: [
-            "Cloud architecture and migration",
-            "Platform management",
-            "Scalable infrastructure planning",
-            "Cloud operations",
-            "Performance monitoring",
-            "Cost-conscious deployment"
-        ]
-    },
-
-    cybersecurity: {
-        title: "Cybersecurity",
-        subtitle: "Security & Risk",
-        description:
-            "Security practices designed to reduce exposure, strengthen controls and improve visibility across systems and workflows.",
+            "A systematic framework for managing information security risks, protecting sensitive information and strengthening security controls across the organization.",
         image:
             "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=85",
         icon: "◇",
         capabilities: [
-            "Security assessments",
-            "Identity and access controls",
-            "Risk visibility",
-            "Monitoring and incident readiness",
-            "Security policy support",
-            "Infrastructure hardening"
+            "Information security risk management",
+            "Security controls and governance",
+            "Information asset protection",
+            "Access and identity management",
+            "Security monitoring and incident readiness",
+            "Continual improvement of information security"
         ]
     },
 
-    transformation: {
-        title: "Digital Transformation",
-        subtitle: "Digital Workflows",
+    "20000": {
+        title: "ISO 20000",
+        subtitle: "IT Service Management System",
         description:
-            "Technology-led improvements that simplify workflows, connect information and create more dependable operating models.",
+            "A management system framework for delivering consistent, reliable and continually improving IT services aligned with organizational and customer needs.",
+        image:
+            "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85",
+        icon: "◈",
+        capabilities: [
+            "IT service management processes",
+            "Service delivery and support",
+            "Service performance management",
+            "Incident and problem management",
+            "Service continuity and availability",
+            "Continual service improvement"
+        ]
+    },
+
+    itil: {
+        title: "ITIL",
+        subtitle: "IT Service Management",
+        description:
+            "IT service management practices designed to improve service delivery, operational efficiency and alignment between technology services and business needs.",
         image:
             "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85",
         icon: "↗",
         capabilities: [
-            "Workflow redesign",
-            "Digital process mapping",
-            "Systems integration",
-            "Automation opportunities",
-            "Operational visibility",
-            "Technology adoption support"
+            "IT service management practices",
+            "Service design and delivery",
+            "Incident and problem management",
+            "Change and service transition",
+            "Service performance improvement",
+            "Business and IT alignment"
         ]
     }
 };
@@ -180,73 +162,27 @@ const isoData = {
         ]
     },
 
-    "27001": {
-        title: "ISO 27001:2022",
-        subtitle: "Information Security Management",
+    "22301": {
+        title: "ISO 22301",
+        subtitle: "Business Continuity Management System",
         description:
-            "A systematic approach to managing information security risk, controls and governance across an organization.",
+            "A management system framework that helps organizations prepare for, respond to and recover from disruptive incidents while maintaining critical business operations.",
         image:
-            "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=85",
+            "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85",
         benefits: [
-            "Improves information security",
-            "Strengthens risk management",
-            "Supports security governance",
-            "Improves control visibility",
-            "Builds customer trust",
-            "Supports continual improvement"
-        ]
-    },
-
-    "20000": {
-        title: "ISO 20000-1:2018",
-        subtitle: "IT Service Management System",
-        description:
-            "A management system framework for delivering, monitoring and continually improving IT service management practices.",
-        image:
-            "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85",
-        benefits: [
-            "Improves service consistency",
-            "Strengthens service processes",
-            "Improves operational visibility",
-            "Supports continual improvement",
-            "Aligns service delivery",
-            "Builds customer confidence"
-        ]
-    },
-
-    "50001": {
-        title: "ISO 50001:2018",
-        subtitle: "Energy Management System",
-        description:
-            "A framework for improving energy performance through systematic energy management, monitoring and continual improvement.",
-        image:
-            "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=85",
-        benefits: [
-            "Improves energy performance",
-            "Supports energy monitoring",
-            "Reduces avoidable consumption",
-            "Improves operational awareness",
-            "Supports continual improvement",
-            "Strengthens reporting"
-        ]
-    },
-
-    "31000": {
-        title: "ISO 31000:2018",
-        subtitle: "Risk Management",
-        description:
-            "A principles-based framework for identifying, evaluating and managing risk across organizational activities.",
-        image:
-            "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=85",
-        benefits: [
-            "Improves risk visibility",
-            "Supports structured decision-making",
-            "Strengthens risk ownership",
-            "Improves consistency",
-            "Supports resilience",
-            "Encourages continual review"
+            "Strengthens business resilience",
+            "Improves preparedness for disruptions",
+            "Supports continuity of critical operations",
+            "Improves incident response",
+            "Strengthens recovery planning",
+            "Builds stakeholder confidence"
         ]
     }
+
+
+
+
+
 };
 
 
@@ -352,10 +288,8 @@ const isoLabels = {
     "13485": ["◈", "ISO 13485:2016", "Medical Devices QMS"],
     "17025": ["⚗", "ISO 17025:2017", "Laboratory Management System"],
     "22000": ["♜", "ISO 22000:2018", "Food Safety Management System"],
-    "27001": ["◉", "ISO 27001:2022", "Information Security Management"],
-    "20000": ["▣", "ISO 20000-1:2018", "IT Service Management System"],
-    "50001": ["⚡", "ISO 50001:2018", "Energy Management System"],
-    "31000": ["◌", "ISO 31000:2018", "Risk Management"]
+    "22301": ["♜", "ISO 22301", "Business Continuity Management System"]
+
 };
 
 function renderIsoList(filter = "") {
@@ -441,6 +375,599 @@ document.getElementById("isoSearch").addEventListener("input", (event) => {
 
 renderIsoList();
 
+
+// ============================================================
+// RENDER API LIST
+// ============================================================
+
+const apiData = {
+
+    "q1": {
+        title: "API Spec Q1",
+        subtitle: "Quality Management System",
+        description:
+            "API Spec Q1 is a quality management system standard designed for organizations manufacturing products for the petroleum and natural gas industry. It provides a structured framework for quality, operational control and continual improvement.",
+        image:
+            "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=900&q=85",
+        icon: "◈",
+        capabilities: [
+            "Quality management system implementation",
+            "Manufacturing process controls",
+            "Product quality and consistency",
+            "Supplier and purchasing controls",
+            "Risk and operational management",
+            "Continual improvement"
+        ]
+    },
+
+
+    "q2": {
+        title: "API Spec Q2",
+        subtitle: "Service Supply Organization QMS",
+        description:
+            "API Spec Q2 provides a quality management system framework for organizations involved in service-related activities within the petroleum and natural gas industry.",
+        image:
+            "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=85",
+        icon: "◇",
+        capabilities: [
+            "Service quality management",
+            "Operational risk management",
+            "Service delivery controls",
+            "Equipment and resource management",
+            "Supplier and subcontractor controls",
+            "Continual service improvement"
+        ]
+    },
+
+
+    "monogram": {
+        title: "API Monogram Program",
+        subtitle: "Product Certification",
+        description:
+            "The API Monogram Program supports manufacturers seeking recognition that their products conform to applicable API specifications and quality requirements.",
+        image:
+            "https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=900&q=85",
+        icon: "◎",
+        capabilities: [
+            "API Monogram certification support",
+            "Product specification compliance",
+            "Quality management system requirements",
+            "Manufacturing process controls",
+            "Documentation and record controls",
+            "Certification readiness"
+        ]
+    }
+
+};
+
+
+// ============================================================
+// API LABELS
+// ============================================================
+
+const apiLabels = {
+
+    "q1": [
+        "◈",
+        "API Spec Q1",
+        "Quality Management System"
+    ],
+
+    "q2": [
+        "◇",
+        "API Spec Q2",
+        "Service Supply Organization QMS"
+    ],
+
+    "monogram": [
+        "◎",
+        "API Monogram",
+        "Product Certification"
+    ]
+
+};
+
+
+// ============================================================
+// RENDER API LIST
+// ============================================================
+
+const apiList = document.getElementById("apiList");
+
+function renderApiList(filter = "") {
+
+    if (!apiList) return;
+
+    apiList.innerHTML = "";
+
+    Object.entries(apiData)
+
+        .filter(([key, item]) => {
+
+            const q = filter.trim().toLowerCase();
+
+            if (!q) return true;
+
+            return (
+                item.title.toLowerCase().includes(q) ||
+                item.subtitle.toLowerCase().includes(q)
+            );
+
+        })
+
+        .forEach(([key, item], index) => {
+
+            const [icon, code, name] =
+                apiLabels[key];
+
+            const button =
+                document.createElement("button");
+
+            button.type = "button";
+
+            button.className =
+                "explorer-item" +
+                (index === 0 ? " active" : "");
+
+            button.dataset.api = key;
+
+            button.innerHTML = `
+
+                <span class="item-icon">
+                    ${icon}
+                </span>
+
+                <span class="item-copy">
+
+                    <span class="item-code">
+                        ${code}
+                    </span>
+
+                    <span class="item-name">
+                        ${name}
+                    </span>
+
+                </span>
+
+                <span class="item-arrow">
+                    ›
+                </span>
+
+            `;
+
+            apiList.appendChild(button);
+
+        });
+
+
+    const first =
+        apiList.querySelector(".explorer-item");
+
+    if (first) {
+
+        updateApiPanel(
+            first.dataset.api
+        );
+
+    }
+
+}
+
+
+// ============================================================
+// UPDATE API PANEL
+// ============================================================
+
+function updateApiPanel(key) {
+
+    const item = apiData[key];
+
+    if (!item) return;
+
+
+    document
+        .querySelectorAll("#apiList .explorer-item")
+        .forEach(btn => {
+
+            btn.classList.toggle(
+                "active",
+                btn.dataset.api === key
+            );
+
+        });
+
+
+    document.getElementById("apiTitle")
+        .textContent = item.title;
+
+
+    document.getElementById("apiSubtitle")
+        .textContent = item.subtitle;
+
+
+    document.getElementById("apiDescription")
+        .textContent = item.description;
+
+
+    const image =
+        document.getElementById("apiImage");
+
+    image.src = item.image;
+    image.alt = item.title;
+
+
+    document.getElementById("apiCapabilities")
+        .innerHTML =
+
+        item.capabilities
+
+            .map(text => `
+
+                <div class="check-item">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    <span>
+                        ${text}
+                    </span>
+
+                </div>
+
+            `)
+
+            .join("");
+
+}
+
+
+// ============================================================
+// API LIST CLICK
+// ============================================================
+
+if (apiList) {
+
+    apiList.addEventListener(
+        "click",
+        (event) => {
+
+            const button =
+                event.target.closest(
+                    ".explorer-item"
+                );
+
+            if (!button) return;
+
+            updateApiPanel(
+                button.dataset.api
+            );
+
+        }
+    );
+
+}
+
+
+// ============================================================
+// API SEARCH
+// ============================================================
+
+const apiSearch =
+    document.getElementById("apiSearch");
+
+if (apiSearch) {
+
+    apiSearch.addEventListener(
+        "input",
+        (event) => {
+
+            renderApiList(
+                event.target.value
+            );
+
+        }
+    );
+
+}
+
+
+// ============================================================
+// INITIAL API RENDER
+// ============================================================
+
+renderApiList();
+
+
+
+const contractingData = {
+    hvac: {
+        title: "HVAC Maintenance Services",
+        subtitle: "Heating, Ventilation & Air Conditioning",
+        description:
+            "Integrated HVAC maintenance services focused on reliable system performance, energy efficiency and long-term equipment reliability across critical facilities.",
+        image:
+            "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=85",
+        icon: "❄",
+        capabilities: [
+            "Preventive maintenance",
+            "Predictive maintenance",
+            "Corrective maintenance",
+            "Chiller overhauling",
+            "Air duct cleaning",
+            "Indoor air quality management",
+            "Energy audits & efficiency optimization"
+        ]
+    },
+
+    fireProtection: {
+        title: "Fire Protection System Maintenance",
+        subtitle: "Fire Safety & Protection",
+        description:
+            "Comprehensive fire protection maintenance designed to keep critical safety systems operational, compliant and ready to respond when required.",
+        image:
+            "https://images.unsplash.com/photo-1586864387789-628af9feed72?auto=format&fit=crop&w=900&q=85",
+        icon: "♨",
+        capabilities: [
+            "Fire pump testing & inspection",
+            "Sprinkler system inspection",
+            "Fire alarm testing & maintenance",
+            "Emergency system verification",
+            "Civil defense compliance support"
+        ]
+    },
+
+    solar: {
+        title: "Solar System Maintenance Services",
+        subtitle: "Solar Energy & Performance",
+        description:
+            "Solar system services covering design, installation, maintenance and performance optimization to support reliable and efficient energy generation.",
+        image:
+            "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=85",
+        icon: "☀",
+        capabilities: [
+            "Solar plant design & engineering",
+            "Solar panel installation",
+            "Panel cleaning & preventive maintenance",
+            "Performance monitoring & reporting",
+            "Inverter maintenance",
+            "Battery inspection & testing",
+            "Energy yield optimization"
+        ]
+    }
+};
+
+const contractingIndustries = [
+    "Hotels & Hospitality",
+    "Hospitals & Healthcare",
+    "Airports & Aviation",
+    "Educational Institutions",
+    "Universities & Research Centers",
+    "Metro & Rail Infrastructure",
+    "Industrial Facilities",
+    "Manufacturing Plants",
+    "Commercial Buildings",
+    "Shopping Malls",
+    "Data Centers",
+    "Government Projects",
+    "Residential Developments",
+    "Oil & Gas Support Facilities",
+    "Logistics & Warehousing Centers"
+];
+
+// ============================================================
+// RENDER CONTRACTING LIST
+// ============================================================
+
+const contractingList =
+    document.getElementById("contractingList");
+
+
+function renderContractingList(filter = "") {
+
+    contractingList.innerHTML = "";
+
+    Object.entries(contractingData)
+
+        .filter(([key, item]) => {
+
+            const q =
+                filter.trim().toLowerCase();
+
+            if (!q) return true;
+
+            return (
+                item.title
+                    .toLowerCase()
+                    .includes(q) ||
+
+                item.subtitle
+                    .toLowerCase()
+                    .includes(q)
+            );
+
+        })
+
+        .forEach(([key, item], index) => {
+
+            const button =
+                document.createElement("button");
+
+            button.type = "button";
+
+            button.className =
+                "explorer-item" +
+                (index === 0 ? " active" : "");
+
+            button.dataset.contracting = key;
+
+            button.innerHTML = `
+                <span class="item-icon">
+                    ${item.icon}
+                </span>
+
+                <span class="item-copy">
+
+                    <span class="item-code">
+                        ${item.title}
+                    </span>
+
+                    <span class="item-name">
+                        ${item.subtitle}
+                    </span>
+
+                </span>
+
+                <span class="item-arrow">
+                    ›
+                </span>
+            `;
+
+            contractingList.appendChild(button);
+
+        });
+
+
+    const first =
+        contractingList.querySelector(
+            ".explorer-item"
+        );
+
+
+    if (first) {
+
+        updateContractingPanel(
+            first.dataset.contracting
+        );
+
+    }
+
+}
+
+
+// ============================================================
+// UPDATE CONTRACTING PANEL
+// ============================================================
+
+function updateContractingPanel(key) {
+
+    const item =
+        contractingData[key];
+
+    if (!item) return;
+
+
+    document
+        .querySelectorAll(
+            "#contractingList .explorer-item"
+        )
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.contracting === key
+            );
+
+        });
+
+
+    document
+        .getElementById("contractingTitle")
+        .textContent = item.title;
+
+
+    document
+        .getElementById("contractingSubtitle")
+        .textContent = item.subtitle;
+
+
+    document
+        .getElementById("contractingDescription")
+        .textContent = item.description;
+
+
+    const image =
+        document.getElementById(
+            "contractingImage"
+        );
+
+
+    image.src = item.image;
+
+    image.alt = item.title;
+
+
+    document
+        .getElementById(
+            "contractingCapabilities"
+        )
+        .innerHTML =
+
+        item.capabilities
+
+            .map(text => `
+                <div class="check-item">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    <span>
+                        ${text}
+                    </span>
+
+                </div>
+            `)
+
+            .join("");
+
+}
+
+
+// ============================================================
+// CONTRACTING CLICK
+// ============================================================
+
+contractingList.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest(
+                ".explorer-item"
+            );
+
+        if (!button) return;
+
+        updateContractingPanel(
+            button.dataset.contracting
+        );
+
+    }
+);
+
+
+// ============================================================
+// CONTRACTING SEARCH
+// ============================================================
+
+document
+    .getElementById("contractingSearch")
+    .addEventListener(
+        "input",
+        event => {
+
+            renderContractingList(
+                event.target.value
+            );
+
+        }
+    );
+
+
+// INITIAL RENDER
+
+renderContractingList();
 
 // ============================================================
 // COLLAPSIBLE MASTER SERVICE SIDEBAR

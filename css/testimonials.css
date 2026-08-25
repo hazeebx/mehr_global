@@ -28,7 +28,6 @@
 }
 
 
-
 /* ===========================
    TEMPORARY RIBBON
 =========================== */
@@ -55,7 +54,6 @@
     z-index: 100;
 
 }
-
 
 
 /* ===========================
@@ -90,7 +88,13 @@
 
 .testimonial-left h2 {
 
-    font-size: clamp(1.872rem, 2.9952vw, 3.1824rem);
+    margin: 0;
+
+    font-size: clamp(
+        1.872rem,
+        2.9952vw,
+        3.1824rem
+    );
 
     line-height: 1.05;
 
@@ -101,9 +105,8 @@
 }
 
 
-
 /* ===========================
-   CARD STACK
+   TESTIMONIAL CARD DISPLAY
 =========================== */
 
 .testimonial-stack {
@@ -118,8 +121,16 @@
 
     isolation: isolate;
 
-}
+    /*
+       IMPORTANT:
 
+       The side cards extend outside
+       the main card's boundaries.
+    */
+
+    overflow: visible;
+
+}
 
 
 /* ===========================
@@ -148,18 +159,62 @@
         0 .9rem 2.4rem rgba(30, 35, 60, .12),
         0 .18rem .6rem rgba(30, 35, 60, .05);
 
-    transform-origin: center;
+    transform-origin: center center;
 
     transform-style: preserve-3d;
+
+    /*
+       GSAP controls:
+       - x
+       - y
+       - scale
+       - rotation
+       - opacity
+       - z-index
+
+       So don't add a CSS transform here.
+    */
 
     transition:
         border-color .35s ease,
         box-shadow .35s ease;
 
-    will-change: transform, opacity;
+    will-change:
+        transform,
+        opacity;
+
+    backface-visibility: hidden;
 
 }
 
+
+/* ===========================
+   SIDE CARDS
+=========================== */
+
+/*
+   These are positioned by GSAP.
+
+   FRONT
+   x: 0
+   scale: 1
+   opacity: 1
+
+   LEFT
+   x: -58
+   scale: .88
+   opacity: .28
+
+   RIGHT
+   x: 58
+   scale: .88
+   opacity: .28
+
+   BACK
+   x: 0
+   scale: .82
+   opacity: 0
+*/
 
 
 /* ===========================
@@ -170,8 +225,8 @@
 
     position: absolute;
 
-    top: 0.6rem;
-    right: 0.6rem;
+    top: .6rem;
+    right: .6rem;
 
     width: 4.32rem;
     height: 4.32rem;
@@ -199,7 +254,6 @@
 }
 
 
-
 /* ===========================
    MAIN TESTIMONIAL CONTENT
 =========================== */
@@ -222,7 +276,6 @@
     overflow: hidden;
 
 }
-
 
 
 /* ===========================
@@ -267,7 +320,7 @@
 
     color: #454955;
 
-    font-size: 0.9rem;
+    font-size: .9rem;
 
     line-height: 1;
 
@@ -278,7 +331,6 @@
     overflow: hidden;
 
 }
-
 
 
 /* ===========================
@@ -315,7 +367,6 @@
 }
 
 
-
 /* ===========================
    COMPANY LOGO
 =========================== */
@@ -331,7 +382,6 @@
     transform: translate(-50%, -50%);
 
     width: 3.5rem;
-
     height: 3.5rem;
 
     display: flex;
@@ -344,8 +394,6 @@
     border-radius: 50%;
 
     background: #ffffff;
-
-
 
     z-index: 20;
 
@@ -362,7 +410,6 @@
 }
 
 
-
 /* ===========================
    AUTHOR
 =========================== */
@@ -377,8 +424,6 @@
 
     gap: .18rem;
 
-
-
     max-width: 100%;
 
 }
@@ -388,7 +433,11 @@
 
     color: #ffffff;
 
-    font-size: clamp(.8rem, 1.2vw, 1.08rem);
+    font-size: clamp(
+        .8rem,
+        1.2vw,
+        1.08rem
+    );
 
     line-height: 1.15;
 
@@ -408,7 +457,6 @@
     font-style: italic;
 
 }
-
 
 
 /* ===========================
@@ -444,14 +492,13 @@
 }
 
 
-
 /* ===========================
-   CARD HOVER
+   FRONT CARD HOVER
 =========================== */
 
 .testimonial-card:hover {
 
-    border-color: rgba(255,255,255,.9);
+    border-color: rgba(255,255,255,.95);
 
     box-shadow:
         0 1.2rem 3rem rgba(50, 60, 130, .18),
@@ -459,6 +506,19 @@
 
 }
 
+
+/*
+   Only the active/front card should
+   respond to the mouse.
+*/
+
+.testimonial-card:not(:hover) {
+
+    transition:
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+}
 
 
 /* ===========================
@@ -503,7 +563,6 @@
 }
 
 
-
 /* ===========================
    HIDDEN CARDS
 =========================== */
@@ -515,50 +574,94 @@
 }
 
 
-
 /* ===========================
-   LOADER
+   LOADER / MANUAL SLIDER
 =========================== */
 
 .testimonial-loader {
 
     display: flex;
 
-    gap: .27rem;
+    align-items: center;
+
+    gap: .32rem;
 
     margin-top: .9rem;
 
 }
 
 
+/* ===========================
+   SLIDER DOT
+=========================== */
+
 .testimonial-loader span {
 
-    width: .27rem;
+    display: block;
 
-    aspect-ratio: 1;
+    width: .32rem;
+    height: .32rem;
+
+    flex: none;
+
+    padding: 0;
 
     border-radius: 50%;
 
     background: #d8d8d4;
 
+    cursor: pointer;
+
     transition:
-        background .35s,
-        transform .35s;
+        background .35s ease,
+        transform .35s ease,
+        width .35s ease,
+        opacity .35s ease;
 
 }
 
+
+/* ===========================
+   DOT HOVER
+=========================== */
+
+.testimonial-loader span:hover {
+
+    background: #aeb2c0;
+
+    transform: scale(1.15);
+
+}
+
+
+/* ===========================
+   ACTIVE DOT
+=========================== */
 
 .testimonial-loader span.active {
+    width: .65rem;
+    border-radius: 999px;
 
-    background: #6874df;
+    background: #B08A32;
 
     box-shadow:
-        0 0 .36rem rgba(104,116,223,.45);
+        0 0 .36rem rgba(176, 138, 50, .45);
 
-    transform: scale(1.2);
-
+    transform: none;
 }
 
+
+/* ===========================
+   ACCESSIBILITY
+=========================== */
+
+.testimonial-loader span:focus-visible {
+
+    outline: 2px solid #6874df;
+
+    outline-offset: .2rem;
+
+}
 
 
 /* ===========================
@@ -578,6 +681,10 @@
     }
 
 
+    /* --------------------------
+       LEFT SIDE
+    -------------------------- */
+
     .testimonial-left {
 
         width: 100%;
@@ -594,6 +701,10 @@
     }
 
 
+    /* --------------------------
+       CARD AREA
+    -------------------------- */
+
     .testimonial-stack {
 
         width: min(15.6rem, 90vw);
@@ -601,7 +712,6 @@
     }
 
 }
-
 
 
 /* ===========================
@@ -617,12 +727,20 @@
     }
 
 
+    /* --------------------------
+       CARD AREA
+    -------------------------- */
+
     .testimonial-stack {
 
         width: min(13.2rem, 94vw);
 
     }
 
+
+    /* --------------------------
+       CONTENT
+    -------------------------- */
 
     .testimonial-content {
 
@@ -643,6 +761,10 @@
     }
 
 
+    /* --------------------------
+       PERSON
+    -------------------------- */
+
     .testimonial-person {
 
         width: 3.6rem;
@@ -654,6 +776,10 @@
     }
 
 
+    /* --------------------------
+       COMPANY
+    -------------------------- */
+
     .testimonial-company {
 
         padding:
@@ -664,6 +790,10 @@
     }
 
 
+    /* --------------------------
+       COMPANY LOGO
+    -------------------------- */
+
     .testimonial-company-logo {
 
         width: 4.2rem;
@@ -673,6 +803,10 @@
 
     }
 
+
+    /* --------------------------
+       AUTHOR
+    -------------------------- */
 
     .testimonial-author strong {
 
@@ -688,6 +822,10 @@
     }
 
 
+    /* --------------------------
+       ROLE
+    -------------------------- */
+
     .testimonial-role {
 
         font-size: .48rem;
@@ -695,6 +833,55 @@
         min-height: 1.25rem;
 
         padding: .3rem .6rem;
+
+    }
+
+
+    /* --------------------------
+       SLIDER
+    -------------------------- */
+
+    .testimonial-loader {
+
+        margin-top: .75rem;
+
+    }
+
+
+    .testimonial-loader span {
+
+        width: .28rem;
+        height: .28rem;
+
+    }
+
+
+    .testimonial-loader span.active {
+
+        width: .58rem;
+
+    }
+
+}
+
+
+/* ===========================
+   REDUCED MOTION
+=========================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .testimonial-card {
+
+        transition:
+            border-color .2s ease,
+            box-shadow .2s ease;
+
+    }
+
+    .testimonial-card::before {
+
+        display: none;
 
     }
 

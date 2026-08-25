@@ -1,68 +1,721 @@
-const form = document.getElementById("contactForm");
+/* ==============================
+   CONTACT FORM
+============================== */
 
-form.addEventListener("submit", function (event) {
-
-    event.preventDefault();
-
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const subject = document.getElementById("subject");
-    const message = document.getElementById("message");
-
-    let valid = true;
+console.log("=================================");
+console.log("CONTACT FORM SCRIPT LOADED");
+console.log("=================================");
 
 
-    // Remove previous invalid states
-    document.querySelectorAll(".invalid").forEach((field) => {
-        field.classList.remove("invalid");
-    });
+/* ==============================
+   FIND FORM
+============================== */
+
+const contactForm =
+    document.getElementById("contactForm");
+
+console.log(
+    "Contact form element:",
+    contactForm
+);
 
 
-    // Name
-    if (name.value.trim() === "") {
-        name.classList.add("invalid");
-        valid = false;
+/* ==============================
+   CHECK FORM
+============================== */
+
+if (contactForm) {
+
+    console.log("✓ Contact form found");
+
+
+    /* ==============================
+       FIND BUTTON
+    ============================== */
+
+    const submitButton =
+        document.getElementById("contactSubmit");
+
+    console.log(
+        "Submit button:",
+        submitButton
+    );
+
+
+    /* ==============================
+       FIND BUTTON ELEMENTS
+    ============================== */
+
+    const submitText =
+        submitButton?.querySelector(".submit-text");
+
+    const submitLoading =
+        submitButton?.querySelector(".submit-loading");
+
+    console.log(
+        "Submit text:",
+        submitText
+    );
+
+    console.log(
+        "Submit loading:",
+        submitLoading
+    );
+
+
+    /* ==============================
+       FIND STATUS ELEMENT
+    ============================== */
+
+    const formStatus =
+        document.getElementById("formStatus");
+
+    console.log(
+        "Form status:",
+        formStatus
+    );
+
+
+    /* ==============================
+       FORMSPREE ENDPOINT
+    ============================== */
+
+    const FORMSPREE_ENDPOINT =
+        "https://formspree.io/f/xyegqeqb";
+
+
+    console.log(
+        "Formspree endpoint:",
+        FORMSPREE_ENDPOINT
+    );
+
+
+    /* ==============================
+       CHECK REQUIRED ELEMENTS
+    ============================== */
+
+    if (!submitButton) {
+
+        console.error(
+            "❌ ERROR: #contactSubmit was not found."
+        );
+
+    }
+
+    if (!submitText) {
+
+        console.error(
+            "❌ ERROR: .submit-text was not found."
+        );
+
+    }
+
+    if (!submitLoading) {
+
+        console.error(
+            "❌ ERROR: .submit-loading was not found."
+        );
+
+    }
+
+    if (!formStatus) {
+
+        console.error(
+            "❌ ERROR: #formStatus was not found."
+        );
+
     }
 
 
-    // Email
-    if (
-        email.value.trim() === "" ||
-        !email.checkValidity()
-    ) {
-        email.classList.add("invalid");
-        valid = false;
-    }
+    /* ==============================
+       SUBMIT
+    ============================== */
+
+    contactForm.addEventListener(
+        "submit",
+        async (event) => {
+
+            console.log(
+                "================================="
+            );
+
+            console.log(
+                "FORM SUBMIT EVENT FIRED"
+            );
+
+            console.log(
+                "================================="
+            );
 
 
-    // Subject
-    if (subject.value.trim() === "") {
-        subject.classList.add("invalid");
-        valid = false;
-    }
+            /* ------------------------------
+               Prevent normal form submission
+            ------------------------------ */
+
+            event.preventDefault();
+
+            console.log(
+                "✓ Default form submission prevented"
+            );
 
 
-    // Message
-    if (message.value.trim() === "") {
-        message.classList.add("invalid");
-        valid = false;
-    }
+            /* ------------------------------
+               Prevent duplicate submissions
+            ------------------------------ */
+
+            if (submitButton.disabled) {
+
+                console.warn(
+                    "⚠ Submission blocked: button already disabled"
+                );
+
+                return;
+
+            }
 
 
-    if (!valid) {
-        return;
-    }
+            /* ------------------------------
+               Remove previous invalid states
+            ------------------------------ */
+
+            document
+                .querySelectorAll(".invalid")
+                .forEach((field) => {
+
+                    field.classList.remove("invalid");
+
+                });
 
 
-    /*
-        Frontend is valid.
+            console.log(
+                "✓ Previous validation states cleared"
+            );
 
-        Replace this section with your actual
-        form submission/backend/email service.
-    */
 
-    alert("Thank you! Your enquiry has been submitted.");
+            /* ==============================
+               GET FIELDS
+            ============================== */
 
-    form.reset();
+            const name =
+                document.getElementById("name");
 
-});
+            const email =
+                document.getElementById("email");
+
+            const phone =
+                document.getElementById("phone");
+
+            const subject =
+                document.getElementById("subject");
+
+            const message =
+                document.getElementById("message");
+
+
+            console.log(
+                "Form fields:",
+                {
+                    name,
+                    email,
+                    phone,
+                    subject,
+                    message
+                }
+            );
+
+
+            /* ==============================
+               CHECK FIELDS EXIST
+            ============================== */
+
+            if (!name) {
+
+                console.error(
+                    "❌ ERROR: #name not found"
+                );
+
+            }
+
+            if (!email) {
+
+                console.error(
+                    "❌ ERROR: #email not found"
+                );
+
+            }
+
+            if (!phone) {
+
+                console.error(
+                    "❌ ERROR: #phone not found"
+                );
+
+            }
+
+            if (!subject) {
+
+                console.error(
+                    "❌ ERROR: #subject not found"
+                );
+
+            }
+
+            if (!message) {
+
+                console.error(
+                    "❌ ERROR: #message not found"
+                );
+
+            }
+
+
+            /* ==============================
+               VALIDATION
+            ============================== */
+
+            let valid = true;
+
+
+            /* ------------------------------
+               Name
+            ------------------------------ */
+
+            if (
+                !name ||
+                name.value.trim() === ""
+            ) {
+
+                name?.classList.add("invalid");
+
+                valid = false;
+
+                console.warn(
+                    "⚠ Name validation failed"
+                );
+
+            }
+
+
+            /* ------------------------------
+               Email
+            ------------------------------ */
+
+            if (
+                !email ||
+                email.value.trim() === "" ||
+                !email.checkValidity()
+            ) {
+
+                email?.classList.add("invalid");
+
+                valid = false;
+
+                console.warn(
+                    "⚠ Email validation failed"
+                );
+
+            }
+
+
+            /* ------------------------------
+               Subject
+            ------------------------------ */
+
+            if (
+                !subject ||
+                subject.value.trim() === ""
+            ) {
+
+                subject?.classList.add("invalid");
+
+                valid = false;
+
+                console.warn(
+                    "⚠ Subject validation failed"
+                );
+
+            }
+
+
+            /* ------------------------------
+               Message
+            ------------------------------ */
+
+            if (
+                !message ||
+                message.value.trim() === ""
+            ) {
+
+                message?.classList.add("invalid");
+
+                valid = false;
+
+                console.warn(
+                    "⚠ Message validation failed"
+                );
+
+            }
+
+
+            /* ==============================
+               STOP IF INVALID
+            ============================== */
+
+            if (!valid) {
+
+                console.warn(
+                    "❌ FORM VALIDATION FAILED"
+                );
+
+                if (formStatus) {
+
+                    formStatus.textContent =
+                        "Please check the highlighted fields.";
+
+                    formStatus.className =
+                        "form-status error";
+
+                }
+
+                return;
+
+            }
+
+
+            console.log(
+                "✓ Form validation passed"
+            );
+
+
+            /* ==============================
+               LOADING STATE
+            ============================== */
+
+            submitButton.disabled = true;
+
+            if (submitText) {
+
+                submitText.style.display =
+                    "none";
+
+            }
+
+            if (submitLoading) {
+
+                submitLoading.style.display =
+                    "inline";
+
+            }
+
+            if (formStatus) {
+
+                formStatus.textContent = "";
+
+                formStatus.className =
+                    "form-status";
+
+            }
+
+
+            console.log(
+                "✓ Loading state activated"
+            );
+
+
+            /* ==============================
+               FORM DATA
+            ============================== */
+
+            const formData =
+                new FormData(contactForm);
+
+
+            console.log(
+                "✓ FormData created"
+            );
+
+
+            /* ==============================
+               DEBUG FORM DATA
+            ============================== */
+
+            console.log(
+                "Form data being sent:"
+            );
+
+            for (
+                const [key, value]
+                of formData.entries()
+            ) {
+
+                console.log(
+                    `${key}:`,
+                    value
+                );
+
+            }
+
+
+            /* ==============================
+               SEND TO FORMSPREE
+            ============================== */
+
+            console.log(
+                "================================="
+            );
+
+            console.log(
+                "SENDING REQUEST TO FORMSPREE..."
+            );
+
+            console.log(
+                "Endpoint:",
+                FORMSPREE_ENDPOINT
+            );
+
+            console.log(
+                "================================="
+            );
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        FORMSPREE_ENDPOINT,
+                        {
+                            method: "POST",
+
+                            body: formData,
+
+                            headers: {
+                                Accept:
+                                    "application/json"
+                            }
+                        }
+                    );
+
+
+                /* ==============================
+                   RESPONSE DEBUG
+                ============================== */
+
+                console.log(
+                    "Formspree response received"
+                );
+
+                console.log(
+                    "Status:",
+                    response.status
+                );
+
+                console.log(
+                    "Status text:",
+                    response.statusText
+                );
+
+                console.log(
+                    "Response OK:",
+                    response.ok
+                );
+
+
+                /* ==============================
+                   SUCCESS
+                ============================== */
+
+                if (response.ok) {
+
+                    console.log(
+                        "================================="
+                    );
+
+                    console.log(
+                        "✓ FORMSPREE SUBMISSION SUCCESSFUL"
+                    );
+
+                    console.log(
+                        "================================="
+                    );
+
+
+                    contactForm.reset();
+
+
+                    if (formStatus) {
+
+                        formStatus.textContent =
+                            "Message sent successfully.";
+
+                        formStatus.className =
+                            "form-status success";
+
+                    }
+
+
+                    if (submitText) {
+
+                        submitText.textContent =
+                            "SENT ✓";
+
+                        submitText.style.display =
+                            "inline";
+
+                    }
+
+                    if (submitLoading) {
+
+                        submitLoading.style.display =
+                            "none";
+
+                    }
+
+
+                    /* ------------------------------
+                       Reset button after 3 seconds
+                    ------------------------------ */
+
+                    setTimeout(() => {
+
+                        if (submitText) {
+
+                            submitText.textContent =
+                                "SUBMIT";
+
+                        }
+
+                        submitButton.disabled =
+                            false;
+
+
+                        if (formStatus) {
+
+                            formStatus.textContent =
+                                "";
+
+                        }
+
+                        console.log(
+                            "✓ Submit button reset"
+                        );
+
+                    }, 3000);
+
+
+                    return;
+
+                }
+
+
+                /* ==============================
+                   FORMSPREE ERROR
+                ============================== */
+
+                console.error(
+                    "❌ FORMSPREE RETURNED AN ERROR"
+                );
+
+
+                const data =
+                    await response
+                        .json()
+                        .catch(() => null);
+
+
+                console.error(
+                    "Formspree error response:",
+                    data
+                );
+
+
+                throw new Error(
+                    data?.errors?.[0]?.message ||
+                    `Formspree returned HTTP ${response.status}`
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "================================="
+                );
+
+                console.error(
+                    "❌ CONTACT FORM ERROR"
+                );
+
+                console.error(
+                    "================================="
+                );
+
+                console.error(
+                    error
+                );
+
+
+                /* ------------------------------
+                   Error state
+                ------------------------------ */
+
+                if (formStatus) {
+
+                    formStatus.textContent =
+                        "Couldn't send your message. Please try again.";
+
+                    formStatus.className =
+                        "form-status error";
+
+                }
+
+
+                if (submitText) {
+
+                    submitText.style.display =
+                        "inline";
+
+                }
+
+                if (submitLoading) {
+
+                    submitLoading.style.display =
+                        "none";
+
+                }
+
+                submitButton.disabled =
+                    false;
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "✓ Submit event listener attached"
+    );
+
+
+} else {
+
+    /* ==============================
+       FORM NOT FOUND
+    ============================== */
+
+    console.error(
+        "================================="
+    );
+
+    console.error(
+        "❌ CONTACT FORM NOT FOUND"
+    );
+
+    console.error(
+        "There is no element with id='contactForm'."
+    );
+
+    console.error(
+        "================================="
+    );
+
+}

@@ -1,92 +1,256 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: Inter, sans-serif;
-  background: #202329;
-  color: #FFFFFF;
+    font-family: Inter, sans-serif;
+    background: #202329;
+    color: #FFFFFF;
 }
+
 
 /* ==============================
    EVOLUTION SECTION
 ============================== */
 
 .evolution_section {
-    background: #20232F;
+    background: #FFFFFF;
+    color: #202329;
 }
+
+
+/* ==============================
+   CONTAINER
+============================== */
 
 .evolution_container {
-  max-width: 45rem;
-  margin: auto;
-  padding: 3rem 0.75rem;
+
+    max-width: 45rem;
+
+    margin: auto;
+
+    padding: 3rem 0.75rem;
 
 }
 
+
+/* ==============================
+   EYEBROW
+============================== */
 
 .evolution_eyebrow {
-  text-align: center;
-  color: #FED160;
-  letter-spacing: 0.15rem;
-  margin-bottom: 0.75rem;
+
+    text-align: center;
+
+    color: #B08A32;
+
+    letter-spacing: 0.15rem;
+
+    margin-bottom: 0.75rem;
+
+    font-size: 0.72rem;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
 }
+
+
+/* ==============================
+   TITLE
+============================== */
 
 .evolution_title {
-  text-align: center;
-  font-size: clamp(1.5rem, 3.6vw, 2.7rem);
-  font-family: Inter, sans-serif;
-  color: #FFFFFF;
-  margin-bottom: 0.75rem;
+
+    text-align: center;
+
+    font-size: clamp(
+        1.5rem,
+        3.6vw,
+        2.7rem
+    );
+
+    font-family: Inter, sans-serif;
+
+    color: #171717;
+
+    margin-bottom: 0.75rem;
+
+    font-weight: 700;
+
 }
+
+
+/* ==============================
+   LEAD
+============================== */
 
 .evolution_lead {
-  text-align: center;
-  max-width: 26.25rem;
-  margin: 0 auto 2.25rem;
-  color: #FFFFFF;
-  opacity: 0.7;
-  line-height: 1.7;
+
+    text-align: center;
+
+    max-width: 26.25rem;
+
+    margin: 0 auto 2.25rem;
+
+    color: #454955;
+
+    opacity: 0.75;
+
+    line-height: 1.7;
+
 }
+
+
+/* ==============================
+   LOGOS
+============================== */
 
 .evolution_logos {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 1.5rem;
-  align-items: center;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    gap: 1.5rem;
+
+    align-items: center;
+
 }
+
+
+/* ==============================
+   LOGO CARDS
+============================== */
 
 .evolution_card {
-  background: #202329;
-  border: 1px solid #3A424A;
-  border-radius: 0.9rem;
-  padding: 2.25rem;
-  box-shadow: 0 0.75rem 2.25rem rgba(0, 0, 0, 0.2);
-  text-align: center;
+
+    background: #202329;
+
+    border: 1px solid rgba(32, 35, 47, 0.2);
+
+    border-radius: 0.9rem;
+
+    padding: 2.25rem;
+
+    box-shadow:
+        0 0.75rem 2.25rem
+        rgba(30, 35, 60, 0.12);
+
+    text-align: center;
+
 }
+
+
+/* ==============================
+   NEW LOGO CARD
+============================== */
 
 .evolution_card-dark {
-  background: #111827;
-  color: #FFFFFF;
-  border-color: #3A424A;
+
+    background: #111827;
+
+    color: #FFFFFF;
+
+    border-color: #2D3748;
+
 }
+
+
+/* ==============================
+   LOGOS
+============================== */
 
 .evolution_card img {
-  max-width: 8.25rem;
-  width: 100%;
-  display: block;
-  margin: auto;
+
+    max-width: 8.25rem;
+
+    width: 100%;
+
+    display: block;
+
+    margin: auto;
+
 }
+
+
+/* ==============================
+   CARD LABEL
+============================== */
 
 .evolution_card span {
-  display: block;
-  margin-top: 1.125rem;
-  letter-spacing: 0.15rem;
-  color: #FED160;
+
+    display: block;
+
+    margin-top: 1.125rem;
+
+    letter-spacing: 0.15rem;
+
+    color: #FED160;
+
+    font-size: 0.7rem;
+
+    font-weight: 600;
+
 }
 
+
+/* ==============================
+   ARROW
+============================== */
+
 .evolution_arrow {
-  font-size: 2.625rem;
-  color: #FED160;
+
+    font-size: 2.625rem;
+
+    color: #B08A32;
+
+}
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 600px) {
+
+    .evolution_container {
+
+        padding:
+            2.75rem
+            1rem;
+
+    }
+
+
+    .evolution_logos {
+
+        grid-template-columns: 1fr;
+
+        gap: 1rem;
+
+    }
+
+
+    .evolution_arrow {
+
+        transform: rotate(90deg);
+
+        font-size: 2rem;
+
+    }
+
+
+    .evolution_card {
+
+        padding: 1.75rem;
+
+    }
+
 }

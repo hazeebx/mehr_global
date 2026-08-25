@@ -1,11 +1,14 @@
 /* ==========================
-CONTACT SECTION
+   CONTACT SECTION
 ========================== */
 
 .contact-section {
+
     position: relative;
 
     width: 100%;
+
+    min-height: 680px;
 
     overflow: hidden;
 
@@ -17,18 +20,21 @@ CONTACT SECTION
 
     align-items: center;
 
-    gap: 2.4rem;
+    gap: 3rem;
 
-    padding: 2.4rem 4vw;
+    padding: 3.5rem 4.5vw;
 
     box-sizing: border-box;
+
 }
 
+
 /* ==========================
-FULL SECTION BACKGROUND
+   FULL SECTION BACKGROUND
 ========================== */
 
 .contact-bg {
+
     position: absolute;
 
     inset: 0;
@@ -39,14 +45,16 @@ FULL SECTION BACKGROUND
     object-fit: cover;
 
     z-index: 0;
+
 }
 
 
 /* ==========================
-FULL SECTION OVERLAY
+   FULL SECTION OVERLAY
 ========================== */
 
 .contact-overlay {
+
     position: absolute;
 
     inset: 0;
@@ -54,22 +62,24 @@ FULL SECTION OVERLAY
     background:
         linear-gradient(
             90deg,
-            rgba(0, 0, 0, 0.42) 0%,
-            rgba(0, 0, 0, 0.22) 45%,
-            rgba(0, 0, 0, 0.38) 100%
+            rgba(5, 10, 14, 0.58) 0%,
+            rgba(5, 10, 14, 0.28) 45%,
+            rgba(5, 10, 14, 0.48) 100%
         );
 
     pointer-events: none;
 
     z-index: 1;
+
 }
 
 
 /* ==========================
-LEFT CONTACT INFORMATION
+   LEFT CONTACT INFORMATION
 ========================== */
 
 .contact-info {
+
     position: relative;
 
     width: 100%;
@@ -77,169 +87,294 @@ LEFT CONTACT INFORMATION
     color: #ffffff;
 
     z-index: 2;
+
 }
 
 
 .info-content {
+
     position: relative;
 
     z-index: 2;
 
-    padding-left: 0.6vw;
+    padding-left: 0.4vw;
+
 }
 
 
 /* ==========================
-HEADING
+   HEADING
 ========================== */
 
 .info-content h1 {
-font-size:
-    clamp(1.8rem, 2.88vw, 2.76rem);
 
-    line-height: 1.08;
+    max-width: 39rem;
+
+    margin: 0 0 2.4rem;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(2.2rem, 3.45vw, 4rem);
+
+    line-height: 1.02;
 
     font-weight: 500;
 
-    letter-spacing: -0.035em;
+    letter-spacing: -0.045em;
 
-    margin-bottom: 1.9rem;
+    text-shadow:
+        0 2px 18px rgba(0, 0, 0, 0.22);
 
-    color: #ffffff;
 }
 
 
 /* ==========================
-CONTACT DETAILS
+   CONTACT DETAILS GLASS
 ========================== */
 
 .contact-details {
+
+    width: min(100%, 38rem);
+
+    box-sizing: border-box;
+
+    padding: 1.5rem 1.6rem;
+
     display: flex;
 
     flex-direction: column;
 
-    gap: 1.2rem;
+    gap: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.105),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.22);
+
+    border-radius: 1.15rem;
+
+    backdrop-filter:
+        blur(1rem)
+        saturate(120%);
+
+    -webkit-backdrop-filter:
+        blur(1rem)
+        saturate(120%);
+
+    box-shadow:
+        0 1.5rem 3.5rem rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
 }
 
+
+/* ==========================
+   DETAIL BLOCK
+========================== */
 
 .detail-block {
+
+    position: relative;
+
     display: flex;
 
     flex-direction: column;
 
-    gap: 0.2rem;
+    gap: 0.35rem;
+
+    padding:
+        0.9rem
+        0;
+
 }
 
 
-.detail-block h2 {
-    font-size: 1.5rem;
+/* DIVIDERS */
 
-    font-weight: 400;
+.detail-block + .detail-block {
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.11);
+
+}
+
+
+/* ==========================
+   DETAIL LABEL
+========================== */
+
+.detail-block h2 {
+
+    margin: 0;
 
     color: #e9c58c;
 
-    margin-bottom: 0.1rem;
+    font-size: 0.68rem;
+
+    line-height: 1;
+
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+
 }
 
+
+/* ==========================
+   DETAIL VALUES
+========================== */
 
 .detail-block p,
 .detail-block a {
-    color: #ffffff;
 
-    font-size: 1rem;
+    margin: 0;
 
-    line-height: 1.5;
+    color:
+        rgba(255, 255, 255, 0.9);
+
+    font-size:
+        clamp(0.82rem, 1vw, 0.98rem);
+
+    line-height: 1.45;
+
+    font-weight: 400;
 
     text-decoration: none;
+
 }
 
 
+/* LINKS */
+
 .detail-block a {
+
     width: fit-content;
 
     transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
+        color 0.25s ease,
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
 }
 
 
 .detail-block a:hover {
-    opacity: 0.75;
+
+    color: #ffffff;
+
+    opacity: 1;
 
     transform: translateX(3px);
+
 }
 
+
 /* ==========================
-WHATSAPP CTA
+   PHONE NUMBERS
+========================== */
+
+.detail-block:nth-child(3) a {
+
+    display: block;
+
+}
+
+
+/* ==========================
+   WHATSAPP CTA
 ========================== */
 
 .whatsapp-cta {
+
     width: 100%;
-    max-width: 32rem;
-
-    margin-top: 0.5rem;
-    padding: 0.8rem 0.9rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
 
     box-sizing: border-box;
 
+    margin-top: 1.15rem;
+
+    padding: 0.75rem 0.8rem;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+
     background:
-        rgba(0, 0, 0, 0.18);
+        rgba(0, 0, 0, 0.16);
 
     border:
-        1px solid rgba(255, 255, 255, 0.2);
+        1px solid rgba(37, 211, 102, 0.24);
 
-    border-radius: 0.7rem;
-
-    backdrop-filter: blur(0.6rem);
-    -webkit-backdrop-filter: blur(0.6rem);
+    border-radius: 0.8rem;
 
     transition:
         background 0.25s ease,
         border-color 0.25s ease,
         transform 0.25s ease;
+
 }
 
 
 .whatsapp-cta:hover {
+
     background:
-        rgba(0, 0, 0, 0.28);
+        rgba(0, 0, 0, 0.26);
 
     border-color:
-        rgba(37, 211, 102, 0.45);
+        rgba(37, 211, 102, 0.48);
 
     transform:
-        translateY(-1px);
+        translateY(-2px);
+
 }
 
 
-/* LEFT CONTENT */
+/* ==========================
+   WHATSAPP LEFT CONTENT
+========================== */
 
 .whatsapp-cta-content {
+
     display: flex;
+
     align-items: center;
-    gap: 0.65rem;
+
+    gap: 0.7rem;
+
 }
 
 
-/* WHATSAPP ICON */
+/* ==========================
+   WHATSAPP ICON
+========================== */
 
 .whatsapp-icon {
-    width: 2rem;
-    height: 2rem;
+
+    width: 2.15rem;
+
+    height: 2.15rem;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     flex-shrink: 0;
 
     border:
-        1px solid rgba(37, 211, 102, 0.5);
+        1px solid rgba(37, 211, 102, 0.42);
 
     border-radius: 50%;
 
@@ -249,54 +384,76 @@ WHATSAPP CTA
         rgba(37, 211, 102, 0.08);
 
     font-size: 0.95rem;
+
 }
 
 
-/* TEXT */
+/* ==========================
+   WHATSAPP TEXT
+========================== */
 
 .whatsapp-text {
+
     display: flex;
+
     flex-direction: column;
-    gap: 0.15rem;
+
+    gap: 0.16rem;
+
 }
 
+
 .whatsapp-text span {
+
     color: #ffffff;
 
     font-size: 0.72rem;
-    font-weight: 400;
+
+    font-weight: 500;
+
 }
+
 
 .whatsapp-text small {
+
     color:
-        rgba(255, 255, 255, 0.5);
+        rgba(255, 255, 255, 0.48);
 
     font-size: 0.58rem;
+
 }
 
 
-/* BUTTON */
+/* ==========================
+   WHATSAPP BUTTON
+========================== */
 
 .whatsapp-button {
+
     display: flex;
+
     align-items: center;
+
     gap: 0.45rem;
 
-    padding: 0.5rem 0.7rem;
+    padding:
+        0.48rem
+        0.72rem;
 
     border:
-        1px solid rgba(37, 211, 102, 0.45);
+        1px solid rgba(37, 211, 102, 0.42);
 
     border-radius: 2rem;
 
     background:
-        rgba(37, 211, 102, 0.08);
+        rgba(37, 211, 102, 0.07);
 
     color: #ffffff;
 
     text-decoration: none;
 
     font-size: 0.55rem;
+
     font-weight: 500;
 
     letter-spacing: 0.08em;
@@ -307,147 +464,177 @@ WHATSAPP CTA
         background 0.2s ease,
         border-color 0.2s ease,
         transform 0.2s ease;
+
 }
 
 
 .whatsapp-button i {
+
     color: #25d366;
-    font-size: 0.8rem;
+
+    font-size: 0.78rem;
+
 }
 
 
 .whatsapp-arrow {
+
     font-size: 0.75rem;
 
     transition:
         transform 0.2s ease;
+
 }
 
 
 .whatsapp-button:hover {
+
     background:
-        rgba(37, 211, 102, 0.16);
+        rgba(37, 211, 102, 0.15);
 
     border-color:
         rgba(37, 211, 102, 0.7);
 
     transform:
         translateY(-1px);
+
 }
 
 
 .whatsapp-button:hover .whatsapp-arrow {
+
     transform:
         translateX(3px);
+
 }
 
 
 /* ==========================
-FORM WRAPPER
+   FORM WRAPPER
 ========================== */
 
 .contact-form-wrapper {
+
     position: relative;
 
     z-index: 5;
 
     width: 100%;
 
-    padding: 1.8rem;
+    padding: 2rem;
 
     box-sizing: border-box;
 
     background:
-        rgba(255, 255, 255, 0.08);
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.11),
+            rgba(255, 255, 255, 0.045)
+        );
 
     border:
-        1px solid rgba(255, 255, 255, 0.35);
+        1px solid rgba(255, 255, 255, 0.32);
 
-    border-radius: 0.9rem;
+    border-radius: 1.15rem;
 
     backdrop-filter:
-        blur(0.8rem);
+        blur(1.15rem)
+        saturate(120%);
 
     -webkit-backdrop-filter:
-        blur(0.8rem);
+        blur(1.15rem)
+        saturate(120%);
 
     box-shadow:
-        0 15px 42px
-        rgba(0, 0, 0, 0.25);
+        0 1.5rem 4rem rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
 }
+
+
 /* ==========================
-FORM TITLE
+   FORM TITLE
 ========================== */
 
 .contact-form-title {
-    font-size: 1.1rem;
 
-    font-weight: 500;
+    margin: 0 0 1.35rem;
 
     color: #ffffff;
 
-    margin-bottom: 1.1rem;
+    font-size: 1.25rem;
 
-    letter-spacing: -0.02em;
+    font-weight: 500;
+
+    letter-spacing: -0.025em;
+
 }
 
 
 /* ==========================
-FORM
+   FORM
 ========================== */
 
 .contact-form {
+
     width: 100%;
 
     display: flex;
 
     flex-direction: column;
 
-    gap: 0.75rem;
+    gap: 0.8rem;
+
 }
 
 
 /* ==========================
-FORM GROUP
+   FORM GROUP
 ========================== */
 
 .form-group {
+
     display: flex;
 
     flex-direction: column;
 
-    gap: 0.3rem;
+    gap: 0.32rem;
+
 }
 
 
 /* ==========================
-FORM LABEL
+   FORM LABEL
 ========================== */
 
 .form-group label {
-    font-size:
-        calc(0.62rem + 2px);
 
     color:
-        rgba(255, 255, 255, 0.85);
+        rgba(255, 255, 255, 0.84);
+
+    font-size: 0.68rem;
 
     font-weight: 400;
+
 }
 
 
 /* ==========================
-INPUTS
+   INPUTS
 ========================== */
 
 .form-group input,
 .form-group textarea {
+
     width: 100%;
 
+    box-sizing: border-box;
+
     background:
-        rgba(255, 255, 255, 0.03);
+        rgba(255, 255, 255, 0.035);
 
     border:
-        1px solid rgba(255, 255, 255, 0.45);
+        1px solid rgba(255, 255, 255, 0.38);
 
     border-radius: 2rem;
 
@@ -465,159 +652,183 @@ INPUTS
 
     outline: none;
 
-    box-sizing: border-box;
-
     transition:
         background 0.25s ease,
         border-color 0.25s ease,
         box-shadow 0.25s ease;
+
 }
 
-
-/* ==========================
-INPUT
-========================== */
 
 .form-group input {
-    height: 2rem;
+
+    height: 2.15rem;
 
     padding:
-        0 0.7rem;
+        0 0.8rem;
+
 }
 
 
-/* ==========================
-TEXTAREA
-========================== */
-
 .form-group textarea {
-    height: 4.8rem;
+
+    height: 5rem;
 
     padding:
-        0.55rem 0.7rem;
+        0.65rem 0.8rem;
 
     resize: none;
 
-    border-radius: 0.7rem;
+    border-radius: 0.8rem;
+
 }
+
+
 /* ==========================
-CUSTOM MESSAGE SCROLLBAR
+   TEXTAREA SCROLLBAR
 ========================== */
 
 .form-group textarea {
+
     overflow-y: scroll;
 
     scrollbar-width: thin;
+
     scrollbar-color:
-        rgba(255, 255, 255, 0.55)
+        rgba(255, 255, 255, 0.5)
         transparent;
+
 }
 
-
-/* ==========================
-CHROME / EDGE / SAFARI
-========================== */
 
 .form-group textarea::-webkit-scrollbar {
+
     width: 2px;
+
 }
+
 
 .form-group textarea::-webkit-scrollbar-track {
+
     background: transparent;
+
 }
+
 
 .form-group textarea::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.6);
+
+    background:
+        rgba(255, 255, 255, 0.6);
 
     border-radius: 999px;
+
 }
 
+
 .form-group textarea::-webkit-scrollbar-thumb:hover {
-    background: rgba(254, 209, 96, 0.9);
+
+    background:
+        rgba(254, 209, 96, 0.9);
+
 }
+
+
 /* ==========================
-PLACEHOLDER
+   PLACEHOLDER
 ========================== */
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
+
     color:
-        rgba(255, 255, 255, 0.45);
+        rgba(255, 255, 255, 0.4);
+
 }
 
 
 /* ==========================
-INPUT HOVER
+   INPUT HOVER
 ========================== */
 
 .form-group input:hover,
 .form-group textarea:hover {
+
     background:
-        rgba(255, 255, 255, 0.05);
+        rgba(255, 255, 255, 0.055);
 
     border-color:
-        rgba(255, 255, 255, 0.6);
+        rgba(255, 255, 255, 0.55);
+
 }
 
 
 /* ==========================
-INPUT FOCUS
+   INPUT FOCUS
 ========================== */
 
 .form-group input:focus,
 .form-group textarea:focus {
+
     background:
-        rgba(255, 255, 255, 0.08);
+        rgba(255, 255, 255, 0.075);
 
     border-color:
-        rgba(255, 255, 255, 0.85);
+        rgba(255, 255, 255, 0.82);
 
     box-shadow:
         0 0 0 1px
-        rgba(255, 255, 255, 0.2);
+        rgba(255, 255, 255, 0.16);
+
 }
 
 
 /* ==========================
-EMAIL + PHONE
+   EMAIL + PHONE
 ========================== */
 
 .form-row {
+
     display: grid;
 
     grid-template-columns:
         1fr 1fr;
 
     gap: 0.75rem;
+
 }
 
 
 /* ==========================
-MESSAGE
+   MESSAGE
 ========================== */
 
 .message-group {
+
     margin-top: 0;
+
 }
 
 
 /* ==========================
-SUBMIT
+   SUBMIT
 ========================== */
 
 .submit-wrapper {
+
     display: flex;
 
     justify-content: center;
 
-    margin-top: 0.3rem;
+    margin-top: 0.35rem;
+
 }
 
 
 .submit-wrapper button {
-    width: 90px;
 
-    height: 28px;
+    width: 92px;
+
+    height: 30px;
 
     border:
         1px solid rgba(255, 255, 255, 0.75);
@@ -642,12 +853,13 @@ SUBMIT
         color 0.2s ease,
         transform 0.2s ease,
         box-shadow 0.2s ease;
+
 }
 
 
 .submit-wrapper button:hover {
-    background:
-        #ffffff;
+
+    background: #ffffff;
 
     transform:
         translateY(-1px);
@@ -655,72 +867,252 @@ SUBMIT
     box-shadow:
         0 5px 15px
         rgba(0, 0, 0, 0.2);
+
 }
 
 
 .submit-wrapper button:active {
+
     transform:
         translateY(0);
+
 }
 
 
 /* ==========================
-INVALID INPUT
+   INVALID INPUT
 ========================== */
 
 .form-group input.invalid,
 .form-group textarea.invalid {
+
     border-color:
         #ff6b6b;
 
     box-shadow:
         0 0 0 1px
         rgba(255, 107, 107, 0.2);
+
+}
+.whatsapp-cta {
+    width: min(100%, 38rem);
+    box-sizing: border-box;
+}
+
+.contact-form-wrapper {
+    position: relative;
+
+    top: 1.5rem;
+}
+
+/* ==============================
+   CONTACT SUBMIT
+============================== */
+
+.contact-submit {
+
+    position: relative;
+
+    min-width: 7rem;
+
+    min-height: 2.5rem;
+
+    padding: .7rem 1.5rem;
+
+    border: 0;
+
+    border-radius: 999px;
+
+    background: #ffffff;
+
+    color: #171717;
+
+    font-size: .65rem;
+
+    font-weight: 500;
+
+    letter-spacing: .12em;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        opacity .25s ease,
+        background .25s ease;
+
 }
 
 
-/* ==========================
-MOBILE
-========================== */
+.contact-submit:hover {
 
-@media (max-width: 900px) {
-
-    .contact-section {
-        grid-template-columns: 1fr;
-
-        gap: 1.8rem;
-
-        padding:
-            2rem 1.5rem;
-    }
-
-
-    .contact-info {
-        width: 100%;
-    }
-
-
-    .info-content {
-        padding-left: 0;
-    }
-
-
-    .contact-form-wrapper {
-        width: 100%;
-
-        padding: 1.5rem;
-    }
-
-
-    .form-row {
-        grid-template-columns: 1fr;
-    }
+    transform: translateY(-2px);
 
 }
 
 
-@media (max-width: 768px) {
-    .contact-form-wrapper {
-        display: none;
+.contact-submit:active {
+
+    transform: translateY(0);
+
+}
+
+
+.contact-submit:disabled {
+
+    cursor: default;
+
+    opacity: .7;
+
+}
+
+
+/* ==============================
+   LOADING
+============================== */
+
+.submit-loading {
+
+    display: none;
+
+}
+
+/* ==============================
+   FORM STATUS
+============================== */
+
+.submit-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .7rem;
+}
+
+
+/* ==============================
+   STATUS MESSAGE
+============================== */
+
+.form-status {
+    margin: 0;
+
+    min-height: 1rem;
+
+    font-size: .72rem;
+    line-height: 1.3;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.7);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+
+/* ==============================
+   SUCCESS
+============================== */
+
+.form-status.success {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: .4rem;
+
+    color: #d8b45a;
+
+    font-weight: 500;
+
+    animation: statusAppear .35s ease both;
+}
+
+
+/* Small success indicator */
+
+.form-status.success::before {
+    content: "✓";
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: .95rem;
+    height: .95rem;
+
+    border: 1px solid rgba(216,180,90,.65);
+
+    border-radius: 50%;
+
+    font-size: .55rem;
+
+    color: #d8b45a;
+}
+
+
+/* ==============================
+   ERROR
+============================== */
+
+.form-status.error {
+    color: #ff9c9c;
+
+    animation: statusAppear .35s ease both;
+}
+
+
+/* ==============================
+   SUBMIT BUTTON
+============================== */
+
+.contact-submit {
+    min-width: 7rem;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        background .25s ease;
+}
+
+
+.contact-submit:disabled {
+    cursor: default;
+}
+
+
+/* ==============================
+   SUCCESS BUTTON
+============================== */
+
+.contact-submit.sent {
+    background: rgba(216,180,90,.12);
+
+    border-color: rgba(216,180,90,.5);
+
+    color: #d8b45a;
+
+    box-shadow:
+        0 0 .8rem rgba(216,180,90,.08);
+}
+
+
+/* ==============================
+   ANIMATION
+============================== */
+
+@keyframes statusAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(.25rem);
     }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 }

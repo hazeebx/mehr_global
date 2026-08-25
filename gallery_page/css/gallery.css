@@ -25,7 +25,7 @@
 
     color: #907c65;
 
-    font-size: .7rem;
+    font-size: .56rem;
 
     font-weight: 500;
 
@@ -41,17 +41,11 @@
 
 .gallery-intro {
 
-    min-height: 90vh;
-
-    padding:
-        8rem 6vw
-        6rem;
+    padding: 2rem;
 
     display: flex;
 
     flex-direction: column;
-
-    justify-content: space-between;
 }
 
 
@@ -69,7 +63,7 @@
 
     color: #888;
 
-    font-size: .7rem;
+    font-size: .56rem;
 
     letter-spacing: .1em;
 }
@@ -92,8 +86,7 @@
 
     margin: 0;
 
-    font-size:
-        clamp(5rem, 12vw, 13rem);
+    font-size: 6rem;
 
     font-weight: 600;
 
@@ -117,7 +110,7 @@
 
     color: #555;
 
-    font-size: .95rem;
+    font-size: .76rem;
 
     line-height: 1.8;
 }
@@ -125,8 +118,11 @@
 
 .gallery-category-list {
 
-    border-top:
-        1px solid #ccc;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    border-top: 1px solid #ccc;
 }
 
 
@@ -138,16 +134,17 @@
 
     gap: 1.5rem;
 
+    min-height: 3.5rem;
+
     padding: .85rem 0;
 
-    border-bottom:
-        1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 
     color: #111;
 
     text-decoration: none;
 
-    font-size: .8rem;
+    font-size: .64rem;
 
     transition:
         padding .3s ease,
@@ -161,7 +158,7 @@
 
     color: #999;
 
-    font-size: .65rem;
+    font-size: .52rem;
 }
 
 
@@ -206,7 +203,7 @@
     margin: 1.2rem 0 0;
 
     font-size:
-        clamp(3.5rem, 7vw, 7rem);
+        clamp(2.45rem, 4.9vw, 4.9rem);
 
     line-height: .88;
 
@@ -222,7 +219,7 @@
 
     color: #666;
 
-    font-size: .9rem;
+    font-size: .72rem;
 
     line-height: 1.8;
 }
@@ -271,6 +268,7 @@
 .gallery-image img {
 
     width: 100%;
+
     height: 100%;
 
     display: block;
@@ -294,7 +292,9 @@
     position: absolute;
 
     left: 1rem;
+
     right: 1rem;
+
     bottom: 1rem;
 
     display: flex;
@@ -303,7 +303,7 @@
 
     color: #fff;
 
-    font-size: .6rem;
+    font-size: .48rem;
 
     letter-spacing: .12em;
 
@@ -418,7 +418,7 @@
     margin: 1rem 0 0;
 
     font-size:
-        clamp(4rem, 8vw, 8rem);
+        clamp(2.8rem, 5.6vw, 5.6rem);
 
     line-height: .82;
 
@@ -434,12 +434,10 @@
 
     color: #888;
 
-    font-size: .9rem;
+    font-size: .72rem;
 
     line-height: 1.8;
 }
-
-
 
 
 /* =========================================================
@@ -498,6 +496,7 @@
 .project-image img {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -520,11 +519,12 @@
     position: absolute;
 
     top: 1.2rem;
+
     left: 1.2rem;
 
     color: #fff;
 
-    font-size: .6rem;
+    font-size: .48rem;
 
     letter-spacing: .15em;
 
@@ -547,7 +547,7 @@
 
     color: #907c65;
 
-    font-size: .65rem;
+    font-size: .52rem;
 
     letter-spacing: .2em;
 }
@@ -558,7 +558,7 @@
     margin: 0 0 1.8rem;
 
     font-size:
-        clamp(2.5rem, 4vw, 4.5rem);
+        clamp(1.75rem, 2.8vw, 3.15rem);
 
     line-height: .95;
 
@@ -572,7 +572,7 @@
 
     color: #666;
 
-    font-size: .9rem;
+    font-size: .72rem;
 
     line-height: 1.8;
 }
@@ -593,7 +593,7 @@
 
     color: #888;
 
-    font-size: .6rem;
+    font-size: .48rem;
 
     letter-spacing: .12em;
 }
@@ -639,7 +639,7 @@
     margin: 1rem 0 0;
 
     font-size:
-        clamp(4rem, 8vw, 8rem);
+        clamp(2.8rem, 5.6vw, 5.6rem);
 
     line-height: .82;
 
@@ -652,9 +652,11 @@
     position: absolute;
 
     top: 50%;
+
     left: 50%;
 
     width: min(70vw, 850px);
+
     aspect-ratio: 1;
 
     transform:
@@ -669,6 +671,7 @@
     position: absolute;
 
     top: 50%;
+
     left: 50%;
 
     border:
@@ -685,14 +688,15 @@
 .orbit-one {
 
     width: 100%;
-    height: 45%;
 
+    height: 45%;
 }
 
 
 .orbit-two {
 
     width: 75%;
+
     height: 70%;
 
     transform:
@@ -704,6 +708,7 @@
 .orbit-three {
 
     width: 55%;
+
     height: 90%;
 
     transform:
@@ -719,9 +724,11 @@
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     width: 8px;
+
     height: 8px;
 
     border-radius: 50%;
@@ -731,7 +738,7 @@
     box-shadow:
         0 0 15px rgba(212,175,55,.5);
 
-    font-size: .55rem;
+    font-size: .44rem;
 
     letter-spacing: .1em;
 
@@ -763,6 +770,7 @@
 .node-riyadh {
 
     top: 38%;
+
     left: 57%;
 }
 
@@ -770,6 +778,7 @@
 .node-dubai {
 
     top: 55%;
+
     left: 72%;
 }
 
@@ -777,6 +786,7 @@
 .node-india {
 
     top: 67%;
+
     left: 45%;
 }
 
@@ -784,6 +794,7 @@
 .node-europe {
 
     top: 27%;
+
     left: 34%;
 }
 
@@ -791,9 +802,11 @@
 .node-mehr {
 
     top: 50%;
+
     left: 50%;
 
     width: 16px;
+
     height: 16px;
 
     transform:
@@ -817,6 +830,7 @@
     position: absolute;
 
     right: 6vw;
+
     bottom: 8rem;
 
     max-width: 330px;
@@ -825,7 +839,7 @@
 
     color: #888;
 
-    font-size: .8rem;
+    font-size: .64rem;
 
     line-height: 1.8;
 }
@@ -879,6 +893,7 @@
 .moment img {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -901,11 +916,12 @@
     position: absolute;
 
     left: 1rem;
+
     bottom: 1rem;
 
     color: #fff;
 
-    font-size: .6rem;
+    font-size: .48rem;
 
     letter-spacing: .12em;
 
@@ -917,6 +933,7 @@
 .moment-one {
 
     grid-column: 1 / 6;
+
     grid-row: 1 / 3;
 }
 
@@ -924,6 +941,7 @@
 .moment-two {
 
     grid-column: 6 / 10;
+
     grid-row: 1;
 }
 
@@ -931,6 +949,7 @@
 .moment-three {
 
     grid-column: 10 / 13;
+
     grid-row: 1;
 }
 
@@ -938,6 +957,7 @@
 .moment-four {
 
     grid-column: 6 / 13;
+
     grid-row: 2;
 }
 
@@ -975,7 +995,7 @@
     margin: 1rem 0 0;
 
     font-size:
-        clamp(3.5rem, 7vw, 7rem);
+        clamp(2.45rem, 4.9vw, 4.9rem);
 
     line-height: .85;
 
@@ -991,7 +1011,7 @@
 
     color: #666;
 
-    font-size: .8rem;
+    font-size: .64rem;
 
     line-height: 1.7;
 }
@@ -1027,6 +1047,7 @@
 .contact-sheet-grid img {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -1082,7 +1103,7 @@
         1rem 0 3rem;
 
     font-size:
-        clamp(4rem, 8vw, 9rem);
+        clamp(2.8rem, 5.6vw, 6.3rem);
 
     line-height: .82;
 
@@ -1097,6 +1118,7 @@
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding:
@@ -1110,7 +1132,7 @@
 
     text-decoration: none;
 
-    font-size: .75rem;
+    font-size: .6rem;
 
     transition:
         transform .3s ease,
@@ -1157,8 +1179,7 @@
 
     .gallery-intro h1 {
 
-        font-size:
-            clamp(4.5rem, 18vw, 8rem);
+        font-size: 3.15rem;
     }
 
 
@@ -1296,6 +1317,7 @@
     .network-description {
 
         left: 6vw;
+
         right: auto;
 
         bottom: 5rem;
@@ -1416,7 +1438,7 @@
 
     .timeline-year {
 
-        font-size: .8rem;
+        font-size: .64rem;
     }
 
 
