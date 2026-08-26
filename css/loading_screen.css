@@ -176,3 +176,7 @@ FINAL LETTERS
 
     white-space: nowrap;
 }
+
+.skip-intro #loader {
+    display: none !important;
+}

@@ -3,6 +3,7 @@ import "./loading_screen.js";
 import "./globe_renderrer.js";
 import "./services_section.js";
 import "./metrics.js";
+import "./prefetch_global.js";
 import "./clients.js";
 import "./testimonials.js";
 import "./evolution.js";

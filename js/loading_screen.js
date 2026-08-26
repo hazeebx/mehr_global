@@ -1,10 +1,30 @@
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
     const loader =
         document.getElementById("loader");
 
+
+    // ==========================
+    // CHECK IF LOADER WAS ALREADY SHOWN
+    // ==========================
+
+    if (sessionStorage.getItem("mehrLoaderShown")) {
+
+        if (loader) {
+            loader.remove();
+        }
+
+        document.body.style.overflow = "";
+
+        return;
+    }
+
+    // Mark loader as shown for this browser session
+    sessionStorage.setItem("mehrLoaderShown", "true");
+
+
     const skipLoader =
-    document.querySelector(".skip-loader");
+        document.querySelector(".skip-loader");
 
     let loaderSkipped = false;
 
@@ -69,67 +89,82 @@ window.addEventListener("load", () => {
         gsap.timeline();
 
 
-// SKIP LOADER
-// ==========================
-
-if (skipLoader) {
-    gsap.to(skipLoader, {
-        opacity: 1,
-        duration: 0.5,
-        delay: 0.1,
-        ease: "power2.out"
-    });
-}
-
-function skipLoaderAnimation() {
-
-    if (loaderSkipped || !loader) return;
-
-    loaderSkipped = true;
-
-    tl.kill();
+    // ==========================
+    // SKIP LOADER
+    // ==========================
 
     if (skipLoader) {
+
         gsap.to(skipLoader, {
-            opacity: 0,
-            duration: 0.2,
+            opacity: 1,
+            duration: 0.5,
+            delay: 0.1,
             ease: "power2.out"
         });
+
     }
 
-    gsap.to(loader, {
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2.inOut",
 
-        onComplete: () => {
+    function skipLoaderAnimation() {
 
-            loader.remove();
+        if (loaderSkipped || !loader) return;
 
-            document.body.style.overflow = "";
+        loaderSkipped = true;
 
-            document.removeEventListener(
-                "click",
-                skipLoaderAnimation
-            );
+        tl.kill();
 
-            document.removeEventListener(
-                "touchstart",
-                skipLoaderAnimation
-            );
+
+        if (skipLoader) {
+
+            gsap.to(skipLoader, {
+                opacity: 0,
+                duration: 0.2,
+                ease: "power2.out"
+            });
+
         }
-    });
-}
 
-document.addEventListener(
-    "click",
-    skipLoaderAnimation
-);
 
-document.addEventListener(
-    "touchstart",
-    skipLoaderAnimation
-);
+        gsap.to(loader, {
+
+            opacity: 0,
+
+            duration: 0.6,
+
+            ease: "power2.inOut",
+
+            onComplete: () => {
+
+                loader.remove();
+
+                document.body.style.overflow = "";
+
+                document.removeEventListener(
+                    "click",
+                    skipLoaderAnimation
+                );
+
+                document.removeEventListener(
+                    "touchstart",
+                    skipLoaderAnimation
+                );
+
+            }
+
+        });
+
+    }
+
+
+    document.addEventListener(
+        "click",
+        skipLoaderAnimation
+    );
+
+    document.addEventListener(
+        "touchstart",
+        skipLoaderAnimation
+    );
 
 
     // ==========================
@@ -137,31 +172,39 @@ document.addEventListener(
     // ==========================
 
     tl.to(words[0], {
+
         x: 0,
         opacity: 1,
         duration: 0.4225,
         ease: "power3.out"
+
     })
 
     .to(words[1], {
+
         x: 0,
         opacity: 1,
         duration: 0.4225,
         ease: "power3.out"
+
     }, "+=0.078")
 
     .to(words[2], {
+
         x: 0,
         opacity: 1,
         duration: 0.4225,
         ease: "power3.out"
+
     }, "+=0.078")
 
     .to(words[3], {
+
         x: 0,
         opacity: 1,
         duration: 0.4225,
         ease: "power3.out"
+
     }, "+=0.078");
 
 
@@ -170,7 +213,9 @@ document.addEventListener(
     // ==========================
 
     tl.to({}, {
+
         duration: 0.2925
+
     });
 
 
@@ -181,13 +226,18 @@ document.addEventListener(
     tl.call(() => {
 
         words.forEach(word => {
+
             word.classList.add("highlight");
+
         });
 
     });
 
+
     tl.to({}, {
+
         duration: 0.3575
+
     });
 
 
@@ -206,6 +256,7 @@ document.addEventListener(
                 finalLetters[index]
                     .getBoundingClientRect();
 
+
             const startX =
                 start.left +
                 start.width / 2;
@@ -221,6 +272,7 @@ document.addEventListener(
             const targetY =
                 target.top +
                 target.height / 2;
+
 
             initial.dataset.x =
                 targetX - startX;
@@ -254,6 +306,7 @@ document.addEventListener(
             const scale =
                 Number(initial.dataset.scale);
 
+
             gsap.to(initial, {
 
                 x: x,
@@ -278,12 +331,15 @@ document.addEventListener(
     // ==========================
 
     .to(
+
         words.map(word =>
             word.querySelector(
                 "span:not(.initial)"
             )
         ),
+
         {
+
             opacity: 0,
 
             duration: 0.26,
@@ -291,7 +347,9 @@ document.addEventListener(
             stagger: 0.0325,
 
             ease: "power2.out"
+
         }
+
     );
 
 
@@ -340,7 +398,9 @@ document.addEventListener(
     tl.call(() => {
 
         if (loader) {
+
             loader.remove();
+
         }
 
         document.body.style.overflow = "";
