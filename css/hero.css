@@ -292,6 +292,7 @@ WHATSAPP BUTTON
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 1vw;
+    text-align: center;
 }
 
 /* ==========================
@@ -318,6 +319,8 @@ WHATSAPP BUTTON
     line-height: 1.05;
     letter-spacing: -.04em;
     font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -328,6 +331,8 @@ WHATSAPP BUTTON
 .about-grid {
     margin-top: 30px;
     max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ==========================
