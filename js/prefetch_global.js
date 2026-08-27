@@ -38,3 +38,23 @@ document.querySelectorAll(".nav-left a[href]").forEach(link => {
     }, { once: true });
 
 });
+
+// ==========================
+// PREFETCH SERVICES
+// ==========================
+
+if (
+    window.location.pathname.endsWith("/") ||
+    window.location.pathname.endsWith("index.html")
+) {
+
+    const servicesPrefetch =
+        document.createElement("link");
+
+    servicesPrefetch.rel = "prefetch";
+
+    servicesPrefetch.href =
+        "./services_page/services.html";
+
+    document.head.appendChild(servicesPrefetch);
+}

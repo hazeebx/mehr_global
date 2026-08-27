@@ -11,7 +11,7 @@ if (stack) {
 
     let currentIndex = 0;
     let paused = false;
-    let autoCycle;
+    let autoCycle = null;
 
 
     /* ==============================
@@ -36,8 +36,8 @@ if (stack) {
             y: 8,
             scale: 0.88,
             rotation: -3,
-            opacity: 0.28,
-            zIndex: 3
+            opacity: 0.18,
+            zIndex: 2
         },
 
         right: {
@@ -45,17 +45,17 @@ if (stack) {
             y: 8,
             scale: 0.88,
             rotation: 3,
-            opacity: 0.28,
-            zIndex: 3
+            opacity: 0.18,
+            zIndex: 2
         },
 
         back: {
             x: 0,
-            y: 4,
+            y: 0,
             scale: 0.82,
             rotation: 0,
             opacity: 0,
-            zIndex: 2
+            zIndex: 1
         }
 
     };
@@ -73,27 +73,54 @@ if (stack) {
 
             const dot = document.createElement("span");
 
-            dot.setAttribute("role", "button");
-            dot.setAttribute("aria-label", `Show testimonial ${index + 1}`);
-            dot.setAttribute("tabindex", "0");
+            dot.setAttribute(
+                "role",
+                "button"
+            );
+
+            dot.setAttribute(
+                "aria-label",
+                `Show testimonial ${index + 1}`
+            );
+
+            dot.setAttribute(
+                "tabindex",
+                "0"
+            );
+
+
+            /* --------------------------
+               CLICK
+            -------------------------- */
 
             dot.addEventListener("click", () => {
 
                 goTo(index);
+                restartAutoCycle();
 
             });
 
+
+            /* --------------------------
+               KEYBOARD
+            -------------------------- */
+
             dot.addEventListener("keydown", e => {
 
-                if (e.key === "Enter" || e.key === " ") {
+                if (
+                    e.key === "Enter" ||
+                    e.key === " "
+                ) {
 
                     e.preventDefault();
 
                     goTo(index);
+                    restartAutoCycle();
 
                 }
 
             });
+
 
             loader.appendChild(dot);
 
@@ -113,18 +140,60 @@ if (stack) {
 
     function getPosition(index) {
 
-        if (!cards.length) return "back";
+        if (!cards.length) {
+            return "back";
+        }
 
         const relative =
             (index - currentIndex + cards.length) % cards.length;
 
-        if (relative === 0) return "front";
 
-        if (relative === 1) return "right";
+        /* FRONT */
 
-        if (relative === cards.length - 1) return "left";
+        if (relative === 0) {
+            return "front";
+        }
+
+
+        /* NEXT CARD */
+
+        if (relative === 1) {
+            return "right";
+        }
+
+
+        /* PREVIOUS CARD */
+
+        if (relative === cards.length - 1) {
+            return "left";
+        }
+
+
+        /* EVERYTHING ELSE */
 
         return "back";
+
+    }
+
+
+    /* ==============================
+       RESET TILT
+    ============================== */
+
+    function resetTilt(card, duration = 0.35) {
+
+        gsap.to(card, {
+
+            rotateX: 0,
+            rotateY: 0,
+
+            duration,
+
+            ease: "power2.out",
+
+            overwrite: "auto"
+
+        });
 
     }
 
@@ -140,6 +209,49 @@ if (stack) {
             const position = getPosition(index);
             const config = positions[position];
 
+
+            /* --------------------------
+               STOP ONLY POSITION TWEENS
+            -------------------------- */
+
+            gsap.killTweensOf(
+                card,
+                "x,y,scale,rotation,opacity"
+            );
+
+
+            /* --------------------------
+               STACKING
+            -------------------------- */
+
+            card.style.zIndex = config.zIndex;
+
+
+            /* --------------------------
+               POINTER EVENTS
+            -------------------------- */
+
+            card.style.pointerEvents =
+                position === "front"
+                    ? "auto"
+                    : "none";
+
+
+            /* --------------------------
+               RESET TILT
+            -------------------------- */
+
+            if (position !== "front") {
+
+                resetTilt(card, animated ? 0.3 : 0);
+
+            }
+
+
+            /* --------------------------
+               ANIMATE POSITION
+            -------------------------- */
+
             gsap.to(card, {
 
                 x: config.x,
@@ -151,20 +263,15 @@ if (stack) {
 
                 opacity: config.opacity,
 
-                duration: animated ? 0.65 : 0,
+                duration: animated
+                    ? 0.55
+                    : 0,
 
-                ease: "power3.inOut",
+                ease: "power2.inOut",
 
-                overwrite: true
+                overwrite: "auto"
 
             });
-
-            card.style.zIndex = config.zIndex;
-
-            card.style.pointerEvents =
-                position === "front"
-                    ? "auto"
-                    : "none";
 
         });
 
@@ -198,10 +305,14 @@ if (stack) {
 
     function goTo(index) {
 
-        if (!cards.length) return;
+        if (!cards.length) {
+            return;
+        }
+
 
         currentIndex =
             (index + cards.length) % cards.length;
+
 
         layoutCards(true);
 
@@ -232,37 +343,65 @@ if (stack) {
 
     function startAutoCycle() {
 
-        clearInterval(autoCycle);
+        stopAutoCycle();
 
-        autoCycle = setInterval(() => {
 
-            if (!paused) {
+        autoCycle = gsap.delayedCall(
+            AUTO_DELAY / 1000,
+            () => {
 
-                nextCard();
+                if (!paused) {
+
+                    nextCard();
+
+                }
+
+
+                /*
+                   Schedule the next cycle
+                   after the current transition.
+                */
+
+                startAutoCycle();
 
             }
-
-        }, AUTO_DELAY);
+        );
 
     }
 
 
     /* ==============================
-       PAUSE ON HOVER
+       STOP AUTO CYCLE
     ============================== */
 
-    stack.addEventListener("mouseenter", () => {
+    function stopAutoCycle() {
 
-        paused = true;
+        if (autoCycle) {
 
-    });
+            autoCycle.kill();
+            autoCycle = null;
+
+        }
+
+    }
 
 
-    stack.addEventListener("mouseleave", () => {
+    /* ==============================
+       RESTART AUTO CYCLE
+    ============================== */
 
-        paused = false;
+    function restartAutoCycle() {
 
-    });
+        if (paused) {
+            return;
+        }
+
+        startAutoCycle();
+
+    }
+
+
+
 
 
     /* ==============================
@@ -271,50 +410,78 @@ if (stack) {
 
     cards.forEach(card => {
 
-        card.addEventListener("mousemove", e => {
 
-            const index = cards.indexOf(card);
+        /* --------------------------
+           MOUSE MOVE
+        -------------------------- */
 
-            if (index !== currentIndex) return;
+        card.addEventListener(
+            "mousemove",
+            e => {
 
-            const rect = card.getBoundingClientRect();
-
-            const x =
-                (e.clientX - rect.left - rect.width / 2) / 25;
-
-            const y =
-                (e.clientY - rect.top - rect.height / 2) / 25;
-
-            gsap.to(card, {
-
-                rotateY: x,
-                rotateX: -y,
-
-                duration: 0.3,
-
-                ease: "power2.out",
-
-                overwrite: true
-
-            });
-
-        });
+                const index =
+                    cards.indexOf(card);
 
 
-        card.addEventListener("mouseleave", () => {
+                /*
+                   Only the active card
+                   responds to the mouse.
+                */
 
-            gsap.to(card, {
+                if (index !== currentIndex) {
+                    return;
+                }
 
-                rotateX: 0,
-                rotateY: 0,
 
-                duration: 0.45,
+                const rect =
+                    card.getBoundingClientRect();
 
-                ease: "power2.out"
 
-            });
+                const x =
+                    (
+                        e.clientX -
+                        rect.left -
+                        rect.width / 2
+                    ) / 25;
 
-        });
+
+                const y =
+                    (
+                        e.clientY -
+                        rect.top -
+                        rect.height / 2
+                    ) / 25;
+
+
+                gsap.to(card, {
+
+                    rotateY: x,
+                    rotateX: -y,
+
+                    duration: 0.25,
+
+                    ease: "power2.out",
+
+                    overwrite: "auto"
+
+                });
+
+            }
+        );
+
+
+        /* --------------------------
+           MOUSE LEAVE
+        -------------------------- */
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                resetTilt(card, 0.4);
+
+            }
+        );
 
     });
 
@@ -333,24 +500,49 @@ if (stack) {
     ============================== */
 
     const nextButton =
-        document.querySelector(".testimonial-next");
+        document.querySelector(
+            ".testimonial-next"
+        );
 
     const previousButton =
-        document.querySelector(".testimonial-prev");
+        document.querySelector(
+            ".testimonial-prev"
+        );
 
+
+    /* --------------------------
+       NEXT
+    -------------------------- */
 
     if (nextButton) {
 
-        nextButton.addEventListener("click", nextCard);
+        nextButton.addEventListener(
+            "click",
+            () => {
+
+                nextCard();
+                restartAutoCycle();
+
+            }
+        );
 
     }
 
+
+    /* --------------------------
+       PREVIOUS
+    -------------------------- */
 
     if (previousButton) {
 
         previousButton.addEventListener(
             "click",
-            previousCard
+            () => {
+
+                previousCard();
+                restartAutoCycle();
+
+            }
         );
 
     }

@@ -1037,3 +1037,31 @@ masterTabs.forEach(tab => {
         showService(tab.dataset.service);
     });
 });
+
+
+// ============================================================
+// DESIGN CARD DETAILS
+// ============================================================
+
+document.querySelectorAll(".design-card").forEach(card => {
+    const openButton = card.querySelector(".design-card-toggle");
+    const closeButton = card.querySelector(".design-card-back");
+    const detail = card.querySelector(".design-card-detail");
+
+    if (!openButton || !closeButton || !detail) return;
+
+    const setExpanded = expanded => {
+        card.classList.toggle("is-expanded", expanded);
+        openButton.setAttribute("aria-expanded", String(expanded));
+        detail.setAttribute("aria-hidden", String(!expanded));
+
+        if (expanded) {
+            closeButton.focus();
+        } else {
+            openButton.focus();
+        }
+    };
+
+    openButton.addEventListener("click", () => setExpanded(true));
+    closeButton.addEventListener("click", () => setExpanded(false));
+});
