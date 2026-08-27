@@ -5,6 +5,9 @@ PROJECTS CAROUSEL
 const projectsTrack =
     document.querySelector(".projects-track");
 
+const projectsViewport =
+    document.querySelector(".projects-viewport");
+
 const projectsSlides =
     document.querySelectorAll(".project-slide");
 
@@ -23,6 +26,7 @@ const projectsTotal =
 
 if (
     projectsTrack &&
+    projectsViewport &&
     projectsSlides.length &&
     projectsPrev &&
     projectsNext
@@ -44,14 +48,8 @@ if (
     UPDATE
     ============================== */
 
-    function updateProjects() {
-
-        const slide =
-            projectsSlides[currentIndex];
-
-        const slideWidth =
-            slide.offsetWidth;
-
+    function getCarouselState() {
+        const slideWidth = projectsSlides[0].offsetWidth;
         const gap =
             parseFloat(
                 getComputedStyle(
@@ -60,11 +58,39 @@ if (
             );
 
 
-        projectsTrack.style.transform =
-            `translateX(-${
-                currentIndex *
+        const visibleSlides = Math.max(
+            1,
+            Math.floor(
+                (projectsViewport.clientWidth + gap) /
                 (slideWidth + gap)
-            }px)`;
+            )
+        );
+
+        const maxIndex = Math.max(
+            0,
+            projectsSlides.length - visibleSlides
+        );
+
+        return {
+            slideWidth,
+            gap,
+            maxIndex
+        };
+    }
+
+
+    function updateProjects() {
+
+        const {
+            slideWidth,
+            gap,
+            maxIndex
+        } = getCarouselState();
+
+        currentIndex = Math.min(currentIndex, maxIndex);
+
+        projectsTrack.style.transform =
+            `translateX(-${currentIndex * (slideWidth + gap)}px)`;
 
 
         projectsCurrent.textContent =
@@ -75,9 +101,7 @@ if (
         projectsPrev.disabled =
             currentIndex === 0;
 
-        projectsNext.disabled =
-            currentIndex ===
-            projectsSlides.length - 1;
+        projectsNext.disabled = currentIndex === maxIndex;
 
     }
 
@@ -92,7 +116,7 @@ if (
 
             if (
                 currentIndex <
-                projectsSlides.length - 1
+                getCarouselState().maxIndex
             ) {
 
                 currentIndex++;
@@ -141,4 +165,101 @@ if (
 
     updateProjects();
 
+}
+
+
+/* ==============================
+PROJECT IMAGE LIGHTBOX
+============================== */
+
+const projectsLightbox =
+    document.getElementById("projectsLightbox");
+
+const projectsLightboxImage =
+    projectsLightbox?.querySelector(".projects-lightbox-image");
+
+const projectsLightboxCaption =
+    projectsLightbox?.querySelector(".projects-lightbox-caption");
+
+const projectsLightboxClose =
+    projectsLightbox?.querySelector(".projects-lightbox-close");
+
+
+if (
+    projectsLightbox &&
+    projectsLightboxImage &&
+    projectsLightboxCaption &&
+    projectsLightboxClose
+) {
+
+    let activeProjectSlide = null;
+
+    const closeLightbox = () => {
+
+        projectsLightbox.classList.remove("is-open");
+        projectsLightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("projects-lightbox-open");
+
+        activeProjectSlide?.focus();
+    };
+
+    const openLightbox = slide => {
+
+        const image = slide.querySelector("img");
+
+        if (!image) return;
+
+        activeProjectSlide = slide;
+        projectsLightboxImage.src = image.currentSrc || image.src;
+        projectsLightboxImage.alt = image.alt;
+        projectsLightboxCaption.textContent = image.alt;
+        projectsLightbox.classList.add("is-open");
+        projectsLightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("projects-lightbox-open");
+        projectsLightboxClose.focus();
+    };
+
+    projectsSlides.forEach(slide => {
+
+        const image = slide.querySelector("img");
+
+        if (!image) return;
+
+        slide.tabIndex = 0;
+        slide.setAttribute("role", "button");
+        slide.setAttribute(
+            "aria-label",
+            `Expand ${image.alt}`
+        );
+
+        slide.addEventListener("click", () => openLightbox(slide));
+
+        slide.addEventListener("keydown", event => {
+
+            if (event.key === "Enter" || event.key === " ") {
+
+                event.preventDefault();
+                openLightbox(slide);
+            }
+        });
+    });
+
+    projectsLightboxClose.addEventListener("click", closeLightbox);
+
+    projectsLightbox.addEventListener("click", event => {
+
+        if (event.target === projectsLightbox) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+
+        if (
+            event.key === "Escape" &&
+            projectsLightbox.classList.contains("is-open")
+        ) {
+            closeLightbox();
+        }
+    });
 }

@@ -32,7 +32,7 @@ HEADER
 
     align-items: flex-end;
 
-    justify-content: space-between;
+    justify-content: center;
 
     gap: 3rem;
 
@@ -59,6 +59,8 @@ HEADER
 .projects-heading h2 {
 
     margin: 0;
+
+    text-align: center;
 
     font-size:
         clamp(
@@ -258,10 +260,7 @@ PROJECT SLIDE
 
     position: relative;
 
-    width: min(
-        43vw,
-        46rem
-    );
+    width: clamp(16rem, 25vw, 24rem);
 
     aspect-ratio: 1.35 / 1;
 
@@ -270,6 +269,8 @@ PROJECT SLIDE
     overflow: hidden;
 
     background: #ddd;
+
+    cursor: zoom-in;
 
 }
 
@@ -298,6 +299,14 @@ PROJECT SLIDE
 .project-slide:hover img {
 
     transform: scale(1.035);
+
+}
+
+.project-slide:focus-visible {
+
+    outline: 3px solid #C7A24A;
+
+    outline-offset: 4px;
 
 }
 
@@ -532,7 +541,202 @@ TABLET
 
     .project-slide {
 
-        width: 65vw;
+        width: min(46vw, 20rem);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .projects-section {
+        padding: 3.5rem 5vw 4rem;
+    }
+
+    .projects-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .projects-showcase {
+        display: block;
+    }
+
+    .projects-counter {
+        width: auto;
+        margin-bottom: 1rem;
+    }
+
+    .projects-viewport {
+        width: 100%;
+    }
+
+    .project-slide {
+        width: 78vw;
+    }
+
+}
+
+
+/* ==============================
+PROJECT IMAGE LIGHTBOX
+============================== */
+
+body.projects-lightbox-open {
+
+    overflow: hidden;
+
+}
+
+.projects-lightbox {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: clamp(1rem, 3vw, 3rem);
+
+    background: rgba(3, 8, 17, .91);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition: opacity .25s ease;
+
+}
+
+.projects-lightbox.is-open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+.projects-lightbox-dialog {
+
+    position: relative;
+
+    display: grid;
+
+    max-width: min(92vw, 92rem);
+
+    max-height: 90vh;
+
+    transform: scale(.97);
+
+    transition: transform .25s ease;
+
+}
+
+.projects-lightbox.is-open .projects-lightbox-dialog {
+
+    transform: scale(1);
+
+}
+
+.projects-lightbox-image {
+
+    display: block;
+
+    width: auto;
+
+    max-width: 100%;
+
+    height: auto;
+
+    max-height: calc(90vh - 2.5rem);
+
+    border-radius: .5rem;
+
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .45);
+
+}
+
+.projects-lightbox-close {
+
+    position: absolute;
+
+    top: .75rem;
+
+    right: .75rem;
+
+    z-index: 1;
+
+    display: grid;
+
+    width: 2.5rem;
+
+    height: 2.5rem;
+
+    place-items: center;
+
+    border: 1px solid rgba(255, 255, 255, .32);
+
+    border-radius: 50%;
+
+    background: rgba(4, 10, 20, .65);
+
+    color: #fff;
+
+    font-size: 1.8rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(.5rem);
+
+}
+
+.projects-lightbox-close:hover {
+
+    border-color: #e2b94d;
+
+    color: #e2b94d;
+
+}
+
+.projects-lightbox-caption {
+
+    margin: .75rem 0 0;
+
+    color: rgba(255, 255, 255, .8);
+
+    font-size: .8rem;
+
+    text-align: center;
+
+}
+
+.projects-lightbox-close:focus-visible {
+
+    outline: 2px solid #e2b94d;
+
+    outline-offset: 3px;
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .projects-lightbox,
+    .projects-lightbox-dialog {
+
+        transition: none;
 
     }
 
