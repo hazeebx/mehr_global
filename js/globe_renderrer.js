@@ -453,28 +453,23 @@ import { RINGS } from "./rings.js";
     // LOCATION ORBS
     // ============================================================
     //
-    // Add locations as:
-    //
-    // [longitude, latitude]
-    //
-    // Example:
-    // [46.6753, 24.7136]
-    //
-    // Longitude first.
-    // Latitude second.
+    // Each location is [name, longitude, latitude].
     //
     // ============================================================
 
     const LOCATION_COORDS = [
 
         // Riyadh
-        [46.6753, 24.7136],
+        ["Riyadh", 46.6753, 24.7136],
 
-        // New York
-        [-74.0060, 40.7128],
+        // Delhi
+        ["Delhi", 77.1025, 28.7041],
 
-        // Bengaluru
-        [77.5946, 12.9716]
+        // Toronto
+        ["Toronto", -79.3832, 43.6532],
+
+        // Melbourne
+        ["Melbourne", 144.9631, -37.8136]
 
     ];
 
@@ -483,7 +478,7 @@ import { RINGS } from "./rings.js";
 
 
     for (
-        const [lon, lat]
+        const [name, lon, lat]
         of LOCATION_COORDS
     ) {
 
@@ -512,6 +507,8 @@ import { RINGS } from "./rings.js";
 
 
         locationPoints.push({
+
+            name,
 
             ux,
             uy,
@@ -557,6 +554,35 @@ import { RINGS } from "./rings.js";
     let lastPX = 0;
 
     let lastPY = 0;
+
+    let hoveredLocation = null;
+
+    let visibleLocationPoints = [];
+
+
+    function updateHoveredLocation(event) {
+
+        const rect = canvas.getBoundingClientRect();
+
+        const pointerX = event.clientX - rect.left;
+        const pointerY = event.clientY - rect.top;
+
+        hoveredLocation = visibleLocationPoints.find(location => {
+
+            const hitRadius = Math.max(18, location.radius * 2.6);
+
+            return Math.hypot(
+                pointerX - location.sx,
+                pointerY - location.sy
+            ) <= hitRadius;
+        }) || null;
+
+        canvas.style.cursor = hoveredLocation
+            ? "pointer"
+            : dragging
+                ? "grabbing"
+                : "grab";
+    }
 
 
     function onDown(
@@ -635,6 +661,21 @@ import { RINGS } from "./rings.js";
                 e.clientY
             );
 
+        }
+    );
+
+
+    canvas.addEventListener(
+        "mousemove",
+        updateHoveredLocation
+    );
+
+
+    canvas.addEventListener(
+        "mouseleave",
+        () => {
+            hoveredLocation = null;
+            canvas.style.cursor = "grab";
         }
     );
 
@@ -1197,6 +1238,142 @@ import { RINGS } from "./rings.js";
             //     size * 2
             // );
 
+        }
+
+
+        // ========================================================
+        // LOCATION ORBS
+        // ========================================================
+
+        visibleLocationPoints = [];
+
+        for (const location of locationPoints) {
+
+            const x = location.ux * R;
+            const y = location.uy * R;
+            const z = location.uz * R;
+
+            let rx = x * cosY - z * sinY;
+            let rz = x * sinY + z * cosY;
+            const ry = y * cosX - rz * sinX;
+
+            rz = y * sinX + rz * cosX;
+
+            const depth = rz + FOCAL_OFFSET;
+
+            if (depth <= 40) continue;
+
+            const scale = FOCAL / depth;
+            const facing = -rz / R;
+            const visibility = Math.max(
+                0,
+                Math.min(1, (facing + 0.08) / 0.22)
+            );
+
+            if (visibility <= 0.03) continue;
+
+            const sx = CX + rx * scale;
+            const sy = CY - ry * scale;
+            const pulse = .5 + .5 * Math.sin(
+                time * location.pulseSpeed + location.pulsePhase
+            );
+            const radius = Math.max(3, 4.2 * scale);
+
+            visibleLocationPoints.push({
+                ...location,
+                sx,
+                sy,
+                radius,
+                visibility,
+                pulse
+            });
+        }
+
+        for (const location of visibleLocationPoints) {
+
+            const isHovered = hoveredLocation?.name === location.name;
+            const pulseRadius = location.radius * (2.5 + location.pulse * 2.2);
+
+            ctx.save();
+            ctx.globalCompositeOperation = "lighter";
+            ctx.globalAlpha = location.visibility;
+
+            const glow = ctx.createRadialGradient(
+                location.sx,
+                location.sy,
+                0,
+                location.sx,
+                location.sy,
+                pulseRadius
+            );
+
+            glow.addColorStop(0, "rgba(104, 208, 255, .90)");
+            glow.addColorStop(.22, "rgba(42, 144, 255, .50)");
+            glow.addColorStop(1, "rgba(24, 100, 255, 0)");
+
+            ctx.fillStyle = glow;
+            ctx.beginPath();
+            ctx.arc(location.sx, location.sy, pulseRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.strokeStyle = "rgba(111, 209, 255, .58)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(
+                location.sx,
+                location.sy,
+                location.radius * (1.25 + location.pulse * 1.5),
+                0,
+                Math.PI * 2
+            );
+            ctx.stroke();
+
+            ctx.fillStyle = "#b9f0ff";
+            ctx.beginPath();
+            ctx.arc(location.sx, location.sy, location.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            if (isHovered) {
+
+                const label = location.name;
+                ctx.font = "600 12px Inter, sans-serif";
+                const labelWidth = ctx.measureText(label).width;
+                const paddingX = 11;
+                const labelHeight = 29;
+                const labelX = Math.min(
+                    location.sx + 15,
+                    W - labelWidth - paddingX * 2 - 8
+                );
+                const labelY = Math.max(
+                    8,
+                    location.sy - labelHeight - 13
+                );
+
+                ctx.globalAlpha = Math.min(1, location.visibility + .28);
+                ctx.fillStyle = "rgba(9, 27, 55, .60)";
+                ctx.strokeStyle = "rgba(101, 208, 255, .78)";
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.roundRect(
+                    labelX,
+                    labelY,
+                    labelWidth + paddingX * 2,
+                    labelHeight,
+                    7
+                );
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = "#c7f4ff";
+                ctx.textBaseline = "middle";
+                ctx.fillText(
+                    label,
+                    labelX + paddingX,
+                    labelY + labelHeight / 2
+                );
+            }
+
+            ctx.restore();
         }
 
 

@@ -1026,17 +1026,38 @@ function showService(service) {
         );
     });
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    if (servicePanels.length) {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
 }
 
 masterTabs.forEach(tab => {
     tab.addEventListener("click", () => {
-        showService(tab.dataset.service);
+        const service = tab.dataset.service;
+
+        showService(service);
+        history.replaceState(null, "", `#${service}`);
     });
 });
+
+
+function showServiceFromHash() {
+    const service = window.location.hash.slice(1);
+
+    if (
+        service &&
+        [...masterTabs].some(tab => tab.dataset.service === service)
+    ) {
+        showService(service);
+    }
+}
+
+showServiceFromHash();
+
+window.addEventListener("hashchange", showServiceFromHash);
 
 
 // ============================================================

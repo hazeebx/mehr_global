@@ -46,6 +46,24 @@
 
     z-index: 0;
 
+    opacity: 1;
+
+    transition: opacity .32s ease;
+
+}
+
+.contact-bg.is-changing {
+
+    opacity: 0;
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .contact-bg {
+        transition: none;
+    }
+
 }
 
 
@@ -285,6 +303,120 @@
 
     display: block;
 
+}
+
+
+/* ==========================
+   OFFICE ADDRESS SWITCHER
+========================== */
+
+.office-switcher {
+    padding-top: .9rem;
+    padding-bottom: 1rem;
+}
+
+.office-tabs {
+    display: flex;
+    gap: .45rem;
+    margin-top: .8rem;
+}
+
+.office-tab {
+    display: inline-grid;
+    width: 2.25rem;
+    height: 1.75rem;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, .17);
+    border-radius: .42rem;
+    background: rgba(255, 255, 255, .055);
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.office-tab svg {
+    width: 1.45rem;
+    height: auto;
+    filter: drop-shadow(0 .08rem .15rem rgba(0, 0, 0, .25));
+}
+
+.office-tab:hover,
+.office-tab.is-active {
+    border-color: rgba(233, 197, 140, .85);
+    background: rgba(233, 197, 140, .13);
+    transform: translateY(-.1rem);
+}
+
+.office-tab:focus-visible {
+    outline: 2px solid #e9c58c;
+    outline-offset: .18rem;
+}
+
+.office-tab-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.office-panel {
+    min-height: 3.55rem;
+    padding-top: .8rem;
+    animation: officePanelIn .25s ease both;
+}
+
+.office-panel[hidden] {
+    display: none;
+}
+
+.office-location {
+    display: block;
+    margin-bottom: .2rem;
+    color: rgba(255, 255, 255, .6);
+    font-size: .64rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.office-panel p,
+.office-panel a {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    color: rgba(255, 255, 255, .92);
+    font-size: clamp(.82rem, 1vw, .98rem);
+    line-height: 1.45;
+    text-decoration: none;
+}
+
+.office-panel a:hover {
+    color: #fff;
+}
+
+@keyframes officePanelIn {
+    from {
+        opacity: 0;
+        transform: translateY(.35rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .office-tabs {
+        gap: .35rem;
+    }
+
+    .office-tab {
+        width: 2rem;
+        height: 1.6rem;
+    }
 }
 
 

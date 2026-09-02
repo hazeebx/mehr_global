@@ -719,3 +719,113 @@ if (contactForm) {
     );
 
 }
+
+
+/* ==============================
+   OFFICE ADDRESS SWITCHER
+============================== */
+
+const officeTabs =
+    document.querySelectorAll(".office-tab");
+
+const officePanels =
+    document.querySelectorAll("[data-office-panel]");
+
+const contactBackground =
+    document.querySelector(".contact-bg");
+
+const officeBackgrounds = {
+    saudi: "./assets/section_imgs/contact_riyadh.webp",
+    canada: "./assets/section_imgs/contact_canada.webp",
+    australia: "./assets/section_imgs/contact_australia.webp",
+    india: "./assets/section_imgs/contact_india.webp"
+};
+
+let backgroundRequest = 0;
+
+
+function setOfficeBackground(office) {
+
+    const source = officeBackgrounds[office];
+
+    if (
+        !contactBackground ||
+        !source ||
+        contactBackground.dataset.officeBackground === office
+    ) {
+        return;
+    }
+
+    const request = ++backgroundRequest;
+    const image = new Image();
+
+    image.onload = () => {
+
+        if (request !== backgroundRequest) return;
+
+        contactBackground.classList.add("is-changing");
+
+        window.setTimeout(() => {
+
+            if (request !== backgroundRequest) return;
+
+            contactBackground.src = source;
+            contactBackground.dataset.officeBackground = office;
+            contactBackground.classList.remove("is-changing");
+
+        }, 220);
+    };
+
+    image.src = source;
+}
+
+
+Object.values(officeBackgrounds).forEach(source => {
+    const image = new Image();
+    image.src = source;
+});
+
+
+if (officeTabs.length && officePanels.length) {
+
+    const showOffice = office => {
+
+        setOfficeBackground(office);
+
+        officeTabs.forEach(tab => {
+            const isActive = tab.dataset.office === office;
+
+            tab.classList.toggle("is-active", isActive);
+            tab.setAttribute("aria-selected", String(isActive));
+            tab.tabIndex = isActive ? 0 : -1;
+        });
+
+        officePanels.forEach(panel => {
+            const isActive = panel.dataset.officePanel === office;
+
+            panel.hidden = !isActive;
+            panel.classList.toggle("is-active", isActive);
+        });
+    };
+
+    officeTabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => showOffice(tab.dataset.office));
+
+        tab.addEventListener("keydown", event => {
+            if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) {
+                return;
+            }
+
+            event.preventDefault();
+
+            const nextIndex = event.key === "Home"
+                ? 0
+                : event.key === "End"
+                    ? officeTabs.length - 1
+                    : (index + (event.key === "ArrowRight" ? 1 : -1) + officeTabs.length) % officeTabs.length;
+
+            officeTabs[nextIndex].focus();
+            showOffice(officeTabs[nextIndex].dataset.office);
+        });
+    });
+}

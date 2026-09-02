@@ -255,45 +255,45 @@
 
 <div class="services-grid">
 
-    <div class="service-card">
+    <a class="service-card" href="./services_page/services.html#iso">
         <img src="./assets/section_imgs/iso_img.webp" alt="ISO certification and quality inspection">
         <div class="service-card-content">
             <h3>ISO</h3>
             <p>Internationally recognized standards, certification, and quality management solutions that help organizations improve compliance, efficiency, and performance.</p>
         </div>
-    </div>
+    </a>
 
-    <div class="service-card">
+    <a class="service-card" href="./services_page/services.html#api">
         <img src="./assets/section_imgs/api_img.webp" alt="API and business development">
         <div class="service-card-content">
             <h3>API</h3>
             <p>API certification and compliance support for organizations operating across the oil and gas industry.</p>
         </div>
-    </div>
+    </a>
 
-    <div class="service-card">
+    <a class="service-card" href="./services_page/services.html#it">
         <img src="./assets/section_imgs/it_img.webp" alt="Information technology services">
         <div class="service-card-content">
             <h3>IT</h3>
             <p>Practical information technology solutions that help organizations modernize systems, improve efficiency, and support secure digital operations.</p>
         </div>
-    </div>
+    </a>
 
-    <div class="service-card">
+    <a class="service-card" href="./services_page/services.html#contracting">
         <img src="./assets/section_imgs/contracting_img.webp" alt="Contracting and project services">
         <div class="service-card-content">
             <h3>Contracting</h3>
             <p>Professional contracting and project support services focused on reliable execution, quality standards, and efficient project delivery.</p>
         </div>
-    </div>
+    </a>
 
-    <div class="service-card">
+    <a class="service-card" href="./services_page/services.html#training">
         <img src="./assets/section_imgs/training_img.webp" alt="Professional training">
         <div class="service-card-content">
             <h3>Training</h3>
-            <p>Professional training programs designed to strengthen capabilities, develop expertise, and improve organizational performance.
+            <p>Professional training programs designed to strengthen capabilities, develop expertise, and improve organizational performance.</p>
         </div>
-    </div>
+    </a>
 
     <div class="service-card">
         <img src="./assets/section_imgs/consulting_img.webp" alt="Strategic business consulting">
@@ -303,21 +303,21 @@
         </div>
     </div>
 
-    <div class="service-card">
+    <a class="service-card" href="./services_page/services.html#design">
         <img src="./assets/section_imgs/design_img.webp" alt="Strategic business consulting">
         <div class="service-card-content">
             <h3>Design</h3>
             <p>Creative and professional design solutions that transform ideas into clear, effective, and visually compelling experiences.</p>
         </div>
-    </div>
+    </a>
 
-    <div class="service-card">
+    <a class="service-card" href="./services_page/services.html#saas">
         <img src="./assets/section_imgs/saas_img.webp" alt="Strategic business consulting">
         <div class="service-card-content">
             <h3>SaaS</h3>
             <p>Practical cloud-based software solutions designed to simplify operations, improve productivity, and support smarter business management.</p>
         </div>
-    </div>
+    </a>
 
 </div>
 
@@ -1285,8 +1285,9 @@ MIIKU CHAN
     <!-- FULL SECTION BACKGROUND -->
     <img
         class="contact-bg"
-        src="./assets/section_imgs/contact_wall.webp"
+        src="./assets/section_imgs/contact_riyadh.webp"
         alt=""
+        data-office-background="saudi"
     >
 
     <!-- DARK OVERLAY -->
@@ -1315,11 +1316,31 @@ MIIKU CHAN
 
                 <!-- ADDRESS -->
 
-                <div class="detail-block">
+                <div class="detail-block office-switcher">
 
                     <h2>Address</h2>
 
-                    <p>
+                    <div class="office-tabs" role="tablist" aria-label="Mehr Global office locations">
+                        <button class="office-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="office-saudi" id="office-tab-saudi" data-office="saudi">
+                            <svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" rx="1.5" fill="#006c35"/><path d="M5 6.4h14M6.3 9.4h11.4M9.1 11.7h6.1" stroke="#fff" stroke-width=".85" stroke-linecap="round"/><path d="M9 13.2h6" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/></svg>
+                            <span class="office-tab-name">Saudi Arabia</span>
+                        </button>
+                        <button class="office-tab" type="button" role="tab" aria-selected="false" aria-controls="office-canada" id="office-tab-canada" data-office="canada" tabindex="-1">
+                            <svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" rx="1.5" fill="#fff"/><path d="M0 0h5.2v16H0zm18.8 0H24v16h-5.2z" fill="#d52b1e"/><path d="m12 3.3.72 2.02 1.65-.67-.6 1.74 1.65.26-1.53 1.06 1.01 1.2-1.94-.2-.96 1.64-.96-1.64-1.94.2 1.01-1.2L8.62 6.66l1.65-.26-.6-1.74 1.65.67z" fill="#d52b1e"/></svg>
+                            <span class="office-tab-name">Canada</span>
+                        </button>
+                        <button class="office-tab" type="button" role="tab" aria-selected="false" aria-controls="office-australia" id="office-tab-australia" data-office="australia" tabindex="-1">
+                            <svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" rx="1.5" fill="#012169"/><path d="M0 0h10v7H0z" fill="#012169"/><path d="m0 .7 8.8 5.6M9 0 .9 7" stroke="#fff" stroke-width="1.6"/><path d="M4.15 0v7M0 3.5h10" stroke="#c8102e" stroke-width=".85"/><g fill="#fff"><circle cx="16.5" cy="4" r="1.1"/><circle cx="19.2" cy="8.2" r=".8"/><circle cx="14" cy="10.3" r=".75"/><circle cx="18" cy="12.5" r="1"/></g></svg>
+                            <span class="office-tab-name">Australia</span>
+                        </button>
+                        <button class="office-tab" type="button" role="tab" aria-selected="false" aria-controls="office-india" id="office-tab-india" data-office="india" tabindex="-1">
+                            <svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" rx="1.5" fill="#fff"/><path d="M0 0h24v5.33H0z" fill="#ff9933"/><path d="M0 10.67h24V16H0z" fill="#138808"/><circle cx="12" cy="8" r="1.55" fill="none" stroke="#000080" stroke-width=".45"/><circle cx="12" cy="8" r=".28" fill="#000080"/></svg>
+                            <span class="office-tab-name">India</span>
+                        </button>
+                    </div>
+
+                    <div class="office-panel is-active" id="office-saudi" role="tabpanel" aria-labelledby="office-tab-saudi" data-office-panel="saudi">
+                        <span class="office-location">Riyadh, Saudi Arabia</span>
                         <a
                             href="https://www.google.com/maps/place/24%C2%B039'52.0%22N+46%C2%B042'27.1%22E/@24.6644619,46.7075248,20.69z/data=!4m4!3m3!8m2!3d24.664434!4d46.70753?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D"
                             target="_blank"
@@ -1328,7 +1349,22 @@ MIIKU CHAN
                             <span>Al Dabab Street</span>
                             <span>P.O. Box 038503 · Riyadh 11355</span>
                         </a>
-                    </p>
+                    </div>
+
+                    <div class="office-panel" id="office-canada" role="tabpanel" aria-labelledby="office-tab-canada" data-office-panel="canada" hidden>
+                        <span class="office-location">Toronto, Canada</span>
+                        <p>Placeholder address · Toronto, ON, Canada</p>
+                    </div>
+
+                    <div class="office-panel" id="office-australia" role="tabpanel" aria-labelledby="office-tab-australia" data-office-panel="australia" hidden>
+                        <span class="office-location">Melbourne, Australia</span>
+                        <p>Placeholder address · Melbourne, VIC, Australia</p>
+                    </div>
+
+                    <div class="office-panel" id="office-india" role="tabpanel" aria-labelledby="office-tab-india" data-office-panel="india" hidden>
+                        <span class="office-location">Delhi, India</span>
+                        <p>Placeholder address · New Delhi, Delhi, India</p>
+                    </div>
 
                 </div>
 
