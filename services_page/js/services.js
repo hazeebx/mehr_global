@@ -1086,3 +1086,101 @@ document.querySelectorAll(".design-card").forEach(card => {
     openButton.addEventListener("click", () => setExpanded(true));
     closeButton.addEventListener("click", () => setExpanded(false));
 });
+
+
+// ============================================================
+// SAAS PRODUCT PREVIEW CAROUSEL
+// ============================================================
+
+document.querySelectorAll("[data-saas-carousel]").forEach(carousel => {
+    const slides = [...carousel.querySelectorAll(".saas-carousel-slide")];
+    const previousButton = carousel.querySelector(".saas-carousel-previous");
+    const nextButton = carousel.querySelector(".saas-carousel-next");
+    const status = carousel.querySelector(".saas-carousel-status");
+
+    if (slides.length < 2 || !previousButton || !nextButton || !status) return;
+
+    let activeIndex = 0;
+
+    const showSlide = nextIndex => {
+        activeIndex = (nextIndex + slides.length) % slides.length;
+
+        slides.forEach((slide, index) => {
+            const isActive = index === activeIndex;
+            slide.classList.toggle("is-active", isActive);
+            slide.setAttribute("aria-hidden", String(!isActive));
+            slide.tabIndex = isActive ? 0 : -1;
+        });
+
+        status.textContent = `${activeIndex + 1} / ${slides.length}`;
+    };
+
+    previousButton.addEventListener("click", () => showSlide(activeIndex - 1));
+    nextButton.addEventListener("click", () => showSlide(activeIndex + 1));
+});
+
+
+// ============================================================
+// SAAS PREVIEW LIGHTBOX
+// ============================================================
+
+const saasImageLightbox = document.getElementById("saasImageLightbox");
+const saasLightboxImage = saasImageLightbox?.querySelector(".saas-image-lightbox-image");
+const saasLightboxCaption = saasImageLightbox?.querySelector(".saas-image-lightbox-caption");
+const saasLightboxClose = saasImageLightbox?.querySelector(".saas-image-lightbox-close");
+const saasLightboxPrevious = saasImageLightbox?.querySelector(".saas-image-lightbox-previous");
+const saasLightboxNext = saasImageLightbox?.querySelector(".saas-image-lightbox-next");
+
+if (saasImageLightbox && saasLightboxImage && saasLightboxCaption && saasLightboxClose && saasLightboxPrevious && saasLightboxNext) {
+    const previews = [...document.querySelectorAll(".saas-carousel-slide")];
+    let lightboxTrigger = null;
+    let lightboxIndex = 0;
+
+    const showSaasLightboxImage = nextIndex => {
+        lightboxIndex = (nextIndex + previews.length) % previews.length;
+        const preview = previews[lightboxIndex];
+
+        saasLightboxImage.src = preview.currentSrc || preview.src;
+        saasLightboxImage.alt = preview.alt;
+        saasLightboxCaption.textContent = preview.alt;
+    };
+
+    const closeSaasLightbox = () => {
+        saasImageLightbox.classList.remove("is-open");
+        saasImageLightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("saas-image-lightbox-open");
+        lightboxTrigger?.focus();
+    };
+
+    const openSaasLightbox = preview => {
+        lightboxTrigger = preview;
+        showSaasLightboxImage(previews.indexOf(preview));
+        saasImageLightbox.classList.add("is-open");
+        saasImageLightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("saas-image-lightbox-open");
+        saasLightboxClose.focus();
+    };
+
+    document.querySelectorAll(".saas-carousel-slide").forEach(preview => {
+        preview.addEventListener("click", () => openSaasLightbox(preview));
+        preview.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openSaasLightbox(preview);
+            }
+        });
+    });
+
+    saasLightboxPrevious.addEventListener("click", () => showSaasLightboxImage(lightboxIndex - 1));
+    saasLightboxNext.addEventListener("click", () => showSaasLightboxImage(lightboxIndex + 1));
+    saasLightboxClose.addEventListener("click", closeSaasLightbox);
+    saasImageLightbox.addEventListener("click", event => {
+        if (event.target === saasImageLightbox) closeSaasLightbox();
+    });
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && saasImageLightbox.classList.contains("is-open")) {
+            closeSaasLightbox();
+        }
+    });
+}
