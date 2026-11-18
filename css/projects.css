@@ -428,6 +428,8 @@ NAVIGATION
 
     display: flex;
 
+    justify-content: flex-end;
+
     gap: .6rem;
 
     margin-top: 2rem;

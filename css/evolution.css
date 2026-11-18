@@ -147,6 +147,12 @@ body {
 
 }
 
+.evolution_card-old {
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+}
+
 
 /* ==============================
    NEW LOGO CARD

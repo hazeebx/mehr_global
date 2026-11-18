@@ -44,12 +44,30 @@
 
     object-fit: cover;
 
+    object-position: 50% 24%;
+
     z-index: 0;
 
     opacity: 1;
 
     transition: opacity .32s ease;
 
+}
+
+.contact-bg[data-office-background="saudi"] {
+    object-position: 50% 24%;
+}
+
+.contact-bg[data-office-background="canada"] {
+    object-position: 50% 22%;
+}
+
+.contact-bg[data-office-background="australia"] {
+    object-position: 50% 25%;
+}
+
+.contact-bg[data-office-background="india"] {
+    object-position: 50% 23%;
 }
 
 .contact-bg.is-changing {

@@ -112,30 +112,20 @@
 
     <aside class="service-master-nav">
 
-        <button
-            class="sidebar-toggle"
-            id="serviceSidebarToggle"
-            type="button"
-            aria-label="Collapse services sidebar"
-            aria-expanded="true"
-        >
-            <span class="sidebar-toggle-icon">‹</span>
-        </button>
-
         <div class="service-master-brand">
             <div class="eyebrow">MEHR GLOBAL</div>
             <h1>Services</h1>
         </div>
 
         <div class="master-tabs" role="tablist" aria-label="Services">
-            <button class="master-tab active" data-service="it" type="button">
-                <span class="master-tab-dot"></span>
-                <span>IT</span>
-            </button>
-
             <button class="master-tab" data-service="iso" type="button">
                 <span class="master-tab-dot"></span>
                 <span>ISO</span>
+            </button>
+
+            <button class="master-tab active" data-service="it" type="button">
+                <span class="master-tab-dot"></span>
+                <span>IT</span>
             </button>
 
             <button class="master-tab" data-service="contracting" type="button">
@@ -143,7 +133,7 @@
                 <span>Contracting</span>
             </button>
 
-            <button class="master-tab" data-service="training" type="button">
+            <button class="master-tab is-disabled" data-service="training" type="button" disabled aria-disabled="true" title="Training is temporarily unavailable">
                 <span class="master-tab-dot"></span>
                 <span>Training</span>
             </button>
@@ -668,7 +658,7 @@
                         <button class="saas-carousel-control saas-carousel-previous" type="button" aria-label="Show previous iSoft preview">←</button>
                         <button class="saas-carousel-control saas-carousel-next" type="button" aria-label="Show next iSoft preview">→</button>
                         <span class="saas-carousel-status" aria-live="polite">1 / 2</span>
-                        <figcaption><span>iSoft platform preview</span><a href="#saas-future">Learn more <span aria-hidden="true">→</span></a></figcaption>
+                        <figcaption><span>iSoft platform preview</span></figcaption>
                     </figure>
                 </article>
 

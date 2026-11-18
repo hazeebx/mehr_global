@@ -462,14 +462,14 @@ import { RINGS } from "./rings.js";
         // Riyadh
         ["Riyadh", 46.6753, 24.7136],
 
-        // Delhi
-        ["Delhi", 77.1025, 28.7041],
+        // Jaipur
+        ["Jaipur", 75.7873, 26.9124],
 
         // Toronto
         ["Toronto", -79.3832, 43.6532],
 
-        // Melbourne
-        ["Melbourne", 144.9631, -37.8136]
+        // Canberra
+        ["Canberra", 149.1300, -35.2809]
 
     ];
 

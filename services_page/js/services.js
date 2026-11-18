@@ -970,41 +970,6 @@ document
 renderContractingList();
 
 // ============================================================
-// COLLAPSIBLE MASTER SERVICE SIDEBAR
-// ============================================================
-
-const servicesLayout =
-    document.querySelector(".services-layout");
-
-const serviceSidebarToggle =
-    document.getElementById("serviceSidebarToggle");
-
-if (servicesLayout && serviceSidebarToggle) {
-
-    serviceSidebarToggle.addEventListener("click", () => {
-
-        const collapsed =
-            servicesLayout.classList.toggle(
-                "sidebar-collapsed"
-            );
-
-        serviceSidebarToggle.setAttribute(
-            "aria-expanded",
-            String(!collapsed)
-        );
-
-        serviceSidebarToggle.setAttribute(
-            "aria-label",
-            collapsed
-                ? "Expand services sidebar"
-                : "Collapse services sidebar"
-        );
-
-    });
-}
-
-
-// ============================================================
 // MASTER SERVICE NAVIGATION
 // ============================================================
 
@@ -1012,6 +977,10 @@ const masterTabs = document.querySelectorAll(".master-tab");
 const servicePanels = document.querySelectorAll(".service-panel");
 
 function showService(service) {
+    const targetTab = [...masterTabs].find(tab => tab.dataset.service === service);
+
+    if (!targetTab || targetTab.disabled) return;
+
     masterTabs.forEach(tab => {
         tab.classList.toggle(
             "active",
@@ -1036,6 +1005,8 @@ function showService(service) {
 
 masterTabs.forEach(tab => {
     tab.addEventListener("click", () => {
+        if (tab.disabled) return;
+
         const service = tab.dataset.service;
 
         showService(service);
@@ -1049,7 +1020,7 @@ function showServiceFromHash() {
 
     if (
         service &&
-        [...masterTabs].some(tab => tab.dataset.service === service)
+        [...masterTabs].some(tab => tab.dataset.service === service && !tab.disabled)
     ) {
         showService(service);
     }

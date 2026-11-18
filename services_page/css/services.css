@@ -14,10 +14,6 @@
     min-width: 0;
 }
 
-.services-layout.sidebar-collapsed {
-    grid-template-columns: 64px minmax(0, 1fr);
-}
-
 .service-master-nav {
     position: relative;
     align-self: start;
@@ -35,11 +31,6 @@
     );
 
     transition: padding .25s ease;
-}
-
-.services-layout.sidebar-collapsed .service-master-nav {
-    padding-left: 8px;
-    padding-right: 8px;
 }
 
 .service-master-brand {
@@ -127,81 +118,6 @@
     box-shadow: 0 0 8px rgba(191,150,42,.30);
 }
 
-
-/* ============================================================
-   COLLAPSIBLE MASTER SIDEBAR
-============================================================ */
-
-.services-layout .sidebar-toggle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-
-    width: 28px;
-    height: 28px;
-
-    display: grid;
-    place-items: center;
-
-    border: 1px solid var(--line);
-    border-radius: 7px;
-
-    background: #ffffff;
-    color: #24211d;
-
-    font-size: 18px;
-    line-height: 1;
-
-    z-index: 2;
-}
-
-.services-layout .sidebar-toggle:hover {
-    background: #f0eee8;
-}
-
-.services-layout .sidebar-toggle-icon {
-    display: block;
-    transform: translateX(-1px);
-    transition: transform .25s ease;
-}
-
-.services-layout.sidebar-collapsed .sidebar-toggle-icon {
-    transform: rotate(180deg) translateX(1px);
-}
-
-.services-layout.sidebar-collapsed .service-master-brand {
-    padding-top: 48px;
-    border-bottom: 0;
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-.services-layout.sidebar-collapsed .service-master-brand .eyebrow,
-.services-layout.sidebar-collapsed .service-master-brand h1,
-.services-layout.sidebar-collapsed .service-master-brand p {
-    display: none;
-}
-
-.services-layout.sidebar-collapsed .master-tabs {
-    align-items: center;
-    padding-top: 48px;
-}
-
-.services-layout.sidebar-collapsed .master-tab {
-    justify-content: center;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.services-layout.sidebar-collapsed .master-tab span:last-child {
-    display: none;
-}
-
-.services-layout.sidebar-collapsed .master-tab-dot {
-    width: 7px;
-    height: 7px;
-    flex-basis: 7px;
-}
 
 /* ============================================================
    SERVICE PANELS
@@ -988,31 +904,6 @@
 ============================================================ */
 
 @media (max-width: 800px) {
-
-    .services-layout.sidebar-collapsed {
-        grid-template-columns: 1fr;
-    }
-
-    .services-layout.sidebar-collapsed .service-master-nav {
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .services-layout.sidebar-collapsed .master-tabs {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        align-items: stretch;
-        padding-top: 0;
-    }
-
-    .services-layout.sidebar-collapsed .master-tab {
-        justify-content: center;
-    }
-
-    .services-layout.sidebar-collapsed .master-tab span:last-child {
-        display: inline;
-    }
-
     .services-layout .explorer {
         height: calc(100vh - 150px);
         min-height: 460px;
@@ -1108,20 +999,6 @@
 
     box-shadow:
         0 0 8px rgba(199,162,74,.35);
-}
-
-
-/* ---------- Collapse button ---------- */
-
-.services-layout .sidebar-toggle {
-    background: #FFFFFF;
-    border-color: var(--line);
-    color: var(--text-main);
-}
-
-
-.services-layout .sidebar-toggle:hover {
-    background: var(--surface-hover);
 }
 
 
@@ -1867,6 +1744,19 @@
     color: #fff;
 }
 
+.services-layout .master-tab.is-disabled,
+.services-layout .master-tab.is-disabled:hover {
+    background: transparent;
+    color: rgba(210, 220, 236, .3);
+    opacity: .58;
+    cursor: not-allowed;
+}
+
+.services-layout .master-tab.is-disabled .master-tab-dot {
+    background: rgba(210, 220, 236, .2);
+    box-shadow: none;
+}
+
 .services-layout .master-tab.active {
     background: linear-gradient(90deg, rgba(199, 162, 74, .23), rgba(199, 162, 74, .07));
     color: #fff;
@@ -1888,19 +1778,6 @@
     box-shadow: 0 0 9px rgba(226, 185, 77, .65);
 }
 
-.services-layout .sidebar-toggle {
-    border-color: rgba(255, 255, 255, .18);
-    background: rgba(255, 255, 255, .09);
-    color: #fff;
-    backdrop-filter: blur(8px);
-}
-
-.services-layout .sidebar-toggle:hover {
-    border-color: rgba(226, 185, 77, .65);
-    background: rgba(226, 185, 77, .16);
-}
-
-.services-layout .sidebar-toggle:focus-visible,
 .services-layout .master-tab:focus-visible {
     outline: 2px solid #e2b94d;
     outline-offset: 3px;
@@ -2253,14 +2130,6 @@
     font-size: 11px;
 }
 
-.saas-product-visual a {
-    color: #8e6818;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.saas-product-visual a span { margin-left: 8px; }
-
 body.saas-image-lightbox-open { overflow: hidden; }
 
 .saas-image-lightbox {
@@ -2428,7 +2297,6 @@ body.saas-image-lightbox-open { overflow: hidden; }
 .saas-future-canvas span:nth-child(3) { width: 57px; height: 7px; top: 82px; left: 48px; }
 
 .saas-demo-button:focus-visible,
-.saas-product-visual a:focus-visible,
 .saas-carousel-control:focus-visible,
 .saas-carousel-slide:focus-visible,
 .saas-image-lightbox-close:focus-visible,
@@ -2449,7 +2317,6 @@ body.saas-image-lightbox-open { overflow: hidden; }
     .saas-future { padding: 24px; }
     .saas-product-visual,
     .saas-product-visual img { min-height: 220px; }
-    .saas-product-visual figcaption span:first-child { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
